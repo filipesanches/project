@@ -1,4 +1,4 @@
-const casesNotes = () => {
+const casesNotes = function(){
   const notes = document.querySelector('#notes');
   //cria folha css a aplica no head
   const criaStyle = atr => {
