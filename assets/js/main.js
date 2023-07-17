@@ -1,4 +1,3 @@
-'use strict';
 const casesNotes = () => {
   const notes = document.querySelector('#notes');
   //cria folha css a aplica no head
