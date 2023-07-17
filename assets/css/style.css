@@ -1,1 +1,188 @@
-
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-bar: #1a73e8;
+  --color-background: ;
+}
+.esconde {
+  display: none; /* Oculta todas as abas por pa-agendamentodrão */
+}
+.exibe {
+  display: block; /* Exibe a aba ativa */
+}
+#notes *:not(.material-icons) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+#notes {
+  position: absolute;
+  z-index: 10000;
+  overflow: hidden;
+  max-width: 900px;
+  width: 550px;
+  height: 600px;
+  border-radius: 5px;
+  box-shadow: -1px -1px 4px 1px #a1a1a1;
+}
+.notes-minimize {
+  position: fixed !important;
+  width: 0px !important;
+  height: 0px !important;
+  border-radius: 50% !important;
+}
+.notes-minimize::before {
+  content: 'edit_note';
+  box-shadow: -1px -1px 4px 1px #a1a1a1;
+  cursor: pointer;
+  font-size: 40px;
+  color: #fff;
+  position: fixed;
+  bottom: 10px !important;
+  left: 10px !important;
+  border-radius: 50%;
+  display: block;
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-bar);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1 !important;
+}
+#notes > #notesmoove {
+  display: block;
+  font-size: 13pt;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--color-bar);
+  font-family: roboto;
+  cursor: move;
+}
+#notes > #notesmoove,
+#notes > #abas {
+  color: var(--color-white);
+  background-color: var(--color-bar);
+}
+#notes > #notesmoove > span:nth-child(3) {
+  padding-left: 10px;
+}
+#notes > #notesmoove > span:last-child {
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: auto;
+}
+#notes > #notesmoove > span:nth-child(3),
+#notes > #notesmoove > span:last-child {
+  cursor: pointer;
+}
+#notes > #abas {
+  display: flex;
+}
+#notes > #abas > span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  border-bottom: 4px solid transparent;
+}
+#notes > #abas > span:hover {
+  border-bottom-color: #b6b6b6;
+}
+.destaque {
+  border-bottom: 4px solid var(--color-white) !important;
+}
+#notes > section {
+  max-height: calc(100% - 77px);
+  height: 100%;
+  padding: 10px !important;
+}
+#notes > section > [id^='content-'] {
+  height: 100%;
+  overflow: auto;
+  background-color: var(--color-white);
+  padding: 10px !important;
+}
+#notes > section > [id^='content-'] > p:not([id^='buttons']),
+#notes > section > [id^='content-'] > div:not([id^='buttons']) {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #dee0e4;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#notes > section > [id^='content-'] > p > label,
+#notes > section > [id^='content-'] > div > label {
+  font-size: 13pt;
+  background-color: #fafafa;
+  color: #48494b;
+  width: 100%;
+}
+#notes > section > [id^='content-'] > p > label,
+#notes > section > [id^='content-'] > p > input,
+#notes > section > [id^='content-'] > p > textarea,
+#notes > section > [id^='content-'] > p > select,
+#notes > section > [id^='content-'] > div > label,
+#notes > section > [id^='content-'] > div > input,
+#notes > section > [id^='content-'] > div > textarea,
+#notes > section > [id^='content-'] > div > select {
+  padding: 9px;
+  display: block;
+}
+#notes > section > [id^='content-'] > p > input,
+#notes > section > [id^='content-'] > p > textarea,
+#notes > section > [id^='content-'] > p > select,
+#notes > section > [id^='content-'] > div > input,
+#notes > section > [id^='content-'] > div > textarea,
+#notes > section > [id^='content-'] > div > select,
+#notes > section > [id^='content-'] > div > div > p > label > input {
+  outline: none;
+  border: none;
+  border-bottom: 3px solid #e5e6e9;
+  width: calc(100% - 20px) !important;
+  transition: border 0.5s ease-in-out;
+}
+#notes > section > [id^='content-'] > p > input:focus,
+#notes > section > [id^='content-'] > p > textarea:focus,
+#notes > section > [id^='content-'] > p > select:focus,
+#notes > section > [id^='content-'] > div > input:focus,
+#notes > section > [id^='content-'] > div > textarea:focus,
+#notes > section > [id^='content-'] > div > select:focus,
+#notes > section > [id^='content-'] > div > div > p > label > input:focus {
+  border-bottom-color: var(--color-bar);
+}
+#notes > section > [id^='content-'] > [id^='buttons'] > p {
+  display: flex;
+  flex-flow: column/nowrap;
+  justify-content: flex-end;
+}
+#notes > section > [id^='content-'] > [id^='buttons'] > p > button {
+  padding: 10px !important;
+}
+#notes > section > [id^='content-'] > div > div {
+  display: block;
+  width: 100%;
+}
+#notes > section > [id^='content-'] > div > div > p {
+  padding: 5px;
+}
+#notes > section > [id^='content-'] > div > div > p > input,
+#notes > section > [id^='content-'] > div > div > p > label {
+  cursor: pointer;
+  padding: 5px;
+}
+#notes > section > [id^='content-'] > div > div > p > label > input {
+  max-width: 70% !important;
+  display: inline !important;
+  outline: none;
+  padding: 5px;
+}
+#notes #hotkey-agendamento {
+  cursor: pointer;
+}
