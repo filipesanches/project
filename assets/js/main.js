@@ -549,3 +549,4 @@ estruturaHTML.then(e => {
   casesNotes();
   console.log('HTML aplicado!');
 });
+
