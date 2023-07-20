@@ -58,12 +58,9 @@
 #notes > #notesmoove {
   display: block;
   font-size: 13pt;
-  color: var(--color-white);
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: var(--color-bar);
-  font-family: roboto;
   cursor: move;
 }
 #notes > #notesmoove,
@@ -187,5 +184,13 @@
   padding: 5px;
 }
 #notes #hotkey-agendamento {
+  cursor: pointer;
+}
+
+#notes #email-automtizado p {
+  display: flex;
+  align-items: center
+}
+#notes #email-automtizado p span{
   cursor: pointer;
 }
