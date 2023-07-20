@@ -1,7 +1,34 @@
-const casesNotes = function(){
-  const notes = document.querySelector('#notes');
+'use strict';
+const casesNotes = () => {
+  //mensagens no console
+  const consoleText = text =>
+    console.log(`%c${text}`, 'background:#fff; color:#000; font-size:15px');
+  const consoleSucess = text =>
+    console.log(`%c${text}`, 'background:green; color:yellow; font-size:15px');
+  const consoleAlert = text =>
+    console.log(`%c${text}`, 'background:yellow; color:red; font-size:15px');
+  const consoleError = text =>
+    console.log(`%c${text}`, 'background:red; color:yellow; font-size:15px');
+
+  //coleção de eventos pra reuso
+  const bubbleEventClick = new Event('click', { bubbles: true });
+  const bubbleEventFocus = new Event('focus', { bubbles: true });
+  const bubbleEventBlur = new Event('blur', { bubbles: true });
+  const bubbleEventInput = new Event('input', { bubbles: true });
+
+  //data Formatada pra utilizar quando precisar
+  const dateFormatted = () => {
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  };
+  const dateDDMMAAAA = dateFormatted();
+
   //cria folha css a aplica no head
-  const criaStyle = atr => {
+  const createStyle = atr => {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = atr;
@@ -11,7 +38,7 @@ const casesNotes = function(){
   criaStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   //Inicio Mover note
-  const dragElement = elmnt => {
+  const dragElement = element => {
     let pos1 = 0,
       pos2 = 0,
       pos3 = 0,
@@ -25,10 +52,10 @@ const casesNotes = function(){
       document.onmousemove = elementDrag;
     };
 
-    if (document.getElementById(elmnt.id + 'moove')) {
-      document.getElementById(elmnt.id + 'moove').onmousedown = dragMouseDown;
+    if (document.getElementById(element.id + 'moove')) {
+      document.getElementById(element.id + 'moove').onmousedown = dragMouseDown;
     } else {
-      elmnt.onmousedown = dragMouseDown;
+      element.onmousedown = dragMouseDown;
     }
 
     const elementDrag = e => {
@@ -43,14 +70,14 @@ const casesNotes = function(){
       const windowHeight = window.innerHeight;
 
       // Get the maximum allowed position of the element
-      const maxPosX = windowWidth - elmnt.offsetWidth;
-      const maxPosY = windowHeight - elmnt.offsetHeight;
+      const maxPosX = windowWidth - element.offsetWidth;
+      const maxPosY = windowHeight - element.offsetHeight;
 
       // Set the new position of the element
-      const newPosX = elmnt.offsetLeft - pos1;
-      const newPosY = elmnt.offsetTop - pos2;
-      elmnt.style.left = `${Math.min(Math.max(newPosX, 0), maxPosX)}px`;
-      elmnt.style.top = `${Math.min(Math.max(newPosY, 0), maxPosY)}px`;
+      const newPosX = element.offsetLeft - pos1;
+      const newPosY = element.offsetTop - pos2;
+      element.style.left = `${Math.min(Math.max(newPosX, 0), maxPosX)}px`;
+      element.style.top = `${Math.min(Math.max(newPosY, 0), maxPosY)}px`;
     };
 
     const closeDragElement = () => {
@@ -58,7 +85,8 @@ const casesNotes = function(){
       document.onmousemove = null;
     };
   };
-  dragElement(document.querySelector('#notes'));
+  dragElement(notes);
+
   // Fim Mover note
 
   //Inicio resize
@@ -76,10 +104,10 @@ const casesNotes = function(){
     element.appendChild(resizer);
 
     const initResize = e => {
-      window.addEventListener('mousemove', resize, false);
-      window.addEventListener('mouseup', stopResize, false);
+      window.addEventListener('mousemove', resize);
+      window.addEventListener('mouseup', stopResize);
     };
-    resizer.addEventListener('mousedown', initResize, false);
+    resizer.addEventListener('mousedown', initResize);
 
     const resize = e => {
       const maxWidth = window.innerWidth - element.offsetLeft;
@@ -91,34 +119,38 @@ const casesNotes = function(){
     };
 
     const stopResize = e => {
-      window.removeEventListener('mousemove', resize, false);
-      window.removeEventListener('mouseup', stopResize, false);
+      window.removeEventListener('mousemove', resize);
+      window.removeEventListener('mouseup', stopResize);
     };
   };
+
   resizeWindow();
   // Fim resize
 
   //Controla botoes interface
-  const abasButtons = document.querySelectorAll('[data-abas]');
-  abasButtons.forEach(aba => {
-    aba.addEventListener('click', function () {
+  const tabsButtons = document.querySelectorAll('[data-abas]');
+  tabsButtons.forEach(tab => {
+    tab.addEventListener('click', function () {
       document.querySelectorAll('.destaque').forEach(e => {
         e.classList.remove('destaque');
       });
-      aba.classList.add('destaque');
-      const abaId = aba.getAttribute('data-abas');
-      console.log(abaId);
-      const abas = document.querySelectorAll('[id^=content]');
-      abas.forEach(abas => {
-        abas.classList.remove('exibe');
+      tab.classList.add('destaque');
+      const tabId = tab.getAttribute('data-abas');
+      console.log(tabId);
+      const contents = document.querySelectorAll('[id^=content]');
+      contents.forEach(e => {
+        e.classList.remove('exibe');
       });
-      const abaa = document.getElementById(abaId);
-      console.log(abaa);
-      abaa.classList.add('exibe');
+      const tabElement = document.getElementById(tabId);
+      console.log(tabElement);
+      tabElement.classList.add('exibe');
     });
   });
-  const minimize = document.querySelectorAll('[class*="minimize"]');
-  minimize.forEach(e => {
+
+  const minimizeWindowElements = document.querySelectorAll(
+    '[class*="minimize"]'
+  );
+  minimizeWindowElements.forEach(e => {
     e.addEventListener('click', function (e) {
       if (e.target.matches('.notes-minimize')) {
         e.target.classList.remove('notes-minimize');
@@ -132,7 +164,7 @@ const casesNotes = function(){
   });
   //fim Controla botoes interface
 
-  // dados QA
+  // carrega e popula dados QA
   const dadosQa = fetch('https://filipesanches.github.io/teste/assets/js/dadosqa.json').then(e => e.json());
   dadosQa
     .then(data => {
@@ -210,62 +242,212 @@ const casesNotes = function(){
     });
 
   //Começa Gera nota e Email - controle
-  const observarElemento = (targetSelector, callback) => {
-    const observer = new MutationObserver((mutationsList, observer) => {
-      const targetElement = document.querySelector(targetSelector);
-      if (targetElement) {
-        callback();
-        observer.disconnect();
-      }
-    });
-    observer.observe(document.documentElement, {
-      childList: true,
-      subtree: true,
+  const observeChanges = callback => {
+    return new Promise(resolve => {
+      const observer = new MutationObserver(mutationsList => {
+        mutationsList.forEach(mutation => {
+          if (mutation.type === 'childList') {
+            Array.from(mutation.addedNodes).forEach(addedNode => {
+              if (addedNode instanceof HTMLElement && !addedNode.processed) {
+                addedNode.processed = true;
+                if (typeof callback == 'function')
+                  callback(addedNode, observer);
+              }
+            });
+          }
+        });
+      });
+
+      observer.observe(document, { childList: true, subtree: true });
+
+      resolve(observer);
     });
   };
 
-  const criaNota = text => {
-    //seleciana a home do cases
-    document
-      .querySelector('[debug-id="dock-item-home"]')
-      .dispatchEvent(new Event('click', { bubbles: true }));
-    //abre o menu cards
-    document
-      .querySelector('[aria-label="Create a write card"]')
-      .dispatchEvent(new Event('focus', { bubbles: true }));
-    observarElemento('[aria-label="Create new case note"]', e => {
-      //cria a nota
-      document
-        .querySelector('[aria-label="Create new case note"]')
-        .dispatchEvent(new Event('click', { bubbles: true }));
-      console.log('Nota Criada!');
-      observarElemento('[aria-label="Case Note"]', () => {
-        //seleciona todas notas
-        const note = document.querySelectorAll('[aria-label="Case Note"]');
-        //seleciona ultima nota e insere os dados
-        note[note.length - 1].innerHTML = text;
-        console.log('Dados da nota inseridos!');
-        //fecha o menu cards
-        document
-          .querySelector('[aria-label="Create a write card"]')
-          .dispatchEvent(new Event('blur', { bubbles: true }));
-        //salva nota
-        setTimeout(() => {
-          document.execCommand('insertText', false, ' ');
-          return console.log('Nota Salva!');
-        }, 500);
+  const checkElements = (element, targetTextOrElement) => {
+    if (
+      element.textContent.includes(targetTextOrElement) ||
+      element.querySelector(targetTextOrElement)
+    ) {
+      return true;
+    }
+
+    for (const childElement of element.children) {
+      if (checkElements(childElement, targetTextOrElement)) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  const actionChanges = (targetTextOrElement, callback) => {
+    return new Promise((resolve, reject) => {
+      let foundElement = false;
+
+      const observer = observeChanges((modifiedElement, observer) => {
+        if (!foundElement && modifiedElement instanceof HTMLElement) {
+          consoleSucess('Elemento localizado:');
+          console.log(modifiedElement);
+          consoleText(`Texto: '${modifiedElement.textContent}'`);
+
+          if (checkElements(modifiedElement, targetTextOrElement)) {
+            foundElement = true; //elemento encontrado
+            consoleSucess('Encontrou o elemento:');
+            console.log(modifiedElement);
+
+            if (typeof callback === 'function') {
+              callback(modifiedElement);
+            }
+
+            observer.disconnect();
+            resolve(modifiedElement);
+          }
+        }
       });
     });
   };
-  //Começa Gera nota e Email - controle
-  // Captura o botão "gerar-note"
+
+  const homeCasesElement = document.querySelector(
+    '[debug-id="dock-item-home"]'
+  ); //home cases elemento
+
+  const buttonCreateWriteCard = document.querySelector(
+    '[aria-label="Create a write card"]'
+  ); //Botão + do cases abre a nota e email
+
+  //Salva a nota ou emal
+  const draftSaved = () => {
+    setTimeout(document.execCommand('insertText', false, ' '), 500);
+  };
+
+  const setCustumer = () => {
+    return new Promise((resolve, reject) => {
+      homeCasesElement.click();
+      const customerElement = document.querySelector(
+        'span[class*="button-text"]'
+      );
+      if (customerElement.textContent !== 'Customer') {
+        customerElement.click();
+        actionChanges('Customer', element => {
+          const customerOption = element.querySelectorAll(
+            'material-select-dropdown-item'
+          )[0];
+          if (customerOption) {
+            customerOption.click();
+            consoleSucess('Customer selecionado');
+            resolve();
+          } else {
+            consoleAlert('Option Customer não encontrada');
+            resolve();
+          }
+        });
+      } else {
+        consoleAlert('Customer já está selecionado');
+        resolve();
+      }
+    });
+  };
+
+  const setLanguage = language => {
+    homeCasesElement.click();
+    const inputLocale = document.querySelector('[aria-label="Locale"]');
+    if (inputLocale.value !== language) {
+      inputLocale.dispatchEvent(bubbleEventFocus);
+      return actionChanges(language).then(() => {
+        const languageItems = Array.from(
+          document.querySelectorAll('material-select-dropdown-item')
+        ).find(e => e.innerHTML.includes(language));
+
+        if (languageItems) {
+          languageItems.click();
+          inputLocale.dispatchEvent(bubbleEventBlur);
+          consoleSucess(`Idioma alterado: ${language}`);
+          return actionChanges(`Successfully changed language to ${language}`);
+        } else {
+          consoleError(`Idioma (${language}) não encontrado!`);
+          throw new Error(`Idioma (${language}) não encontrado!`);
+        }
+      });
+    } else {
+      consoleAlert(`Idioma ${language} já está selecionado!`);
+      return Promise.resolve();
+    }
+  };
+
+  const createEmail = hotKey => {
+    return new Promise((resolve, reject) => {
+      buttonCreateWriteCard.dispatchEvent(bubbleEventFocus);
+      setTimeout(() => {
+        document.querySelector('[aria-label="Create new email"]').click();
+        buttonCreateWriteCard.dispatchEvent(bubbleEventBlur);
+
+        setTimeout(() => {
+          actionChanges('#email-body-content')
+            .then(() => {
+              const bodyEmail = document.querySelectorAll(
+                '#email-body-content'
+              );
+              const emailTechnicalSolutions = document.querySelectorAll(
+                '[buttoncontent][class*="address"]'
+              );
+              emailTechnicalSolutions[
+                emailTechnicalSolutions.length - 1
+              ].click();
+
+              setTimeout(() => {
+                document
+                  .querySelector(
+                    '[id="email-address-id--technical-solutions@google.com"]'
+                  )
+                  .click();
+                const elementCr = document.querySelectorAll(
+                  '[debug-id="canned_response_button"]'
+                );
+                elementCr[elementCr.length - 1].click();
+                consoleSucess('Corpo do e-mail criado!');
+
+                return actionChanges('canned-response-dialog')
+                  .then(element => {
+                    const inputCR = element.querySelector('input');
+                    inputCR.value = hotKey;
+                    inputCR.dispatchEvent(bubbleEventInput);
+                    consoleSucess('hotKey inserida');
+                    bodyEmail[bodyEmail.length - 1].innerText = '';
+                    return actionChanges('highlight-value');
+                  })
+                  .then(element => {
+                    element.querySelector('highlight-value').click();
+                    resolve();
+                  });
+              }, 500);
+            })
+            .catch(error => {
+              reject(error);
+            });
+        }, 500);
+      }, 500);
+    });
+  };
+
+  const createNote = textHTML => {
+    homeCasesElement.click();
+    buttonCreateWriteCard.dispatchEvent(bubbleEventFocus);
+    setTimeout(() => {
+      document.querySelector('[aria-label="Create new case note"]').click();
+      buttonCreateWriteCard.dispatchEvent(bubbleEventBlur);
+      consoleSucess('Nota Criada!');
+    }, 500);
+    actionChanges('case-note-card-content-wrapper', element => {
+      element.querySelector('[aria-label="Case Note"]').innerHTML = textHTML;
+      consoleSucess('Texto inserido na nota!');
+      draftSaved();
+    });
+  };
+
+  // inicio Gera nota "gerar-note" aba agendamento
   const gerarNoteButton = document.querySelector('#gerar-note-agendamento');
-  // Adiciona um ouvinte de evento para o clique no botão
   gerarNoteButton.addEventListener('click', function () {
-    document.querySelector('#tag-other-agendamento').value =
-      document.querySelector('#tag-other-input-agendamento').value;
-    document.querySelector('#bval-other-agendamento').value =
-      document.querySelector('#bval-other-input-agendamento').value;
     // Coleta os valores dos campos do formulário
     const sepekeasyValue = document.querySelector(
       '#sepekeasy-agendamento'
@@ -288,23 +470,19 @@ const casesNotes = function(){
       '#screenshots-agendamento'
     ).value;
     const mcidsValue = document.querySelector('#mcids-agendamento').value;
-    const selectedLanguageValue = document.querySelector(
-      'input[name="language-agendamento"]:checked'
-    )
-      ? document.querySelector('input[name="language-agendamento"]:checked')
-          .value
-      : '';
+
     // Coleta os valores dos checkboxes
     const tagsImplement = Array.from(
       document.querySelectorAll('input[name^="tag"]:checked')
     ).map(checkbox => checkbox.value);
-
     const badValues = Array.from(
       document.querySelectorAll('input[name^="bval"]:checked')
     ).map(checkbox => checkbox.value);
+
+    //Formato da nota
     const noteHTML = `
      <br>
-     <p><b>Date:</b> data teste</p>
+     <p><b>Date:</b> ${dateDDMMAAAA}</p>
      <p><b>Speakeasy ID:</b> ${sepekeasyValue}</p>
      <p><b>On Call( Call Started) signaled on time?:</b> ${oncallValue}</p>
      <p><b>Substatus:</b> ${substatusValue}</p>
@@ -317,65 +495,57 @@ const casesNotes = function(){
      <p><b>Tags Implemented:</b><br> ${tagsImplement.join(', ')}</p>
      <p><b>Screenshots:</b><br> ${screenshotsValue}</p>
      <p><b>Multiple CIDs:</b> ${mcidsValue}</p>
-     <p><b>*Bad Lead: </b><br> ${selectedLanguageValue}</p>
+     <p><b>*Bad Lead: </b><br> ${badValues}</p>
    `;
-
     criaNota(noteHTML);
-    // Imprime os valores coletados no console
-    console.log('Speakeasy ID:', sepekeasyValue);
-    console.log('On Call( Call Started) signaled on time?:', oncallValue);
-    console.log('Substatus:', substatusValue);
-    console.log('Reason/Comments:', reasonValue);
-    console.log(
-      'O anunciante estava de acordo com a gravação da chamada para fins de treinamento e qualidade?:',
-      gravacao_qaValue
-    );
-    console.log('Implementação feita via GTM ?:', gtmValue);
-    console.log('Anunciante tinha Backup ?:', backupValue);
-    console.log('Conversão testada no Tag Assistant?:', assistantValue);
-    console.log('On Call Comments:', commentsValue);
-    console.log('Tags Implemented:', tagsImplement.join(', '));
-    console.log('Screenshots:', screenshotsValue);
-    console.log('Multiple CIDs:', mcidsValue);
-    console.log('Bad Leads:', badValues.join(', '));
-    console.log('Language:', selectedLanguageValue);
-    // Aqui você pode fazer o que desejar com os valores coletados, como enviar para um servidor, processar, exibir em uma mensagem, etc.
   });
+  // fim Gera "gerar-note" aba agendamento
 
+  // comeca Gera email "gerar-note" aba agendamento
   //hotkey controle
   const hotkey = document.querySelector('#hotkey-agendamento');
   hotkey.addEventListener('click', function (e) {
-    if (e.target.matches('#hotkey-agendamento')) {
-      console.log(`Hotkey clicada: ${e.target.textContent}`);
+    const selectedLanguageValue = document.querySelector(
+      'input[name="language-agendamento"]:checked'
+    )
+      ? document.querySelector('input[name="language-agendamento"]:checked')
+          .value
+      : false;
+    const hotkeyValue = e.target.textContent;
+    consoleSucess(`Hotkey clicada: ${e.target.textContent}`);
+    if (selectedLanguageValue && hotkeyValue != '-') {
+      setCustumer()
+        .then(() => setLanguage(selectedLanguageValue))
+        .then(() => {
+          consoleSucess('Próximo passo');
+          return createEmail(hotkeyValue);
+        })
+        .then(() => {
+          consoleSucess('Todas as etapas foram concluídas.');
+        })
+        .catch(error => {
+          consoleError('Erro:', error);
+        });
+    } else if (hotkeyValue != '-') {
+      setCustumer()
+        .then(() => {
+          consoleSucess('Próximo passo');
+          return createEmail('ts as new');
+        })
+        .then(() => {
+          consoleSucess('E-mail criado com sucesso.');
+        })
+        .catch(error => {
+          consoleError('Erro:', error);
+        });
     }
   });
+  // fim Gera email "gerar-note" aba agendamento
 };
-
+//Fim Gera nota e Email - controle
 const estruturaHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
 estruturaHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();
   console.log('HTML aplicado!');
 });
-
-/*
-// Realiza uma requisição fetch para obter o arquivo de texto
-fetch('assets/txt/emailpt10min.txt')
-  .then(response => {
-    // Verifica o status da resposta HTTP
-    if (!response.ok) {
-      throw new Error(`Erro na requisição: ${response.status}`);
-    }
-    // Retorna o conteúdo do arquivo de texto como uma Promise
-    return response.text();
-  })
-  .then(fileContent => {
-    // Exibe o conteúdo do arquivo no elemento de saída
-    console.log(fileContent);
-    document.querySelector('#teste').innerHTML += fileContent;
-  })
-  .catch(error => {
-    // Exibe uma mensagem de erro em caso de falha na requisição
-    console.log(error);
-  });
-*/
