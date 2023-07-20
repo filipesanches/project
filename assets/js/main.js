@@ -267,20 +267,24 @@ const casesNotes = () => {
   };
 
   const checkElements = (element, targetTextOrElement) => {
-    if (
-      element.textContent.includes(targetTextOrElement) ||
-      element.querySelector(targetTextOrElement)
-    ) {
-      return true;
-    }
-
-    for (const childElement of element.children) {
-      if (checkElements(childElement, targetTextOrElement)) {
+    try {
+      if (
+        element.textContent.includes(targetTextOrElement) ||
+        element.querySelector(targetTextOrElement)
+      ) {
         return true;
       }
-    }
 
-    return false;
+      for (const childElement of element.children) {
+        if (checkElements(childElement, targetTextOrElement)) {
+          return true;
+        }
+      }
+
+      return false;
+    } catch (error) {
+      consoleError(error);
+    }
   };
 
   const actionChanges = (targetTextOrElement, callback) => {
