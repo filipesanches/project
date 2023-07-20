@@ -497,7 +497,7 @@ const casesNotes = () => {
      <p><b>Multiple CIDs:</b> ${mcidsValue}</p>
      <p><b>*Bad Lead: </b><br> ${badValues}</p>
    `;
-    criaNota(noteHTML);
+    createNote(noteHTML);
   });
   // fim Gera "gerar-note" aba agendamento
 
