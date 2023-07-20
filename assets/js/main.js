@@ -34,8 +34,8 @@ const casesNotes = () => {
     link.href = atr;
     return document.head.appendChild(link);
   };
-  criaStyle('https://filipesanches.github.io/teste/assets/css/style.css');
-  criaStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
+  createStyle('https://filipesanches.github.io/teste/assets/css/style.css');
+  createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   //Inicio Mover note
   const dragElement = element => {
@@ -549,4 +549,3 @@ estruturaHTML.then(e => {
   casesNotes();
   console.log('HTML aplicado!');
 });
-
