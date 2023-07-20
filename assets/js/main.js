@@ -546,7 +546,36 @@ const casesNotes = () => {
         });
     }
   });
-  // fim Gera email "gerar-note" aba agendamento
+  // fim Gera email aba agendamento
+  // comeca Gera note "gerar-note" aba Live Tranfer
+  const noteButtonLiveTranfer = document.querySelector(
+    '#gerar-note-live-transfer'
+  );
+  noteButtonLiveTranfer.addEventListener('click', function () {
+    const cidValue = document.querySelector('cid-live-transfer').value;
+    const conversaoValue = document.querySelector(
+      'conversao-live-transfer'
+    ).value;
+    const siteValue = document.querySelector('site-live-transfer').value;
+    const modeloValue = document.querySelector('modelo-live-transfer').value;
+    const nomeValue = document.querySelector('nome-live-transfer').value;
+    const emailValue = document.querySelector('email-live-transfer').value;
+    const ldapValue = document.querySelector('ldap-live-transfer').value;
+    const telValue = document.querySelector('tel-live-transfer').value;
+
+    const noteHTML = `
+     <br>
+     <p><b>CID:</b> ${cidValue}</p>
+     <p><b>Conversão a ser feita:</b> ${conversaoValue}</p>
+     <p><b>Site e onde devera ser feita a conversão:</b> ${siteValue}</p>
+     <p><b>Modelo de Atribuição:</b> ${modeloValue}</p>
+     <p><b>Nome do Anunciante:</b> ${nomeValue}</p>
+     <p><b>Email do Anunciante:</b> ${emailValue}</p>
+     <p><b>Ldap do AM:</b> ${ldapValue}</p>
+     <p><b>Numero de Telefone do Anunciante:</b> ${telValue}</p>
+   `;
+    createNote(noteHTML);
+  });
 };
 //Fim Gera nota e Email - controle
 const estruturaHTML = fetch(
