@@ -34,7 +34,7 @@ const casesNotes = () => {
     link.href = atr;
     return document.head.appendChild(link);
   };
-  createStyle('https://github.com/filipesanches/teste/assets/css/style.css');
+  createStyle('https://filipesanches.github.io/teste/assets/css/style.css');
   createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   //Inicio Mover note
@@ -165,7 +165,7 @@ const casesNotes = () => {
   //fim Controla botoes interface
 
   // carrega e popula dados QA
-  const dadosQa = fetch('https://github.com/filipesanches/teste/assets/js/dadosqa.json').then(e => e.json());
+  const dadosQa = fetch('https://filipesanches.github.io/teste/assets/js/dadosqa.json').then(e => e.json());
   dadosQa
     .then(data => {
       data.emailList.forEach((email, i) => {
@@ -591,7 +591,7 @@ const casesNotes = () => {
   buttomEmailautomate.forEach(button => {
     button.addEventListener('click', e => {
       const dataEmail = e.target.getAttribute('data-email');
-      const templateHTML = fetch(`https://github.com/filipesanches/teste/assets/html/${dataEmail}.html`).then(e =>
+      const templateHTML = fetch(`https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`).then(e =>
         e.text()
       );
       templateHTML.then(template => {
@@ -672,7 +672,7 @@ const casesNotes = () => {
     .addEventListener('click', availableHours);
   //fim Controla aba calendario
 };
-const estruturaHTML = fetch('https://github.com/filipesanches/teste/assets/html/estrutura.html').then(e => e.text());
+const estruturaHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
 estruturaHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();
