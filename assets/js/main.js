@@ -540,7 +540,7 @@ const casesNotes = () => {
      <p><b>Anunciante tinha Backup ?:</b> ${backupValue}</p>
      <p><b>Conversão testada no Tag Assistant?:</b> ${assistantValue}</p>
      <p><b>On Call Comments:</b> ${commentsValue}</p>
-     <p><b>Tags Implemented:</b><br> ${tagsImplement.join(',<br/>')}</p>
+     <p><b>Tags Implemented:</b><br> ${tagsImplement.join('<br/>')}</p>
      <p><b>Screenshots:</b><br> ${screenshotsValue
        .split('\n')
        .join(',<br/>')}</p>
