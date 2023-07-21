@@ -437,12 +437,11 @@ const casesNotes = () => {
   };
 
   const createEmailTemplate = templateHTML => {
-    const bodyEmail = document.querySelectorAll('#email-body-content');
     buttonCreateWriteCard.dispatchEvent(bubbleEventFocus);
     setTimeout(() => {
       document.querySelector('[aria-label="Create new email"]').click();
       buttonCreateWriteCard.dispatchEvent(bubbleEventBlur);
-      actionChanges('canned-response-dialog', element => {
+      actionChanges('#email-body-content', element => {
         const bodyEmail = document.querySelectorAll('#email-body-content');
         bodyEmail[bodyEmail.length - 1].innerText = templateHTML;
       });
