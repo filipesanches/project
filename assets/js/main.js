@@ -638,6 +638,7 @@ const casesNotes = () => {
   //começa Controla aba calendario
   const getAvailableTime = () => {
     let g_availableTime = [];
+  
     document
       .querySelectorAll('[data-keyboardactiontype="0;1"][data-focusable] ')
       .forEach(function (element) {
@@ -652,7 +653,7 @@ const casesNotes = () => {
             .pop();
           let g_hour = element.innerText.split('\n').pop();
           let g_date = g_day + ' - ' + g_hour;
-
+  
           if (+g_day.split(' ')[0] > new Date().getDate()) {
             if (!g_availableTime.includes(g_date)) {
               g_availableTime.push(g_date);
@@ -662,7 +663,7 @@ const casesNotes = () => {
           }
         }
       });
-
+  
     return g_availableTime;
   };
   const copyTime = () => {
@@ -685,7 +686,7 @@ const casesNotes = () => {
     if (window.location.href.includes('calendar.google.com')) {
       document.querySelector('#horarios-disponiveis').innerHTML = '';
       const g_availableTime = getAvailableTime();
-
+  
       for (time of g_availableTime) {
         queueMicrotask(console.log.bind(console, time));
         const p = document.createElement('p');
