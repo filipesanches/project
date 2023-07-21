@@ -165,7 +165,9 @@ const casesNotes = () => {
   //fim Controla botoes interface
 
   // carrega e popula dados QA
-  const dadosQa = fetch('https://filipesanches.github.io/teste/assets/js/dadosqa.json').then(e => e.json());
+  const dadosQa = fetch(
+    'https://filipesanches.github.io/teste/assets/js/dadosqa.json'
+  ).then(e => e.json());
   dadosQa
     .then(data => {
       data.emailList.forEach((email, i) => {
@@ -422,6 +424,7 @@ const casesNotes = () => {
                   })
                   .then(element => {
                     element.querySelector('highlight-value').click();
+                    draftSaved();
                     resolve();
                   });
               }, 500);
@@ -442,6 +445,7 @@ const casesNotes = () => {
       actionChanges('#email-body-content', element => {
         const bodyEmail = document.querySelectorAll('#email-body-content');
         bodyEmail[bodyEmail.length - 1].innerHTML = templateHTML;
+        draftSaved();
       });
     }, 500);
   };
@@ -562,16 +566,16 @@ const casesNotes = () => {
     '#gerar-note-live-transfer'
   );
   noteButtonLiveTranfer.addEventListener('click', function () {
-    const cidValue = document.querySelector('cid-live-transfer').value;
+    const cidValue = document.querySelector('#cid-live-transfer').value;
     const conversaoValue = document.querySelector(
-      'conversao-live-transfer'
+      '#conversao-live-transfer'
     ).value;
-    const siteValue = document.querySelector('site-live-transfer').value;
-    const modeloValue = document.querySelector('modelo-live-transfer').value;
-    const nomeValue = document.querySelector('nome-live-transfer').value;
-    const emailValue = document.querySelector('email-live-transfer').value;
-    const ldapValue = document.querySelector('ldap-live-transfer').value;
-    const telValue = document.querySelector('tel-live-transfer').value;
+    const siteValue = document.querySelector('#site-live-transfer').value;
+    const modeloValue = document.querySelector('#modelo-live-transfer').value;
+    const nomeValue = document.querySelector('#nome-live-transfer').value;
+    const emailValue = document.querySelector('#email-live-transfer').value;
+    const ldapValue = document.querySelector('#ldap-live-transfer').value;
+    const telValue = document.querySelector('#tel-live-transfer').value;
 
     const noteHTML = `
      <br>
@@ -591,9 +595,9 @@ const casesNotes = () => {
   buttomEmailautomate.forEach(button => {
     button.addEventListener('click', e => {
       const dataEmail = e.target.getAttribute('data-email');
-      const templateHTML = fetch(`https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`).then(e =>
-        e.text()
-      );
+      const templateHTML = fetch(
+        `https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`
+      ).then(e => e.text());
       templateHTML.then(template => {
         createEmailTemplate(template);
         console.log('HTML aplicado!');
@@ -654,7 +658,7 @@ const casesNotes = () => {
         '#horarios-disponiveis'
       );
       availableHoursElement.innerHTML = '';
-      var g_availableTime = getAvailableTime();
+      const g_availableTime = getAvailableTime();
 
       for (time of g_availableTime) {
         queueMicrotask(console.log.bind(console, time));
@@ -672,8 +676,10 @@ const casesNotes = () => {
     .addEventListener('click', availableHours);
   //fim Controla aba calendario
 };
-const estruturaHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
-estruturaHTML.then(e => {
+const structureHTML = fetch(
+  'https://filipesanches.github.io/teste/assets/html/estrutura.html'
+).then(e => e.text());
+structureHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();
   console.log('HTML aplicado!');
