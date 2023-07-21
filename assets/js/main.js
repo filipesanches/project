@@ -541,7 +541,9 @@ const casesNotes = () => {
      <p><b>Conversão testada no Tag Assistant?:</b> ${assistantValue}</p>
      <p><b>On Call Comments:</b> ${commentsValue}</p>
      <p><b>Tags Implemented:</b><br> ${tagsImplement.join(',<br/>')}</p>
-     <p><b>Screenshots:</b><br> ${screenshotsValue}</p>
+     <p><b>Screenshots:</b><br> ${screenshotsValue
+       .split('\n')
+       .join(',<br/>')}</p>
      <p><b>Multiple CIDs:</b> ${mcidsValue}</p>
      <p><b>*Bad Lead: </b><br> ${badValues.join(',<br/>')}</p>
    `;
@@ -683,7 +685,9 @@ const casesNotes = () => {
   };
   const availableTimes = () => {
     if (window.location.href.includes('calendar.google.com')) {
-      const availableTimesElement = document.querySelector('#horarios-disponiveis');
+      const availableTimesElement = document.querySelector(
+        '#horarios-disponiveis'
+      );
       availableTimesElement.innerHTML = '';
       const g_availableTime = getAvailableTime();
 
@@ -714,5 +718,5 @@ const structureHTML = fetch(
 structureHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();
-  console.log('HTML aplicado!');
+  consoleSucess('HTML aplicado!');
 });
