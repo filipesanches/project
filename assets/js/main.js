@@ -684,7 +684,7 @@ const casesNotes = () => {
   };
   const availableTimes = () => {
     if (window.location.href.includes('calendar.google.com')) {
-      availableTimesElement = document.querySelector('#horarios-disponiveis');
+      const availableTimesElement = document.querySelector('#horarios-disponiveis');
       availableTimesElement.innerHTML = '';
       const g_availableTime = getAvailableTime();
 
