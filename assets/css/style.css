@@ -4,18 +4,24 @@
   --color-bar: #1a73e8;
   --color-background: ;
 }
+
 .esconde {
-  display: none; /* Oculta todas as abas por pa-agendamentodrão */
+  display: none;
+  /* Oculta todas as abas por pa-agendamentodrão */
 }
+
 .exibe {
-  display: block; /* Exibe a aba ativa */
+  display: block;
+  /* Exibe a aba ativa */
 }
+
 #notes *:not(.material-icons) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
 }
+
 #notes {
   background-color: var(--color-white);
   position: absolute;
@@ -29,12 +35,14 @@
   border-radius: 5px;
   box-shadow: -1px -1px 4px 1px #a1a1a1;
 }
+
 .notes-minimize {
   position: fixed !important;
   width: 0px !important;
   height: 0px !important;
   border-radius: 50% !important;
 }
+
 .notes-minimize::before {
   content: 'edit_note';
   box-shadow: -1px -1px 4px 1px #a1a1a1;
@@ -55,7 +63,8 @@
   align-items: center;
   opacity: 1 !important;
 }
-#notes > #notesmoove {
+
+#notes>#notesmoove {
   display: block;
   font-size: 13pt;
   display: flex;
@@ -63,51 +72,62 @@
   padding: 10px;
   cursor: move;
 }
-#notes > #notesmoove,
-#notes > #abas {
+
+#notes>#notesmoove,
+#notes>#abas {
   color: var(--color-white);
   background-color: var(--color-bar);
 }
-#notes > #notesmoove > span:nth-child(3) {
+
+#notes>#notesmoove>span:nth-child(3) {
   padding-left: 10px;
 }
-#notes > #notesmoove > span:last-child {
+
+#notes>#notesmoove>span:last-child {
   cursor: pointer;
   margin-right: 10px;
   margin-left: auto;
 }
-#notes > #notesmoove > span:nth-child(3),
-#notes > #notesmoove > span:last-child {
+
+#notes>#notesmoove>span:nth-child(3),
+#notes>#notesmoove>span:last-child {
   cursor: pointer;
 }
-#notes > #abas {
+
+#notes>#abas {
   display: flex;
 }
-#notes > #abas > span {
+
+#notes>#abas>span {
   cursor: pointer;
   display: inline-block;
   padding: 5px;
   border-bottom: 4px solid transparent;
 }
-#notes > #abas > span:hover {
+
+#notes>#abas>span:hover {
   border-bottom-color: #b6b6b6;
 }
+
 .destaque {
   border-bottom: 4px solid var(--color-white) !important;
 }
-#notes > section {
+
+#notes>section {
   max-height: calc(100% - 77px);
   height: 100%;
   padding: 10px !important;
 }
-#notes > section > [id^='content-'] {
+
+#notes>section>[id^='content-'] {
   height: 100%;
   overflow: auto;
   background-color: var(--color-white);
   padding: 10px !important;
 }
-#notes > section > [id^='content-'] > p:not([id^='buttons']),
-#notes > section > [id^='content-'] > div:not([id^='buttons']) {
+
+#notes>section>[id^='content-']>p:not([id^='buttons']),
+#notes>section>[id^='content-']>div:not([id^='buttons']) {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -117,80 +137,119 @@
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
-#notes > section > [id^='content-'] > p > label,
-#notes > section > [id^='content-'] > div > label {
+
+#notes>section>[id^='content-']>p>label,
+#notes>section>[id^='content-']>div>label,
+#notes>section>[id^='content-']>div>.label {
   font-size: 13pt;
   background-color: #fafafa;
   color: #48494b;
   width: 100%;
 }
-#notes > section > [id^='content-'] > p > label,
-#notes > section > [id^='content-'] > p > input,
-#notes > section > [id^='content-'] > p > textarea,
-#notes > section > [id^='content-'] > p > select,
-#notes > section > [id^='content-'] > div > label,
-#notes > section > [id^='content-'] > div > input,
-#notes > section > [id^='content-'] > div > textarea,
-#notes > section > [id^='content-'] > div > select {
+
+#notes>section>[id^='content-']>p>label,
+#notes>section>[id^='content-']>p>input,
+#notes>section>[id^='content-']>p>textarea,
+#notes>section>[id^='content-']>p>select,
+#notes>section>[id^='content-']>div>label,
+#notes>section>[id^='content-']>div>.label,
+#notes>section>[id^='content-']>div>input,
+#notes>section>[id^='content-']>div>textarea,
+#notes>section>[id^='content-']>div>select {
   padding: 9px;
   display: block;
 }
-#notes > section > [id^='content-'] > p > input,
-#notes > section > [id^='content-'] > p > textarea,
-#notes > section > [id^='content-'] > p > select,
-#notes > section > [id^='content-'] > div > input,
-#notes > section > [id^='content-'] > div > textarea,
-#notes > section > [id^='content-'] > div > select,
-#notes > section > [id^='content-'] > div > div > p > label > input {
+
+#notes>section>[id^='content-']>p>input,
+#notes>section>[id^='content-']>p>textarea,
+#notes>section>[id^='content-']>p>select,
+#notes>section>[id^='content-']>div>input,
+#notes>section>[id^='content-']>div>textarea,
+#notes>section>[id^='content-']>div>select,
+#notes>section>[id^='content-']>div>div>p>label>input {
   outline: none;
   border: none;
   border-bottom: 3px solid #e5e6e9;
   width: calc(100% - 20px) !important;
   transition: border 0.5s ease-in-out;
 }
-#notes > section > [id^='content-'] > p > input:focus,
-#notes > section > [id^='content-'] > p > textarea:focus,
-#notes > section > [id^='content-'] > p > select:focus,
-#notes > section > [id^='content-'] > div > input:focus,
-#notes > section > [id^='content-'] > div > textarea:focus,
-#notes > section > [id^='content-'] > div > select:focus,
-#notes > section > [id^='content-'] > div > div > p > label > input:focus {
+
+#notes>section>[id^='content-']>p>input:focus,
+#notes>section>[id^='content-']>p>textarea:focus,
+#notes>section>[id^='content-']>p>select:focus,
+#notes>section>[id^='content-']>div>input:focus,
+#notes>section>[id^='content-']>div>textarea:focus,
+#notes>section>[id^='content-']>div>select:focus,
+#notes>section>[id^='content-']>div>div>p>label>input:focus {
   border-bottom-color: var(--color-bar);
 }
-#notes > section > [id^='content-'] > [id^='buttons'] > p {
+
+#notes>section>[id^='content-']>[id^='buttons']>p {
   display: flex;
   flex-flow: column/nowrap;
   justify-content: flex-end;
 }
-#notes > section > [id^='content-'] > [id^='buttons'] > p > button {
+
+#notes>section>[id^='content-']>[id^='buttons']>p>button {
   padding: 10px !important;
 }
-#notes > section > [id^='content-'] > div > div {
+
+#notes>section>[id^='content-']>div>div {
   display: block;
   width: 100%;
 }
-#notes > section > [id^='content-'] > div > div > p {
+
+#notes>section>[id^='content-']>div>div>p {
   padding: 5px;
 }
-#notes > section > [id^='content-'] > div > div > p > input,
-#notes > section > [id^='content-'] > div > div > p > label {
+
+#notes>section>[id^='content-']>div>div>p>input,
+#notes>section>[id^='content-']>div>div>p>label {
   cursor: pointer;
   padding: 5px;
 }
-#notes > section > [id^='content-'] > div > div > p > label > input {
+
+#notes>section>[id^='content-']>div>div>p>label>input {
   max-width: 70% !important;
   display: inline !important;
   outline: none;
   padding: 5px;
 }
+
 #notes #hotkey-agendamento {
   cursor: pointer;
 }
 
-#notes #email-automtizado p {
+#notes>section>[id^='content-']>div>.email-automtizado>p {
   display: flex;
-  align-items: center
+  align-items: center;
+  padding: 5px 20px;
 }
-#notes #email-automtizado p span{
+
+#notes>section>[id^='content-']>div>.label>.icons {
+  background-color: var(--color-bar);
+  padding: 5px;
+  color: var(--color-white);
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+#notes>section>[id^='content-']>div>.email-automtizado>p>[data-email] {
+  padding: 0 5px;
   cursor: pointer;
+}
+
+#notes>section>[id^='content-']>div>.email-automtizado>p>[data-email] {
+  color: var(--color-bar);
+  padding: 0 5px;
+  cursor: pointer;
+  transition: color 0.5s ease-out;
+}
+
+#notes>section>[id^='content-']>div>.email-automtizado>p>[data-email]:hover {
+  color: #e8776e;
+}
+
+#notes>section>[id^='content-']>div>.email-automtizado>p>[data-email]:active {
+  color: #34a853;
 }
