@@ -684,7 +684,8 @@ const casesNotes = () => {
   };
   const availableTimes = () => {
     if (window.location.href.includes('calendar.google.com')) {
-      document.querySelector('#horarios-disponiveis').innerHTML = '';
+      availableTimesElement = document.querySelector('#horarios-disponiveis');
+      availableTimesElement.innerHTML = '';
       const g_availableTime = getAvailableTime();
 
       for (time of g_availableTime) {
@@ -692,18 +693,20 @@ const casesNotes = () => {
         const p = document.createElement('p');
         p.classList.add('horario');
         p.textContent = time;
-        document.querySelector('#horarios-disponiveis').appendChild(p);
+        availableTimesElement.appendChild(p);
       }
       setTimeout(copyTime, 500);
+      console.log('Está no calendar');
     } else {
-      console.log('não calendar');
+      console.log('Não está no calendar');
     }
   };
-  document
-    .querySelector('#refreshCalendar')
-    .addEventListener('click', availableTimes);
-  document.querySelector('#calendar').addEventListener('click', availableTimes);
-
+  document.querySelector('#refreshCalendar').addEventListener('click', () => {
+    return availableTimes;
+  });
+  document.querySelector('#calendar').addEventListener('click', () => {
+    return availableTimes;
+  });
   //fim Controla aba calendario
 };
 const structureHTML = fetch(
