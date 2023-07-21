@@ -1,4 +1,5 @@
 'use strict';
+const notes = document.querySelector('#notes');
 const casesNotes = () => {
   //mensagens no console
   const consoleText = text =>
@@ -443,7 +444,7 @@ const casesNotes = () => {
       buttonCreateWriteCard.dispatchEvent(bubbleEventBlur);
       actionChanges('#email-body-content', element => {
         const bodyEmail = document.querySelectorAll('#email-body-content');
-        bodyEmail[bodyEmail.length - 1].innerText = templateHTML;
+        bodyEmail[bodyEmail.length - 1].innerHTML = templateHTML;
       });
     }, 500);
   };
