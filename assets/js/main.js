@@ -34,7 +34,7 @@ const casesNotes = () => {
     link.href = atr;
     return document.head.appendChild(link);
   };
-  createStyle('https://filipesanches.github.io/teste/assets/css/style.css');
+  createStyle('https://github.com/filipesanches/teste/assets/css/style.css');
   createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   //Inicio Mover note
@@ -165,9 +165,7 @@ const casesNotes = () => {
   //fim Controla botoes interface
 
   // carrega e popula dados QA
-  const dadosQa = fetch(
-    'https://filipesanches.github.io/teste/assets/js/dadosqa.json'
-  ).then(e => e.json());
+  const dadosQa = fetch('https://github.com/filipesanches/teste/assets/js/dadosqa.json').then(e => e.json());
   dadosQa
     .then(data => {
       data.emailList.forEach((email, i) => {
@@ -593,21 +591,88 @@ const casesNotes = () => {
   buttomEmailautomate.forEach(button => {
     button.addEventListener('click', e => {
       const dataEmail = e.target.getAttribute('data-email');
-      const templateHTML = fetch(
-        `https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`
-      ).then(e => e.text());
+      const templateHTML = fetch(`https://github.com/filipesanches/teste/assets/html/${dataEmail}.html`).then(e =>
+        e.text()
+      );
       templateHTML.then(template => {
         createEmailTemplate(template);
         console.log('HTML aplicado!');
       });
     });
   });
-
   //Fim Gera nota e Email - controle
+
+  //começa Controla aba calendario
+  const getAvailableTime = () => {
+    let g_availableTime = [];
+    document
+      .querySelectorAll('[data-keyboardactiontype="0;1"][data-focusable] ')
+      .forEach(function (elemento) {
+        let elementText = elemento.innerText;
+        if (
+          elementText.includes('Availability Slot') ||
+          elementText.includes('Tag Implementation')
+        ) {
+          let g_day = elemento.parentElement.innerText
+            .split('\n')[0]
+            .split(', ')
+            .pop();
+          let g_hour = elemento.innerText.split('\n').pop();
+          let g_date = g_day + ' - ' + g_hour;
+
+          if (+g_day.split(' ')[0] > new Date().getDate()) {
+            if (!g_availableTime.includes(g_date)) {
+              g_availableTime.push(g_date);
+            } else {
+              g_availableTime = g_availableTime.filter(e => e !== g_date);
+            }
+          }
+        }
+      });
+
+    return g_availableTime;
+  };
+  const copyDate = () => {
+    document
+      .querySelectorAll('#horarios-disponiveis > p')
+      .forEach(function (elementP) {
+        const elementText = p.innerText;
+        const copyContent = async () => {
+          try {
+            await navigator.clipboard.writeText(elementText);
+            console.log('Content copied to clipboard');
+          } catch (err) {
+            console.error('Failed to copy: ', err);
+          }
+        };
+        elementP.addEventListener('click', copyContent);
+      });
+  };
+  const availableHours = () => {
+    if (window.location.href.includes('calendar.google.com')) {
+      const availableHoursElement = document.querySelector(
+        '#horarios-disponiveis'
+      );
+      availableHoursElement.innerHTML = '';
+      var g_availableTime = getAvailableTime();
+
+      for (time of g_availableTime) {
+        queueMicrotask(console.log.bind(console, time));
+        const p = document.createElement('p');
+        p.textContent = time;
+        availableHoursElement.appendChild(p);
+      }
+      setTimeout(copyDate, 500);
+    } else {
+      consoleAlert('Não esta no Calendar!');
+    }
+  };
+  document
+    .querySelector('#refreshCalendar')
+    .addEventListener('click', availableHours);
+  //fim Controla aba calendario
 };
-const estruturaHTML = fetch(
-  'https://filipesanches.github.io/teste/assets/html/estrutura.html'
-).then(e => e.text());
+const estruturaHTML = fetch('https://github.com/filipesanches/teste/assets/html/estrutura.html').then(e => e.text());
 estruturaHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();
