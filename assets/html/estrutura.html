@@ -10,6 +10,8 @@
   <span id="live-transfer" data-abas="content-2">Live Transfer</span>
   <span id="automated-email" data-abas="content-3">E-mail Automatizado</span>
   <span id="calendar" data-abas="content-4">Calendar</span>
+  <span id="alert-tab" data-abas="content-5">Alerts</span>
+  <span id="link-tab" data-abas="content-6">Links</span>
 </div>
 
 <section>
@@ -95,8 +97,8 @@
         <label for="portuguese-br">Portuguese (Brazil)</label><br />
       </hotkey>
       <p>
-        <button id="reset-note-agendamento" title="Apagar todos os campos!">RESET</button>
-        <button id="gerar-note-agendamento" title="Gerar nota!">GERAR</button>
+        <button id="reset-note-agendamento" class="buttonReset" title="Apagar todos os campos!">RESET</button>
+        <button id="gerar-note-agendamento" class="buttonSuccess" title="Gerar nota!">GERAR</button>
       </p>
     </div>
   </div>
@@ -136,9 +138,9 @@
     </p>
     <div id="buttons-live-transfer">
       <p>
-        <button id="reset-note-live-transfer" title="Apagar todos os campos!">RESET</button>
+        <button id="reset-note-live-transfer" class="buttonReset" title="Apagar todos os campos!">RESET</button>
         <!--<button id="reload-note" onclick='preencherCampos()' title="Recuperar última nota preenchida!">RECOVER</button>-->
-        <button id="gerar-note-live-transfer" title="Gerar nota!">GERAR</button>
+        <button id="gerar-note-live-transfer" class="buttonSuccess" title="Gerar nota!">GERAR</button>
       </p>
     </div>
   </div>
@@ -163,6 +165,69 @@
       <span class="label"><span class="material-icons icons">timer</span>Horarios disponiveis na semana <span
           id="refreshCalendar" class="material-icons">refresh</span></span>
       <div id='horarios-disponiveis'>
+      </div>
+    </div>
+  </div>
+  <div id="content-5" class="esconde">
+    <div>
+      <span class="label"><span class="material-icons icons">warning</span> Fique Atento nas mudanças!</span>
+      <div class='alert-content'>
+        <h2>Mudança no procedimento QA</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras
+          auctor a purus eu viverra. Duis ex augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut
+          diam vel urna ultricies placerat nec elementum orci. Etiam lacinia ante vel purus porttitor, faucibus blandit
+          tortor rutrum. Phasellus varius erat vitae eros consectetur suscipit. Donec nec auctor tellus, quis pulvinar
+          erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum cursus, metus sed
+          vestibulum tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales
+          eros, vitae faucibus dolor ullamcorper eu. Quisque ac finibus orci. Sed mattis odio sit amet lacinia
+          facilisis. Nam non vestibulum justo.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras
+          auctor a purus eu viverra. Duis ex augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut
+          diam vel urna ultricies placerat nec elementum orci. Etiam lacinia ante vel purus porttitor, faucibus blandit
+          tortor rutrum. Phasellus varius erat vitae eros consectetur suscipit. Donec nec auctor tellus, quis pulvinar
+          erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum cursus, metus sed
+          vestibulum tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales
+          eros, vitae faucibus dolor ullamcorper eu. Quisque ac finibus orci. Sed mattis odio sit amet lacinia
+          facilisis. Nam non vestibulum justo.</p>
+      </div>
+
+      <div class='alert-content'>
+        <h2>Mudança no procedimento SME</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras
+          auctor a purus eu viverra. Duis ex augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut
+          diam vel urna ultricies placerat nec elementum orci. Etiam lacinia ante vel purus porttitor, faucibus blandit
+          tortor rutrum. Phasellus varius erat vitae eros consectetur suscipit. Donec nec auctor tellus, quis pulvinar
+          erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum cursus, metus sed
+          vestibulum tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales
+          eros, vitae faucibus dolor ullamcorper eu. Quisque ac finibus orci. Sed mattis odio sit amet lacinia
+          facilisis. Nam non vestibulum justo.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras
+          auctor a purus eu viverra. Duis ex augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut
+          diam vel urna ultricies placerat nec elementum orci. Etiam lacinia ante vel purus porttitor, faucibus blandit
+          tortor rutrum. Phasellus varius erat vitae eros consectetur suscipit. Donec nec auctor tellus, quis pulvinar
+          erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum cursus, metus sed
+          vestibulum tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales
+          eros, vitae faucibus dolor ullamcorper eu. Quisque ac finibus orci. Sed mattis odio sit amet lacinia
+          facilisis. Nam non vestibulum justo.</p>
+      </div>
+
+    </div>
+  </div>
+  <div id="content-6" class="esconde">
+    <div>
+      <span class="label"><span class="material-icons icons">link</span> Links uteis!</span>
+      <div class='link-content'>
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
