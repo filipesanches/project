@@ -165,7 +165,9 @@ const casesNotes = () => {
   //fim Controla botoes interface
 
   // carrega e popula dados QA
-  const dadosQa = fetch('https://filipesanches.github.io/teste/assets/js/dadosqa.json').then(e => e.json());
+  const dadosQa = fetch(
+    'https://filipesanches.github.io/teste/assets/js/dadosqa.json'
+  ).then(e => e.json());
   dadosQa
     .then(data => {
       data.emailList.forEach((email, i) => {
@@ -590,19 +592,23 @@ const casesNotes = () => {
 
   const buttomEmailautomate = document.querySelectorAll('[data-email]');
   buttomEmailautomate.forEach(button => {
-    const dataEmail = button.getAttribute('data-email');
-    const templateHTML = fetch(`https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`).then(e =>
-      e.text()
-    );
-    templateHTML.then(template => {
-      createEmailTemplate(template);
-      console.log('HTML aplicado!');
+    button.addEventListener('click', e => {
+      const dataEmail = e.target.getAttribute('data-email');
+      const templateHTML = fetch(
+        `https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`
+      ).then(e => e.text());
+      templateHTML.then(template => {
+        createEmailTemplate(template);
+        console.log('HTML aplicado!');
+      });
     });
   });
 
   //Fim Gera nota e Email - controle
 };
-const estruturaHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
+const estruturaHTML = fetch(
+  'https://filipesanches.github.io/teste/assets/html/estrutura.html'
+).then(e => e.text());
 estruturaHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();
