@@ -1,4 +1,3 @@
-'use strict';
 const casesNotes = () => {
   //mensagens no console
   const consoleText = text =>
