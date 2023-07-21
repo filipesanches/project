@@ -215,7 +215,7 @@ const casesNotes = () => {
   //comeca cria popup com avisos importantes
   const createPopup = contentPopUp => {
     const popupDiv = document.createElement('div');
-    popupDiv.classList.add('popup');
+    popupDiv.classList.add('popup-alert-qa');
 
     const popupContent = document.createElement('p');
     popupContent.textContent = 'This is the content of the popup.';
