@@ -1,5 +1,4 @@
 'use strict';
-const notes = document.querySelector('#notes');
 const casesNotes = () => {
   //mensagens no console
   const consoleText = text =>
