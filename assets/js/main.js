@@ -34,7 +34,7 @@ const casesNotes = () => {
     link.href = atr;
     return document.head.appendChild(link);
   };
-  createStyle('assets/css/style.css');
+  createStyle('https://github.com/filipesanches/teste/assets/css/style.css');
   createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   //Inicio Mover note
@@ -166,7 +166,7 @@ const casesNotes = () => {
 
   // carrega e popula dados QA
   const dadosQa = fetch(
-    'assets/js/dadosqa.json'
+    'https://github.com/filipesanches/teste/assets/js/dadosqa.json'
   ).then(e => e.json());
   dadosQa
     .then(data => {
@@ -214,6 +214,35 @@ const casesNotes = () => {
       console.log('Ocorreu um erro:', error);
     });
   //Fim dados QA
+
+  //reseta inpust textArea
+  const resetFields = () => {
+    const inputsElements = notes.querySelectorAll('input, textarea, select');
+
+    inputsElements.forEach(element => {
+      const elementType = element.type
+        ? element.type.toLowerCase()
+        : element.tagName.toLowerCase();
+      switch (elementType) {
+        case 'text':
+        case 'password':
+        case 'textarea':
+        case 'select-one':
+          element.value = '';
+          break;
+        case 'radio':
+        case 'checkbox':
+          element.checked = false;
+          break;
+        default:
+          break;
+      }
+    });
+  };
+  document.querySelectorAll('[id^="reset-note"]').forEach(button => {
+    button.addEventListener('click', resetFields);
+  });
+  //fim reseta inpust textArea
 
   //Altera a os email e seleciona hotkey
   document
@@ -596,7 +625,7 @@ const casesNotes = () => {
     button.addEventListener('click', e => {
       const dataEmail = e.target.getAttribute('data-email');
       const templateHTML = fetch(
-        `assets/html/${dataEmail}.html`
+        `https://github.com/filipesanches/teste/assets/html/${dataEmail}.html`
       ).then(e => e.text());
       templateHTML.then(template => {
         createEmailTemplate(template);
@@ -677,7 +706,7 @@ const casesNotes = () => {
   //fim Controla aba calendario
 };
 const structureHTML = fetch(
-  'assets/html/estrutura.html'
+  'https://github.com/filipesanches/teste/assets/html/estrutura.html'
 ).then(e => e.text());
 structureHTML.then(e => {
   notes.innerHTML = e;
