@@ -611,17 +611,17 @@ const casesNotes = () => {
     let g_availableTime = [];
     document
       .querySelectorAll('[data-keyboardactiontype="0;1"][data-focusable] ')
-      .forEach(function (elemento) {
-        let elementText = elemento.innerText;
+      .forEach(function (element) {
+        let elementText = element.innerText;
         if (
           elementText.includes('Availability Slot') ||
           elementText.includes('Tag Implementation')
         ) {
-          let g_day = elemento.parentElement.innerText
+          let g_day = element.parentElement.innerText
             .split('\n')[0]
             .split(', ')
             .pop();
-          let g_hour = elemento.innerText.split('\n').pop();
+          let g_hour = element.innerText.split('\n').pop();
           let g_date = g_day + ' - ' + g_hour;
 
           if (+g_day.split(' ')[0] > new Date().getDate()) {
@@ -636,44 +636,44 @@ const casesNotes = () => {
 
     return g_availableTime;
   };
-  const copyDate = () => {
+  const copyTime = () => {
     document
-      .querySelectorAll('#horarios-disponiveis > p')
-      .forEach(function (elementP) {
-        const elementText = p.innerText;
+      .querySelectorAll('#horarios-disponiveis .horario')
+      .forEach(function (p) {
+        let text = p.innerText;
         const copyContent = async () => {
           try {
-            await navigator.clipboard.writeText(elementText);
+            await navigator.clipboard.writeText(text);
             console.log('Content copied to clipboard');
           } catch (err) {
             console.error('Failed to copy: ', err);
           }
         };
-        elementP.addEventListener('click', copyContent);
+        p.addEventListener('click', copyContent);
       });
   };
-  const availableHours = () => {
+  const availableTimes = () => {
     if (window.location.href.includes('calendar.google.com')) {
-      const availableHoursElement = document.querySelector(
-        '#horarios-disponiveis'
-      );
-      availableHoursElement.innerHTML = '';
+      document.querySelector('#horarios-disponiveis').innerHTML = '';
       const g_availableTime = getAvailableTime();
 
       for (time of g_availableTime) {
         queueMicrotask(console.log.bind(console, time));
         const p = document.createElement('p');
+        p.classList.add('horario');
         p.textContent = time;
-        availableHoursElement.appendChild(p);
+        document.querySelector('#horarios-disponiveis').appendChild(p);
       }
-      setTimeout(copyDate, 500);
+      setTimeout(copyTime, 500);
     } else {
-      consoleAlert('Não esta no Calendar!');
+      console.log('não calendar');
     }
   };
   document
     .querySelector('#refreshCalendar')
-    .addEventListener('click', availableHours);
+    .addEventListener('click', availableTimes);
+  document.querySelector('#calendar').addEventListener('click', availableTimes);
+
   //fim Controla aba calendario
 };
 const structureHTML = fetch(
