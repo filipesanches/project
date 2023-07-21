@@ -34,7 +34,7 @@ const casesNotes = () => {
     link.href = atr;
     return document.head.appendChild(link);
   };
-  createStyle('https://github.com/filipesanches/teste/assets/css/style.css');
+  createStyle('https://filipesanches.github.io/teste/assets/css/style.css');
   createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   //Inicio Mover note
@@ -166,7 +166,7 @@ const casesNotes = () => {
 
   // carrega e popula dados QA
   const dadosQa = fetch(
-    'https://github.com/filipesanches/teste/assets/js/dadosqa.json'
+    'https://filipesanches.github.io/teste/assets/js/dadosqa.json'
   ).then(e => e.json());
   dadosQa
     .then(data => {
@@ -625,7 +625,7 @@ const casesNotes = () => {
     button.addEventListener('click', e => {
       const dataEmail = e.target.getAttribute('data-email');
       const templateHTML = fetch(
-        `https://github.com/filipesanches/teste/assets/html/${dataEmail}.html`
+        `https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`
       ).then(e => e.text());
       templateHTML.then(template => {
         createEmailTemplate(template);
@@ -706,7 +706,7 @@ const casesNotes = () => {
   //fim Controla aba calendario
 };
 const structureHTML = fetch(
-  'https://github.com/filipesanches/teste/assets/html/estrutura.html'
+  'https://filipesanches.github.io/teste/assets/html/estrutura.html'
 ).then(e => e.text());
 structureHTML.then(e => {
   notes.innerHTML = e;
