@@ -164,9 +164,7 @@ const casesNotes = () => {
   //fim Controla botoes interface
 
   // carrega e popula dados QA
-  const dadosQa = fetch(
-    'https://filipesanches.github.io/teste/assets/js/dadosqa.json'
-  ).then(e => e.json());
+  const dadosQa = fetch('https://filipesanches.github.io/teste/assets/js/dadosqa.json').then(e => e.json());
   dadosQa
     .then(data => {
       data.emailList.forEach((email, i) => {
@@ -213,6 +211,44 @@ const casesNotes = () => {
       console.log('Ocorreu um erro:', error);
     });
   //Fim dados QA
+
+  //comeca cria popup com avisos importantes
+  const createPopup = contentPopUp => {
+    const popupDiv = document.createElement('div');
+    popupDiv.classList.add('popup');
+
+    const popupContent = document.createElement('p');
+    popupContent.textContent = 'This is the content of the popup.';
+
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'Close';
+
+    popupDiv.innerHTML = `
+      ${contentPopUp}
+      <button>Close</button>
+  `;
+    document.body.appendChild(popupDiv);
+  };
+
+  const usePopUp = data => {
+    const contentPopUpHTML = fetch(`https://filipesanches.github.io/teste/assets/html/${data}.html`).then(e =>
+      e.text()
+    );
+    contentPopUpHTML
+      .then(contentPopUp => {
+        if (contentPopUp.includes('id="popup-important"')) {
+          createPopup(contentPopUp);
+        }
+      })
+      .then(e => {
+        document
+          .querySelector('.popup button')
+          .addEventListener('click', () => {
+            document.querySelector('.popup').remove();
+          });
+      });
+  };
+  //fim cria popup com avisos importantes
 
   //reseta inpust textArea
   const resetFields = () => {
@@ -572,6 +608,7 @@ const casesNotes = () => {
         })
         .then(() => {
           consoleSucess('Todas as etapas foram concluídas.');
+          createPopup('popupalert');
         })
         .catch(error => {
           consoleError('Erro:', error);
@@ -584,6 +621,7 @@ const casesNotes = () => {
         })
         .then(() => {
           consoleSucess('E-mail criado com sucesso.');
+          createPopup('popupalert');
         })
         .catch(error => {
           consoleError('Erro:', error);
@@ -625,9 +663,9 @@ const casesNotes = () => {
   buttomEmailautomate.forEach(button => {
     button.addEventListener('click', e => {
       const dataEmail = e.target.getAttribute('data-email');
-      const templateHTML = fetch(
-        `https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`
-      ).then(e => e.text());
+      const templateHTML = fetch(`https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`).then(e =>
+        e.text()
+      );
       templateHTML.then(template => {
         createEmailTemplate(template);
         console.log('HTML aplicado!');
@@ -712,11 +750,9 @@ const casesNotes = () => {
   });
   //fim Controla aba calendario
 };
-const structureHTML = fetch(
-  'https://filipesanches.github.io/teste/assets/html/estrutura.html'
-).then(e => e.text());
+const structureHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
 structureHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();
-  consoleSucess('HTML aplicado!');
+  console.log('HTML aplicado!');
 });
