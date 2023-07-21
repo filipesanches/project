@@ -608,7 +608,7 @@ const casesNotes = () => {
         })
         .then(() => {
           consoleSucess('Todas as etapas foram concluídas.');
-          createPopup('popupalert');
+          usePopUp('popupalert');
         })
         .catch(error => {
           consoleError('Erro:', error);
@@ -621,7 +621,7 @@ const casesNotes = () => {
         })
         .then(() => {
           consoleSucess('E-mail criado com sucesso.');
-          createPopup('popupalert');
+          usePopUp('popupalert');
         })
         .catch(error => {
           consoleError('Erro:', error);
