@@ -702,10 +702,10 @@ const casesNotes = () => {
     }
   };
   document.querySelector('#refreshCalendar').addEventListener('click', () => {
-    return availableTimes;
+    return availableTimes();
   });
   document.querySelector('#calendar').addEventListener('click', () => {
-    return availableTimes;
+    return availableTimes();
   });
   //fim Controla aba calendario
 };
