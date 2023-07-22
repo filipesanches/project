@@ -217,9 +217,6 @@ const casesNotes = () => {
     const popupDiv = document.createElement('div');
     popupDiv.classList.add('popup-alert-qa');
 
-    const popupContent = document.createElement('p');
-    popupContent.textContent = 'This is the content of the popup.';
-
     const closeButton = document.createElement('button');
     closeButton.textContent = 'Close';
 
@@ -242,9 +239,9 @@ const casesNotes = () => {
       })
       .then(e => {
         document
-          .querySelector('.popup button')
+          .querySelector('.popup-alert-qa > button')
           .addEventListener('click', () => {
-            document.querySelector('.popup').remove();
+            document.querySelector('.popup-alert-qa').remove();
           });
       });
   };
