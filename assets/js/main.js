@@ -1,6 +1,5 @@
-'use strict';
 const casesNotes = () => {
-  //coleção de eventos pra reuso
+  //coleção de eventos para reuso
   const bubbleEventClick = new Event('click', { bubbles: true });
   const bubbleEventFocus = new Event('focus', { bubbles: true });
   const bubbleEventBlur = new Event('blur', { bubbles: true });
