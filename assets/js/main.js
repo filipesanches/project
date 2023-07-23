@@ -1,3 +1,4 @@
+notes.classList.add('material-icons', 'notes-minimize');
 const casesNotes = () => {
   //Elementos de reuso
   const homeCasesElement = document.querySelector('[debug-id="dock-item-home"]'); //home do cases elemento
@@ -133,19 +134,6 @@ const casesNotes = () => {
     const selectedTabContent = document.getElementById(tabId);
     if (selectedTabContent) {
       selectedTabContent.classList.add('exibe');
-    }
-  };
-
-  // Função para controlar o estado de minimização da janela
-  const toggleWindowMinimize = element => {
-    // Verifica se o elemento já está minimizado
-    const isMinimized = element.classList.contains('notes-minimize');
-    // Se estiver minimizado, remove as classes de minimização
-    if (isMinimized) {
-      element.classList.remove('notes-minimize', 'material-icons');
-    } else {
-      // Caso contrário, adiciona as classes de minimização
-      element.classList.add('notes-minimize', 'material-icons');
     }
   };
 
@@ -643,7 +631,7 @@ const casesNotes = () => {
   const getAvailableTime = () => {
     let g_availableTime = [];
     // Percorre todos os elementos com atributo 'data-keyboardactiontype="0;1"' e 'data-focusable'
-    document.querySelectorAll('[data-keyboardactiontype="0;1"][data-focusable]').forEach(function (element) {
+    document.querySelectorAll('[data-keyboardactiontype="0;1"][data-focusable] ').forEach(function (element) {
       let elementText = element.innerText;
       // Verifica se o texto do elemento contém 'Availability Slot' ou 'Tag Implementation'
       if (elementText.includes('Availability Slot') || elementText.includes('Tag Implementation')) {
@@ -785,14 +773,15 @@ const casesNotes = () => {
 
   // Obtém todos os elementos que possuem a classe 'minimize' ou 'notes-minimize' e adiciona o ouvinte de evento a cada um deles
   const minimizeWindowElements = document.querySelectorAll('[class*="minimize"]');
-  minimizeWindowElements.forEach(element => {
-    element.addEventListener('click', e => {
-      // Verifica qual elemento foi clicado e chama a função para controlar o estado de minimização
+  minimizeWindowElements.forEach(e => {
+    e.addEventListener('click', function (e) {
       if (e.target.matches('.notes-minimize')) {
-        toggleWindowMinimize(e.target);
-      } else if (e.target.matches('.minimize')) {
-        // Caso o elemento clicado seja o que controla a minimização, aplica a minimização na seção de notas
-        toggleWindowMinimize(notes);
+        e.target.classList.remove('notes-minimize');
+        e.target.classList.remove('material-icons');
+      }
+      if (e.target.matches('.minimize')) {
+        notes.classList.add('notes-minimize');
+        notes.classList.add('material-icons');
       }
     });
   });
