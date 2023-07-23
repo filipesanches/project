@@ -138,6 +138,8 @@ const casesNotes = () => {
 
   // Função para criar um popup com o conteúdo passado
   const createPopup = contentPopUp => {
+    const popupDivFather = document.createElement('div');
+    popupDivFather.classList.add('popup-alert-qa-father');
     const popupDiv = document.createElement('div');
     popupDiv.classList.add('popup-alert-qa');
     // Criando o botão de fechamento
@@ -150,7 +152,7 @@ const casesNotes = () => {
     // Adicionando o conteúdo do popup ao div
     popupDiv.innerHTML = contentPopUp;
     popupDiv.appendChild(closeButton); // Adicionando o botão de fechamento ao div
-    document.body.appendChild(popupDiv);
+    document.body.appendChild(popupDivFather);
   };
   // Função para exibir o popup
   const showPopup = data => {
