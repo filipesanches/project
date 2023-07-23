@@ -118,21 +118,21 @@ const casesNotes = () => {
 
   // Função que trata a exibição do conteúdo de acordo com a aba selecionada
   const handleTabClick = tabId => {
-    // Remove a classe 'destaque' de todos os botões das abas
-    document.querySelectorAll('.destaque').forEach(tabButton => {
-      tabButton.classList.remove('destaque');
+    // Remove a classe 'highlight' de todos os botões das abas
+    document.querySelectorAll('.highlight').forEach(tabButton => {
+      tabButton.classList.remove('highlight');
     });
-    // Adiciona a classe 'destaque' ao botão da aba selecionada
+    // Adiciona a classe 'highlight' ao botão da aba selecionada
     const selectedTabButton = document.querySelector(`[data-abas="${tabId}"]`);
-    selectedTabButton.classList.add('destaque');
+    selectedTabButton.classList.add('highlight');
     // Esconde todos os conteúdos exibidos anteriormente
     document.querySelectorAll('[id^="content"]').forEach(contentElement => {
-      contentElement.classList.remove('exibe');
+      contentElement.classList.remove('show');
     });
     // Exibe o conteúdo correspondente à aba selecionada
     const selectedTabContent = document.getElementById(tabId);
     if (selectedTabContent) {
-      selectedTabContent.classList.add('exibe');
+      selectedTabContent.classList.add('show');
     }
   };
 
@@ -140,28 +140,29 @@ const casesNotes = () => {
   const createPopup = contentPopUp => {
     // cria uma div pai
     const popupDivFather = document.createElement('div');
-    popupDivFather.classList.add('popup-alert-qa-father');
+    popupDivFather.classList.add('popup-alert-father');
     // cria uma div filho
     const popupDiv = document.createElement('div');
-    popupDiv.classList.add('popup-alert-qa');
+    popupDiv.classList.add('popup-alert');
     // insere a div filho no pai
     popupDivFather.appendChild(popupDiv);
     // Criando o botão de fechamento
     const closeButton = document.createElement('button');
-    closeButton.textContent = 'Close';
+    closeButton.classList.add('button-success')
+    closeButton.textContent = 'Confirmo';
     // Adicionando um ouvinte de evento ao botão de fechamento para remover o popup
     closeButton.addEventListener('click', () => {
-      popupDiv.remove();
+      popupDivFather.remove();
     });
     // Adicionando o conteúdo do popup ao div
     popupDiv.innerHTML = contentPopUp;
     popupDiv.appendChild(closeButton); // Adicionando o botão de fechamento ao div
-    document.body.appendChild(popupDivFather);
+    notes.appendChild(popupDivFather);
   };
   // Função para exibir o popup
   const showPopup = data => {
     // Faz uma requisição assíncrona para obter o conteúdo do popup a partir de um arquivo HTML
-    fetch(`https://filipesanches.github.io/teste/assets/html/${data}.html`)
+    fetch(`assets/html/${data}.html`)
       .then(response => {
         // Verifica se a requisição foi bem sucedida
         if (!response.ok) {
@@ -624,7 +625,7 @@ const casesNotes = () => {
     // Obtém o valor do atributo 'data-email' do botão clicado
     const dataEmail = e.target.getAttribute('data-email');
     // Busca o template HTML do email usando fetch
-    const templateHTML = fetch(`https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`).then(e => e.text());
+    const templateHTML = fetch(`assets/html/${dataEmail}.html`).then(e => e.text());
     // Processa o template HTML e cria um novo email usando a função createEmailTemplate
     templateHTML.then(template => {
       createEmailTemplate(template);
@@ -701,7 +702,7 @@ const casesNotes = () => {
 
   //Requisiçoes
   // Carrega e popula dados de QA a partir de um arquivo JSON
-  const dadosQa = fetch('https://filipesanches.github.io/teste/assets/js/dadosqa.json').then(e => e.json());
+  const dadosQa = fetch('assets/js/dadosqa.json').then(e => e.json());
   dadosQa
     .then(data => {
       // Popula o elemento select com opções baseadas nos emails da propriedade 'emailList'
@@ -754,7 +755,7 @@ const casesNotes = () => {
 
   // Chamadas de Funções
   // Aplicação de estilos
-  createStyle('https://filipesanches.github.io/teste/assets/css/style.css');
+  createStyle('assets/css/style.css');
   createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   // Aplica dragElement no elemeto notes
@@ -837,8 +838,9 @@ const casesNotes = () => {
   document.querySelector('#calendar').addEventListener('click', () => {
     return availableTimes();
   });
+  showPopup('popupalert');
 };
-const structureHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
+const structureHTML = fetch('assets/html/estrutura.html').then(e => e.text());
 structureHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();

@@ -1,50 +1,20 @@
+/* Reset css */
 #notes *:not(.material-icons) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
 }
+
+/* Variaveis */
 :root {
   --color-white: #fff;
   --color-black: #000;
-  --color-bar: #1a73e8;
-  --color-background: ;
+  --color-bar-button: #1a73e8;
+  --color-bar-button-hover: #3684eb;
 }
 
-.esconde {
-  display: none;
-  /* Oculta todas as abas por pa-agendamentodrão */
-}
-
-.exibe {
-  display: block;
-  /* Exibe a aba ativa */
-}
-#notes .buttonSuccess,
-.popup-alert-qa > button {
-  background-color: var(--color-bar);
-}
-#notes .buttonReset {
-  background-color: #e8776e;
-}
-.popup-alert-qa > button,
-#notes .buttonSuccess,
-#notes .buttonReset {
-  padding: 10px !important;
-  margin-left: 5px !important;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  color: #fff;
-  border-radius: 5px;
-  transition: 0.5s ease-out;
-}
-.popup-alert-qa > button:hover,
-#notes .buttonSuccess:hover,
-#notes .buttonReset:hover {
-  filter: grayscale(50%);
-}
-
+/* Corpo do notes */
 #notes {
   background-color: var(--color-white);
   position: absolute;
@@ -54,52 +24,85 @@
   overflow: hidden;
   max-width: 900px;
   width: 650px;
-  height: 600px;
+  height: 700px;
   border-radius: 5px;
   box-shadow: -1px -1px 4px 1px #a1a1a1;
 }
 
-.notes-minimize {
+/* Estilos para a caixa de notas minimizada */
+#notes.notes-minimize {
   position: fixed !important;
-  width: 0px !important;
-  height: 0px !important;
-  border-radius: 50% !important;
+  width: 0 !important;
+  height: 0 !important;
+  transition: width 0.3s ease, height 0.3s ease !important;
 }
 
-.notes-minimize::before {
+/* Ícone dentro da caixa de notas minimizada */
+#notes.notes-minimize::before {
   content: 'edit_note';
   box-shadow: -1px -1px 4px 1px #a1a1a1;
-  cursor: pointer;
   font-size: 40px;
   color: #fff;
   position: fixed;
-  bottom: 10px !important;
-  left: 10px !important;
+  bottom: 10px;
+  left: 10px;
   border-radius: 50%;
-  display: block;
   width: 80px;
   height: 80px;
-  background-color: var(--color-bar);
+  background-color: var(--color-bar-button);
   z-index: 10000;
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 1 !important;
+  transition: opacity 0.3s ease;
 }
 
-#notes > #notesmoove {
+#notes .hide {
+  display: none;
+  /* Oculta as abas */
+}
+#notes .show {
   display: block;
+  /* Exibe a aba */
+}
+
+/* Buttons styles */
+#notes .button-success,
+#notes .button-reset {
   font-size: 13pt;
-  display: flex;
-  align-items: center;
   padding: 10px;
-  cursor: move;
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out; /* Ajuste da transição para torná-la mais suave */
+}
+#notes .button-success {
+  background-color: var(--color-bar-button);
+}
+#notes .button-reset {
+  background-color: #e8776e;
+}
+#notes .button-success:hover,
+#notes .button-reset:hover {
+  background-color: var(--color-bar-button-hover);
+  filter: brightness(90%); /* Adição de um leve efeito de brilho ao passar o mouse */
 }
 
 #notes > #notesmoove,
 #notes > #abas {
   color: var(--color-white);
-  background-color: var(--color-bar);
+  background-color: var(--color-bar-button);
+  display: flex;
+}
+
+#notes > #notesmoove {
+  font-size: 15pt;
+  align-items: center;
+  padding: 10px;
+  cursor: move;
 }
 
 #notes > #notesmoove > span:nth-child(3) {
@@ -107,50 +110,40 @@
 }
 
 #notes > #notesmoove > span:last-child {
-  cursor: pointer;
   margin-right: 10px;
   margin-left: auto;
 }
 
-#notes > #notesmoove > span:nth-child(3),
-#notes > #notesmoove > span:last-child {
-  cursor: pointer;
-}
-
-#notes > #abas {
-  display: flex;
-}
-
-#notes > #abas > span {
-  cursor: pointer;
+/* Estilos para as abas */
+#notes > #abas > [data-abas] {
   display: inline-block;
-  padding: 5px;
+  padding: 5px 10px;
   border-bottom: 4px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
-
-#notes > #abas > span:hover {
+#notes > #abas > [data-abas]:hover {
   border-bottom-color: #b6b6b6;
+  background-color: var(--color-bar-button-hover);
 }
-
-.destaque {
+#notes > #abas > .highlight {
   border-bottom: 4px solid var(--color-white) !important;
+  transition: border-color 0.3s ease;
 }
 
-#notes > section {
+#notes > .all-content {
   max-height: calc(100% - 77px);
   height: 100%;
   padding: 10px !important;
 }
 
-#notes > section > [id^='content-'] {
+#notes > .all-content > [id^='content-'] {
   height: 100%;
   overflow: auto;
   background-color: var(--color-white);
   padding: 10px !important;
 }
 
-#notes > section > [id^='content-'] > p:not([id^='buttons']),
-#notes > section > [id^='content-'] > div:not([id^='buttons']) {
+#notes > .all-content > [id^='content-'] > .card {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -161,171 +154,119 @@
   padding-bottom: 10px;
 }
 
-#notes > section > [id^='content-'] > p > label,
-#notes > section > [id^='content-'] > div > label,
-#notes > section > [id^='content-'] > div > .label {
-  font-size: 13pt;
+#notes > .all-content > [id^='content-'] > .card > .label-card {
+  display: flex;
+  font-size: 14pt;
   background-color: #fafafa;
   color: #48494b;
+  padding: 10px;
   width: 100%;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-#notes > section > [id^='content-'] > p > label,
-#notes > section > [id^='content-'] > p > input,
-#notes > section > [id^='content-'] > p > textarea,
-#notes > section > [id^='content-'] > p > select,
-#notes > section > [id^='content-'] > div > label,
-#notes > section > [id^='content-'] > div > .label,
-#notes > section > [id^='content-'] > div > input,
-#notes > section > [id^='content-'] > div > textarea,
-#notes > section > [id^='content-'] > div > select {
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ * {
   padding: 9px;
-  display: block;
+}
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ div > p,
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ div > p * {
+  padding: 5px;
 }
 
-#notes > section > [id^='content-'] > p > input,
-#notes > section > [id^='content-'] > p > textarea,
-#notes > section > [id^='content-'] > p > select,
-#notes > section > [id^='content-'] > div > input,
-#notes > section > [id^='content-'] > div > textarea,
-#notes > section > [id^='content-'] > div > select,
-#notes > section > [id^='content-'] > div > div > p > label > input {
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ *,
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ div > p > label > input {
   outline: none;
   border: none;
   border-bottom: 3px solid #e5e6e9;
   width: calc(100% - 20px) !important;
-  transition: border 0.5s ease-in-out;
+  transition: border-bottom-color 0.5s ease-in-out;
 }
 
-#notes > section > [id^='content-'] > p > input:focus,
-#notes > section > [id^='content-'] > p > textarea:focus,
-#notes > section > [id^='content-'] > p > select:focus,
-#notes > section > [id^='content-'] > div > input:focus,
-#notes > section > [id^='content-'] > div > textarea:focus,
-#notes > section > [id^='content-'] > div > select:focus,
-#notes > section > [id^='content-'] > div > div > p > label > input:focus {
-  border-bottom-color: var(--color-bar);
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ *:focus,
+#notes > .all-content > [id^='content-'] > .card > .label-card ~ div > p > label > input:focus {
+  border-bottom-color: var(--color-bar-button);
 }
 
-#notes > section > [id^='content-'] > [id^='buttons'] > p {
-  display: flex;
-  flex-flow: column/nowrap;
-  justify-content: flex-end;
+#notes > .all-content > [id^='content-'] > [id^='buttons'] > hotkey,
+#notes > .all-content > [id^='content-'] > [id^='buttons'] > p {
+  border: none !important;
 }
 
-#notes > section > [id^='content-'] > div > div {
-  display: block;
-  width: 100%;
+#notes > .all-content > [id^='content-'] > [id^='buttons'] > p {
+  display: flex !important;
+  flex-flow: column/nowrap !important;
+  justify-content: flex-end !important;
 }
 
-#notes > section > [id^='content-'] > div > div > p {
-  padding: 5px;
-}
-
-#notes > section > [id^='content-'] > div > div > p > input,
-#notes > section > [id^='content-'] > div > div > p > label {
-  cursor: pointer;
-  padding: 5px;
-}
-
-#notes > section > [id^='content-'] > div > div > p > label > input {
+#notes > .all-content > [id^='content-'] > div > div > p > label > input {
   max-width: 70% !important;
   display: inline !important;
   outline: none;
   padding: 5px;
 }
 
-#notes #hotkey-agendamento {
-  cursor: pointer;
-}
-
-#notes > section > [id^='content-'] > div > .email-automtizado > p {
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p {
   display: flex;
   align-items: center;
   padding: 5px 20px;
 }
 
-#notes > section > [id^='content-'] > div > .label > .icons {
-  background-color: var(--color-bar);
-  padding: 5px;
+#notes > .all-content > [id^='content-'] > div > .label-card > .icons {
+  background-color: var(--color-bar-button);
+  padding: 8px;
   color: var(--color-white);
   border-radius: 50%;
   margin-right: 5px;
 }
 
-#notes
-  > section
-  > [id^='content-']
-  > div
-  > .email-automtizado
-  > p
-  > [data-email] {
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email] {
+  color: var(--color-bar-button);
   padding: 0 5px;
-  cursor: pointer;
-}
 
-#notes
-  > section
-  > [id^='content-']
-  > div
-  > .email-automtizado
-  > p
-  > [data-email] {
-  color: var(--color-bar);
-  padding: 0 5px;
-  cursor: pointer;
   transition: color 0.5s ease-out;
 }
 
-#notes
-  > section
-  > [id^='content-']
-  > div
-  > .email-automtizado
-  > p
-  > [data-email]:hover {
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email]:hover {
   color: #e8776e;
 }
 
-#notes
-  > section
-  > [id^='content-']
-  > div
-  > .email-automtizado
-  > p
-  > [data-email]:active {
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email]:active {
   color: #34a853;
 }
-#notes > section > [id^='content-'] > div > #horarios-disponiveis > p,
-#notes > section > [id^='content-'] > div > span > #refreshCalendar {
-  cursor: pointer;
-}
 
-#notes > section > [id^='content-'] > div > #horarios-disponiveis > p {
+#notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p {
   padding: 10px;
 }
 
-#notes > section > [id^='content-'] > div > #horarios-disponiveis > p:hover,
-#notes > section > [id^='content-'] > div > .link-content > ul > li:hover {
+#notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p:hover,
+#notes > .all-content > [id^='content-'] > div > .link-content > ul > li:hover {
   background-color: #d8d8d8;
 }
-#notes > section > [id^='content-'] > div > .alert-content > h2 {
+#notes > .all-content > [id^='content-'] > div > .alert-content > h2 {
   padding: 10px;
 }
-#notes > section > [id^='content-'] > div > .link-content > ul {
+#notes > .all-content > [id^='content-'] > div > .link-content > ul {
   list-style: none;
 }
-#notes > section > [id^='content-'] > div > .link-content > ul > li {
+#notes > .all-content > [id^='content-'] > div > .link-content > ul > li {
   padding: 10px;
 }
-#notes > section > [id^='content-'] > div > .link-content > ul > li > a {
+#notes > .all-content > [id^='content-'] > div > .link-content > ul > li > a {
   display: block;
   text-decoration: none;
   color: #000;
 }
-
+#notes .popup-alert-father {
+  z-index: 1000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #b8b8b83d;
+}
 /* Style the popup */
-.popup-alert-qa {
+#notes .popup-alert {
   z-index: 100000000;
   display: flex;
   flex-direction: column;
@@ -337,5 +278,36 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 100px 100px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.137);
+}
+#notes .popup-alert > div > * {
+  padding: 10px;
+}
+#notes .popup-alert > div > * p {
+  font-size: 15pt;
+  padding: 5px 0;
+}
+#notes .popup-alert > div > h2 {
+  display: flex;
+  align-items: center;
+}
+#notes .popup-alert > div > h2 > span {
+  color: #e8c21a;
+  margin-left: 5px;
+  font-size: 50px;
+}
+/*Cursor poiter*/
+#notes.notes-minimize::before,
+#notes .button-success,
+#notes .button-reset,
+#notes > #notesmoove > span:nth-child(3),
+#notes > #notesmoove > span:last-child,
+#notes > #abas > [data-abas],
+#notes > .all-content > [id^='content-'] > div > div > p > input,
+#notes > .all-content > [id^='content-'] > div > div > p > label,
+#notes #hotkey-agendamento,
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email],
+#notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p,
+#notes > .all-content > [id^='content-'] > div > span > #refreshCalendar {
+  cursor: pointer;
 }
