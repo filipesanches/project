@@ -28,7 +28,7 @@
   border-radius: 5px;
   box-shadow: -1px -1px 4px 1px #a1a1a1;
 }
-#notes .dark-theme{
+#notes.dark-theme{
   filter: invert(1) !important;
 }
 /* Estilos para a caixa de notas minimizada */
