@@ -840,7 +840,7 @@ const casesNotes = () => {
   });
   // Adiciona um ouvinte de clique para o elemento com ID 'dark-mode' e liga e desliga a a classe dark-theme do elemento notes
   document.querySelector('#dark-mode').addEventListener('click', () => {
-    return notes.classList.toggle('dark-theme');
+    notes.classList.toggle('dark-theme');
   });
   //
   showPopup('popupalert');
