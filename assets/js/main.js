@@ -1,4 +1,3 @@
-notes.classList.add('material-icons', 'notes-minimize');
 const casesNotes = () => {
   //Elementos de reuso
   const homeCasesElement = document.querySelector('[debug-id="dock-item-home"]'); //home do cases elemento
