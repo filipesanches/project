@@ -838,8 +838,6 @@ const casesNotes = () => {
   document.querySelector('#calendar').addEventListener('click', () => {
     return availableTimes();
   });
-  const notes = document.querySelector('#notes');
-
   // Adiciona um ouvinte de clique para o elemento com ID 'dark-mode' e liga e desliga a a classe dark-theme do elemento notes
   document.querySelector('#calendar').addEventListener('click', () => {
     return notes.classList.toggle('dark-theme');
