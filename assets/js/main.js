@@ -148,7 +148,7 @@ const casesNotes = () => {
     popupDivFather.appendChild(popupDiv);
     // Criando o botão de fechamento
     const closeButton = document.createElement('button');
-    closeButton.classList.add('button-success')
+    closeButton.classList.add('button-success');
     closeButton.textContent = 'Confirmo';
     // Adicionando um ouvinte de evento ao botão de fechamento para remover o popup
     closeButton.addEventListener('click', () => {
@@ -838,6 +838,13 @@ const casesNotes = () => {
   document.querySelector('#calendar').addEventListener('click', () => {
     return availableTimes();
   });
+  const notes = document.querySelector('#notes');
+
+  // Adiciona um ouvinte de clique para o elemento com ID 'dark-mode' e liga e desliga a a classe dark-theme do elemento notes
+  document.querySelector('#calendar').addEventListener('click', () => {
+    return notes.classList.toggle('dark-theme');
+  });
+  //
   showPopup('popupalert');
 };
 const structureHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
