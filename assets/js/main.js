@@ -637,7 +637,7 @@ const casesNotes = () => {
   const getAvailableTime = () => {
     let g_availableTime = [];
     // Percorre todos os elementos com atributo 'data-keyboardactiontype="0;1"' e 'data-focusable'
-    document.querySelectorAll('[data-keyboardactiontype="0;1"][data-focusable] ').forEach(function (element) {
+    document.querySelectorAll('[data-keyboardactiontype="0;1"][data-focusable] ').forEach(element => {
       let elementText = element.innerText;
       // Verifica se o texto do elemento contém 'Availability Slot' ou 'Tag Implementation'
       if (elementText.includes('Availability Slot') || elementText.includes('Tag Implementation')) {
@@ -661,7 +661,7 @@ const casesNotes = () => {
 
   // Função que copia o horário ao ser clicado
   const copyTime = () => {
-    document.querySelectorAll('#horarios-disponiveis .horario').forEach(function (p) {
+    document.querySelectorAll('#horarios-disponiveis .horario').forEach(p => {
       let text = p.innerText;
       // Função assíncrona que copia o conteúdo para a área de transferência
       const copyContent = async () => {
@@ -780,7 +780,7 @@ const casesNotes = () => {
   // Obtém todos os elementos que possuem a classe 'minimize' ou 'notes-minimize' e adiciona o ouvinte de evento a cada um deles
   const minimizeWindowElements = document.querySelectorAll('[class*="minimize"]');
   minimizeWindowElements.forEach(e => {
-    e.addEventListener('click', function (e) {
+    e.addEventListener('click', e => {
       if (e.target.matches('.notes-minimize')) {
         e.target.classList.remove('notes-minimize');
         e.target.classList.remove('material-icons');
