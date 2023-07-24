@@ -28,9 +28,12 @@
   border-radius: 5px;
   box-shadow: -1px -1px 4px 1px #a1a1a1;
 }
-#notes.dark-theme{
-  filter: invert(1) !important;
+
+/*Dark theme*/
+#notes.dark-theme:not(#notes.notes-minimize) {
+  filter: invert(1);
 }
+
 /* Estilos para a caixa de notas minimizada */
 #notes.notes-minimize {
   position: fixed !important;
@@ -107,13 +110,21 @@
   cursor: move;
 }
 
-#notes > #notesmoove > span:nth-child(3) {
-  padding-left: 10px;
-}
-
 #notes > #notesmoove > span:last-child {
   margin-right: 10px;
   margin-left: auto;
+}
+
+#notes > #notesmoove > span:last-child > * {
+  border-radius: 50%;
+  padding: 10px;
+  transition: background 0.3s ease;
+}
+
+/*Bolha hover*/
+#notes > #notesmoove > span:last-child > *:hover {
+  background-color: #fdfdfd36;
+  padding: 10px;
 }
 
 /* Estilos para as abas */
@@ -123,6 +134,7 @@
   border-bottom: 4px solid transparent;
   transition: border-color 0.3s ease, background 0.3s ease;
 }
+
 #notes > #abas > [data-abas]:hover {
   border-bottom-color: #b6b6b6;
   background-color: var(--color-bar-button-hover);
@@ -157,6 +169,8 @@
 }
 
 #notes > .all-content > [id^='content-'] > .card > .label-card {
+  border-bottom: 1px solid #dee0e4;
+  cursor: default;
   display: flex;
   font-size: 14pt;
   background-color: #fafafa;
@@ -250,10 +264,8 @@
 #notes > .all-content > [id^='content-'] > div > .link-content > ul {
   list-style: none;
 }
-#notes > .all-content > [id^='content-'] > div > .link-content > ul > li {
-  padding: 10px;
-}
 #notes > .all-content > [id^='content-'] > div > .link-content > ul > li > a {
+  padding: 10px;
   display: block;
   text-decoration: none;
   color: #000;

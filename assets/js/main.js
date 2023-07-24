@@ -838,12 +838,17 @@ const casesNotes = () => {
   document.querySelector('#calendar').addEventListener('click', () => {
     return availableTimes();
   });
+
   // Adiciona um ouvinte de clique para o elemento com ID 'dark-mode' e liga e desliga a a classe dark-theme do elemento notes
-  document.querySelector('#dark-mode').addEventListener('click', () => {
-    notes.classList.toggle('dark-theme');
+  document.querySelector('#dark-mode').addEventListener('click', e => {
+    if (notes.classList.contains('dark-theme')) {
+      notes.classList.remove('dark-theme');
+      e.target.textContent = 'dark_mode';
+    } else {
+      notes.classList.add('dark-theme');
+      e.target.textContent = 'light_mode';
+    }
   });
-  //
-  showPopup('popupalert');
 };
 const structureHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
 structureHTML.then(e => {
