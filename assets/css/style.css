@@ -327,3 +327,17 @@
 #notes > .all-content > [id^='content-'] > div > span > #refreshCalendar {
   cursor: pointer;
 }
+
+#notes .buttons-blue{
+  color: var(--color-bar-button);
+  font-weight: 700;
+  font-size: 9pt;
+  padding: 8px;
+  margin: 0 0 0 auto;
+  border-radius: 5px;
+  transition: background .3s ease;
+}
+
+#notes .buttons-blue:hover{
+  background-color: #e2eefd;
+}
