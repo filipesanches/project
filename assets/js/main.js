@@ -868,7 +868,7 @@ const casesNotes = () => {
                   .split(' ')
                   [speakeasyIdElement.innerText.split(' ').length - 1].replace('\n', '');
                 lastSpeakeasyID.click();
-                dinputSpeakeasyValue.value = formatterSpeakeasyId;
+                inputSpeakeasyValue.value = formatterSpeakeasyId;
                 homeCasesElement.click();
               }, 500);
             } catch (error) {
