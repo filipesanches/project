@@ -934,22 +934,6 @@ const casesNotes = () => {
   };
 
   // Chama a função getSpeakeasyId
-  getSpeakeasyId()
-    .then(resultado => {
-      // A função getSpeakeasyId foi concluída e o array dataCase está completo
-      console.log('Array dataCase completo:', resultado);
-
-      // Chama a função que deseja executar quando o array estiver completo
-      createSpeakeasyElements(dataCase);
-      setTimeout(() => {
-        copyTextElement('#speakeasy-id-container > p > span.speakeasy-id');
-        homeCasesElement.click();
-      });
-    })
-    .catch(error => {
-      // Trata qualquer erro que ocorra durante o processo
-      console.error('Ocorreu um erro:', error);
-    });
 
   //Requisiçoes
   // Carrega e popula dados de QA a partir de um arquivo JSON
@@ -1055,7 +1039,24 @@ const casesNotes = () => {
   });
 
   // Adiciona um ouvinte de evento de clique para cada botão que possui um ID "get-speakeasy-id"
-  document.querySelector('#get-speakeasy-id').addEventListener('click', getSpeakeasyId);
+  document.querySelector('#get-speakeasy-id').addEventListener('click', () => {
+    getSpeakeasyId()
+      .then(resultado => {
+        // A função getSpeakeasyId foi concluída e o array dataCase está completo
+        console.log('Array dataCase completo:', resultado);
+
+        // Chama a função que deseja executar quando o array estiver completo
+        createSpeakeasyElements(dataCase);
+        setTimeout(() => {
+          copyTextElement('#speakeasy-id-container > p > span.speakeasy-id');
+          homeCasesElement.click();
+        });
+      })
+      .catch(error => {
+        // Trata qualquer erro que ocorra durante o processo
+        console.error('Ocorreu um erro:', error);
+      });
+  });
 
   // Adiciona um ouvinte de evento de clique para cada botão que possui um ID começando com "reset-note"
   document.querySelectorAll('[id^="reset-note"]').forEach(button => {
