@@ -2,7 +2,7 @@ const casesNotes = () => {
   //Elementos de reuso
   const homeCasesElement = document.querySelector('[debug-id="dock-item-home"]'); //home do cases elemento
   const buttonCreateWriteCard = document.querySelector('[aria-label="Create a write card"]'); //Botão + do cases abre a nota e email
-  let dataCase; // Variável para acessar objeto com dados do case
+  const dataCase = []; // Variável para acessar objeto com dados do case
 
   //coleção de eventos pra reuso
   const bubbleEventClick = new Event('click', { bubbles: true });
