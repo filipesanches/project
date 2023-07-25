@@ -842,51 +842,114 @@ const casesNotes = () => {
     }
   };
 
+  const createSpeakeasyElements = data => {
+    // Criação do elemento HTML container
+    const containerDiv = document.createElement('div');
+    containerDiv.id = 'speakeasy-id-container';
+    const buttonClose = document.createElement('button');
+    buttonClose.classList.add('material-icons');
+    buttonClose.textContent = 'close';
+
+    // Loop para criar os elementos para cada objeto no array 'data'
+    for (let i = 0; i < data.length; i++) {
+      const item = data[i];
+
+      // Criação dos elementos HTML para cada item
+      const contentP = document.createElement('p');
+      const contentSpanID = document.createElement('span');
+      contentSpanID.classList.add('speakeasy-id');
+      const contentSpanDate = document.createElement('span');
+      contentSpanDate.id = 'speakeasy-id-date';
+
+      // Definir atributos e conteúdo dos elementos com base nos dados do objeto
+      contentSpanID.textContent = item.id;
+      contentSpanDate.textContent = item.date;
+
+      // Montar a estrutura do documento para cada item
+      contentP.appendChild(contentSpanID);
+      contentP.appendChild(contentSpanDate);
+      containerDiv.appendChild(contentP);
+    }
+
+    // Adicionar o elemento container ao body do documento
+    containerDiv.appendChild(buttonClose);
+    document.body.appendChild(containerDiv);
+    buttonClose.addEventListener('click', () => {
+      containerDiv.remove();
+    });
+  };
+
   // Função para obter o ID do Speakeasy
   const getSpeakeasyId = () => {
-    const inputSpeakeasyValue = document.querySelector('#sepekeasy-agendamento');
-    try {
-      const caseLogElement = document.querySelector('[debug-id="dock-item-case-log"]');
-      caseLogElement.click();
+    return new Promise((resolve, reject) => {
+      try {
+        const caseLogElement = document.querySelector('[debug-id="dock-item-case-log"]');
+        caseLogElement.click();
 
-      setTimeout(() => {
-        document.querySelector('[debug-id="case-log-filter"] > dropdown-button [role="img"]').click();
         setTimeout(() => {
-          document.querySelector('[debug-id="check-all-box"] [role="img"]').click();
-          document.querySelector('[debug-id="apply-filter"]').click();
-
+          document.querySelector('[debug-id="case-log-filter"] > dropdown-button [role="img"]').click();
           setTimeout(() => {
-            try {
-              const elementsCall = Array.from(document.querySelectorAll('.preview-header')).filter(element => {
-                return element.textContent.includes('Agent left phone call') || element.textContent.includes('Agente deixou chamada telefônica');
-              });
+            document.querySelector('[debug-id="check-all-box"] [role="img"]').click();
+            document.querySelector('[debug-id="apply-filter"]').click();
 
-              const lastSpeakeasyID = elementsCall[elementsCall.length - 1];
-              lastSpeakeasyID.click();
+            setTimeout(() => {
+              try {
+                const elementsCall = Array.from(document.querySelectorAll('.preview-header')).filter(element => {
+                  return (
+                    element.textContent.includes('Agent joined phone call') || element.textContent.includes('O agente entrou na chamada telefônica')
+                  );
+                });
 
-              setTimeout(() => {
-                const speakeasyIdElement = document.querySelector('.outbound-call.plain-text');
-                const formatterSpeakeasyId = speakeasyIdElement.innerText
-                  .split(' ')
-                  [speakeasyIdElement.innerText.split(' ').length - 1].replace('\n', '');
-                lastSpeakeasyID.click();
-                inputSpeakeasyValue.value = formatterSpeakeasyId;
-                homeCasesElement.click();
-              }, 500);
-            } catch (error) {
-              inputSpeakeasyValue.value = 'Speakeasy Id não encontrado';
-              homeCasesElement.click();
-              console.error(error);
-            }
+                elementsCall.forEach((e, i) => {
+                  setTimeout(() => {
+                    e.click();
+                    setTimeout(() => {
+                      const speakeasyIdElement = document.querySelectorAll('.outbound-call.plain-text');
+                      const dateDpeakeasyId =
+                        speakeasyIdElement[i].parentElement.parentElement.parentElement.querySelector('[debug-id="date-time-message"]').innerText;
+                      const speakeasyID = speakeasyIdElement[i].innerText.split(' ');
+                      speakeasyIDFormatter = speakeasyID[speakeasyID.length - 1].replace('\n', '');
+                      dataCase.push({ id: speakeasyIDFormatter, date: dateDpeakeasyId });
+                      console.log(dataCase);
+
+                      // Verifica se é o último elemento do loop e resolve a Promise
+                      if (i === elementsCall.length - 1) {
+                        resolve(dataCase);
+                      }
+                    });
+                  }, 500);
+                });
+              } catch (error) {
+                console.error(error);
+                reject(error);
+              }
+            }, 500);
           }, 500);
         }, 500);
-      }, 500);
-    } catch (error) {
-      inputSpeakeasyValue.value = 'Speakeasy Id não encontrado';
-      homeCasesElement.click();
-      console.error(error);
-    }
+      } catch (error) {
+        console.error(error);
+        reject(error);
+      }
+    });
   };
+
+  // Chama a função getSpeakeasyId
+  getSpeakeasyId()
+    .then(resultado => {
+      // A função getSpeakeasyId foi concluída e o array dataCase está completo
+      console.log('Array dataCase completo:', resultado);
+
+      // Chama a função que deseja executar quando o array estiver completo
+      createSpeakeasyElements(dataCase);
+      setTimeout(() => {
+        copyTextElement('#speakeasy-id-container > p > span.speakeasy-id');
+        homeCasesElement.click();
+      });
+    })
+    .catch(error => {
+      // Trata qualquer erro que ocorra durante o processo
+      console.error('Ocorreu um erro:', error);
+    });
 
   //Requisiçoes
   // Carrega e popula dados de QA a partir de um arquivo JSON

@@ -661,8 +661,8 @@ const casesNotes = () => {
   };
 
   // Função que copia o horário ao ser clicado
-  const copyTime = () => {
-    document.querySelectorAll('#horarios-disponiveis .horario').forEach(p => {
+  const copyTextElement = selector => {
+    document.querySelectorAll(selector).forEach(p => {
       let text = p.innerText;
       // Função assíncrona que copia o conteúdo para a área de transferência
       const copyContent = async () => {
@@ -694,7 +694,9 @@ const casesNotes = () => {
         availableTimesElement.appendChild(p);
       }
       // Chama a função copyTime após um atraso de 500 milissegundos para adicionar ouvintes de clique aos horários criados
-      setTimeout(copyTime, 500);
+      setTimeout(() => {
+        copyTextElement('#horarios-disponiveis .horario');
+      }, 500);
       console.log('Está no calendar');
     } else {
       console.log('Não está no calendar');

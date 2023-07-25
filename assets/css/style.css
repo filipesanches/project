@@ -327,6 +327,50 @@
   background-color: #e2eefd;
 }
 
+#speakeasy-id-container {
+  position: relative;
+  padding: 40px 10px 10px 10px;
+  width: 350px;
+  height: 250px;
+  overflow: hidden;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 2px 0px 5px var(--color-black);
+  font-size: 15px;
+}
+#speakeasy-id-container::after {
+  width: 100%;
+  display: block;
+  content: 'Speakeasy ID';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-bar-button);
+  padding: 10px 30px;
+  color: var(--color-white);
+}
+#speakeasy-id-container > button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--color-white);
+  position: absolute;
+  top: 5px;
+  right: 0;
+  z-index: 2000;
+}
+#speakeasy-id-container > p {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 2px solid var(--color-bar-button-hover);
+}
+#speakeasy-id-container > p .speakeasy-id {
+}
+#speakeasy-id-container > p .speakeasy-id:hover {
+  color: var(--color-bar-button-hover);
+}
 /*Cursor poiter*/
 #notes.notes-minimize::before,
 #notes .button-success,
@@ -340,6 +384,8 @@
 #notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email],
 #notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p,
 #notes > .all-content > [id^='content-'] > div > span > #refreshCalendar,
-#notes .buttons-blue {
+#notes .buttons-blue,
+#speakeasy-id-container > p > .speakeasy-id,
+#speakeasy-id-container > button {
   cursor: pointer;
 }
