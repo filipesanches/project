@@ -366,8 +366,6 @@
   padding: 5px;
   border-bottom: 2px solid var(--color-bar-button-hover);
 }
-#speakeasy-id-container > p .speakeasy-id {
-}
 #speakeasy-id-container > p .speakeasy-id:hover {
   color: var(--color-bar-button-hover);
 }
