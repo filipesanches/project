@@ -842,7 +842,7 @@ const casesNotes = () => {
 
   // Função para obter o ID do Speakeasy
   const getSpeakeasyId = () => {
-    const inputSpeakeasyValue = document.querySelector('#sepekeasy-agendamento').value;
+    const inputSpeakeasyValue = document.querySelector('#sepekeasy-agendamento');
     try {
       const caseLogElement = document.querySelector('[debug-id="dock-item-case-log"]');
       caseLogElement.click();
@@ -868,11 +868,11 @@ const casesNotes = () => {
                   .split(' ')
                   [speakeasyIdElement.innerText.split(' ').length - 1].replace('\n', '');
                 lastSpeakeasyID.click();
-                dinputSpeakeasyValue = formatterSpeakeasyId;
+                dinputSpeakeasyValue.value = formatterSpeakeasyId;
                 homeCasesElement.click();
               }, 500);
             } catch (error) {
-              inputSpeakeasyValue = 'Speakeasy Id não encontrado';
+              inputSpeakeasyValue.value = 'Speakeasy Id não encontrado';
               homeCasesElement.click();
               console.error(error);
             }
@@ -880,7 +880,7 @@ const casesNotes = () => {
         }, 500);
       }, 500);
     } catch (error) {
-      inputSpeakeasyValue = 'Speakeasy Id não encontrado';
+      inputSpeakeasyValue.value = 'Speakeasy Id não encontrado';
       homeCasesElement.click();
       console.error(error);
     }
