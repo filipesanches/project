@@ -268,18 +268,10 @@ const casesNotes = () => {
   // Função recursiva que verifica se um elemento ou um de seus descendentes contém um texto específico ou um elemento com o seletor fornecido
   const checkElements = (element, targetTextOrSelector) => {
     try {
-      if (typeof targetTextOrSelector === 'string') {
-        // Procura pelo texto no conteúdo do elemento usando textContent
-        if (element.textContent.includes(targetTextOrSelector)) {
-          return true; // Texto encontrado no conteúdo do elemento
-        }
-      } else if (typeof targetTextOrSelector === 'object') {
-        // Procura pelo seletor entre os descendentes do elemento usando querySelector
-        if (element.querySelector(targetTextOrSelector)) {
-          return true; // Seletor encontrado entre os descendentes
-        }
+      // Verifica se o texto específico está contido no conteúdo do elemento ou se o seletor corresponde a algum de seus descendentes
+      if (element.textContent.includes(targetTextOrSelector) || element.querySelector(targetTextOrSelector)) {
+        return true; // Elemento ou descendente encontrado
       }
-
       // Percorre recursivamente os elementos filhos do elemento atual
       for (const childElement of element.children) {
         if (checkElements(childElement, targetTextOrSelector)) {
