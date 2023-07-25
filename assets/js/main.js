@@ -2,7 +2,8 @@ const casesNotes = () => {
   //Elementos de reuso
   const homeCasesElement = document.querySelector('[debug-id="dock-item-home"]'); //home do cases elemento
   const buttonCreateWriteCard = document.querySelector('[aria-label="Create a write card"]'); //Botão + do cases abre a nota e email
-  const dataCase = []; // Variável para acessar objeto com dados do case
+  let dataCase; // Variável para acessar objeto com dados do case
+  let speakeasyIDCase = []; //ID speakeasy
 
   //coleção de eventos pra reuso
   const bubbleEventClick = new Event('click', { bubbles: true });
@@ -873,7 +874,7 @@ const casesNotes = () => {
 
     // Adicionar o elemento container ao body do documento
     containerDiv.appendChild(buttonClose);
-    document.body.appendChild(containerDiv);
+    notes.appendChild(containerDiv);
     buttonClose.addEventListener('click', () => {
       containerDiv.remove();
     });
@@ -883,6 +884,7 @@ const casesNotes = () => {
   const getSpeakeasyId = () => {
     return new Promise((resolve, reject) => {
       try {
+        speakeasyIDCase = [];
         const caseLogElement = document.querySelector('[debug-id="dock-item-case-log"]');
         caseLogElement.click();
 
@@ -909,12 +911,12 @@ const casesNotes = () => {
                         speakeasyIdElement[i].parentElement.parentElement.parentElement.querySelector('[debug-id="date-time-message"]').innerText;
                       const speakeasyID = speakeasyIdElement[i].innerText.split(' ');
                       speakeasyIDFormatter = speakeasyID[speakeasyID.length - 1].replace('\n', '');
-                      dataCase.push({ id: speakeasyIDFormatter, date: dateDpeakeasyId });
-                      console.log(dataCase);
+                      speakeasyIDCase.push({ id: speakeasyIDFormatter, date: dateDpeakeasyId });
+                      console.log(speakeasyIDCase);
 
                       // Verifica se é o último elemento do loop e resolve a Promise
                       if (i === elementsCall.length - 1) {
-                        resolve(dataCase);
+                        resolve(speakeasyIDCase);
                       }
                     });
                   }, 500);
@@ -1043,10 +1045,10 @@ const casesNotes = () => {
     getSpeakeasyId()
       .then(resultado => {
         // A função getSpeakeasyId foi concluída e o array dataCase está completo
-        console.log('Array dataCase completo:', resultado);
+        console.log('Array speakeasyIDCase completo:', resultado);
 
         // Chama a função que deseja executar quando o array estiver completo
-        createSpeakeasyElements(dataCase);
+        createSpeakeasyElements(speakeasyIDCase);
         setTimeout(() => {
           copyTextElement('#speakeasy-id-container > p > span.speakeasy-id');
           homeCasesElement.click();
