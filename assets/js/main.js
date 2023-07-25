@@ -842,34 +842,39 @@ const casesNotes = () => {
 
   // Função para obter o ID do Speakeasy
   const getSpeakeasyId = () => {
-    const caseLogElement = document.querySelector('[debug-id="dock-item-case-log"]');
-    caseLogElement.click();
+    try {
+      const caseLogElement = document.querySelector('[debug-id="dock-item-case-log"]');
+      caseLogElement.click();
 
-    setTimeout(() => {
-      document.querySelector('[debug-id="case-log-filter"] > dropdown-button [role="img"]').click();
       setTimeout(() => {
-        document.querySelector('[debug-id="check-all-box"] [role="img"]').click();
-        document.querySelector('[debug-id="apply-filter"]').click();
-
+        document.querySelector('[debug-id="case-log-filter"] > dropdown-button [role="img"]').click();
         setTimeout(() => {
-          const elementsCall = Array.from(document.querySelectorAll('.preview-header')).filter(element => {
-            return element.textContent.includes('Agent left phone call') || element.textContent.includes('Agente deixou chamada telefônica');
-          });
-
-          const lastSpeakeasyID = elementsCall[elementsCall.length - 1];
-          lastSpeakeasyID.click();
+          document.querySelector('[debug-id="check-all-box"] [role="img"]').click();
+          document.querySelector('[debug-id="apply-filter"]').click();
 
           setTimeout(() => {
-            const speakeasyIdElement = document.querySelector('.outbound-call.plain-text');
-            const formatterSpeakeasyId = speakeasyIdElement.innerText
-              .split(' ')
-              [speakeasyIdElement.innerText.split(' ').length - 1].replace('\n', '');
-            document.querySelector('#sepekeasy-agendamento').value = formatterSpeakeasyId;
-            homeCasesElement.click();
+            const elementsCall = Array.from(document.querySelectorAll('.preview-header')).filter(element => {
+              return element.textContent.includes('Agent left phone call') || element.textContent.includes('Agente deixou chamada telefônica');
+            });
+
+            const lastSpeakeasyID = elementsCall[elementsCall.length - 1];
+            lastSpeakeasyID.click();
+
+            setTimeout(() => {
+              const speakeasyIdElement = document.querySelector('.outbound-call.plain-text');
+              const formatterSpeakeasyId = speakeasyIdElement.innerText
+                .split(' ')
+                [speakeasyIdElement.innerText.split(' ').length - 1].replace('\n', '');
+              document.querySelector('#sepekeasy-agendamento').value = formatterSpeakeasyId;
+              homeCasesElement.click();
+            }, 500);
           }, 500);
         }, 500);
       }, 500);
-    }, 500);
+    } catch (error) {
+      document.querySelector('#sepekeasy-agendamento').value = 'Speakeasy Id não encontrado';
+      console.error(error);
+    }
   };
 
   //Requisiçoes
