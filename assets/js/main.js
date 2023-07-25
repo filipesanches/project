@@ -865,6 +865,7 @@ const casesNotes = () => {
               const formatterSpeakeasyId = speakeasyIdElement.innerText
                 .split(' ')
                 [speakeasyIdElement.innerText.split(' ').length - 1].replace('\n', '');
+              lastSpeakeasyID.click();
               document.querySelector('#sepekeasy-agendamento').value = formatterSpeakeasyId;
               homeCasesElement.click();
             }, 500);
