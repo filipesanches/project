@@ -312,21 +312,6 @@
   margin-left: 5px;
   font-size: 50px;
 }
-/*Cursor poiter*/
-#notes.notes-minimize::before,
-#notes .button-success,
-#notes .button-reset,
-#notes > #notesmoove > span:nth-child(3),
-#notes > #notesmoove > span:last-child,
-#notes > #abas > [data-abas],
-#notes > .all-content > [id^='content-'] > div > div > p > input,
-#notes > .all-content > [id^='content-'] > div > div > p > label,
-#notes #hotkey-agendamento,
-#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email],
-#notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p,
-#notes > .all-content > [id^='content-'] > div > span > #refreshCalendar {
-  cursor: pointer;
-}
 
 #notes .buttons-blue{
   color: var(--color-bar-button);
@@ -340,4 +325,21 @@
 
 #notes .buttons-blue:hover{
   background-color: #e2eefd;
+}
+
+/*Cursor poiter*/
+#notes.notes-minimize::before,
+#notes .button-success,
+#notes .button-reset,
+#notes > #notesmoove > span:nth-child(3),
+#notes > #notesmoove > span:last-child,
+#notes > #abas > [data-abas],
+#notes > .all-content > [id^='content-'] > div > div > p > input,
+#notes > .all-content > [id^='content-'] > div > div > p > label,
+#notes #hotkey-agendamento,
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email],
+#notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p,
+#notes > .all-content > [id^='content-'] > div > span > #refreshCalendar,
+#notes .buttons-blue {
+  cursor: pointer;
 }
