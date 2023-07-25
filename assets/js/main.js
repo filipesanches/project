@@ -842,6 +842,7 @@ const casesNotes = () => {
 
   // Função para obter o ID do Speakeasy
   const getSpeakeasyId = () => {
+    const inputSpeakeasyValue = document.querySelector('#sepekeasy-agendamento').value;
     try {
       const caseLogElement = document.querySelector('[debug-id="dock-item-case-log"]');
       caseLogElement.click();
@@ -853,27 +854,34 @@ const casesNotes = () => {
           document.querySelector('[debug-id="apply-filter"]').click();
 
           setTimeout(() => {
-            const elementsCall = Array.from(document.querySelectorAll('.preview-header')).filter(element => {
-              return element.textContent.includes('Agent left phone call') || element.textContent.includes('Agente deixou chamada telefônica');
-            });
+            try {
+              const elementsCall = Array.from(document.querySelectorAll('.preview-header')).filter(element => {
+                return element.textContent.includes('Agent left phone call') || element.textContent.includes('Agente deixou chamada telefônica');
+              });
 
-            const lastSpeakeasyID = elementsCall[elementsCall.length - 1];
-            lastSpeakeasyID.click();
-
-            setTimeout(() => {
-              const speakeasyIdElement = document.querySelector('.outbound-call.plain-text');
-              const formatterSpeakeasyId = speakeasyIdElement.innerText
-                .split(' ')
-                [speakeasyIdElement.innerText.split(' ').length - 1].replace('\n', '');
+              const lastSpeakeasyID = elementsCall[elementsCall.length - 1];
               lastSpeakeasyID.click();
-              document.querySelector('#sepekeasy-agendamento').value = formatterSpeakeasyId;
+
+              setTimeout(() => {
+                const speakeasyIdElement = document.querySelector('.outbound-call.plain-text');
+                const formatterSpeakeasyId = speakeasyIdElement.innerText
+                  .split(' ')
+                  [speakeasyIdElement.innerText.split(' ').length - 1].replace('\n', '');
+                lastSpeakeasyID.click();
+                dinputSpeakeasyValue = formatterSpeakeasyId;
+                homeCasesElement.click();
+              }, 500);
+            } catch (error) {
+              inputSpeakeasyValue = 'Speakeasy Id não encontrado';
               homeCasesElement.click();
-            }, 500);
+              console.error(error);
+            }
           }, 500);
         }, 500);
       }, 500);
     } catch (error) {
-      document.querySelector('#sepekeasy-agendamento').value = 'Speakeasy Id não encontrado';
+      inputSpeakeasyValue = 'Speakeasy Id não encontrado';
+      homeCasesElement.click();
       console.error(error);
     }
   };
