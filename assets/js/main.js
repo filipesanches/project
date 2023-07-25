@@ -874,7 +874,7 @@ const casesNotes = () => {
 
     // Adicionar o elemento container ao body do documento
     containerDiv.appendChild(buttonClose);
-    notes.appendChild(containerDiv);
+    document.body.appendChild(containerDiv);
     buttonClose.addEventListener('click', () => {
       containerDiv.remove();
     });
