@@ -2,6 +2,7 @@ const casesNotes = () => {
   //Elementos de reuso
   const homeCasesElement = document.querySelector('[debug-id="dock-item-home"]'); //home do cases elemento
   const buttonCreateWriteCard = document.querySelector('[aria-label="Create a write card"]'); //Botão + do cases abre a nota e email
+  let dataCase; // Variável para acessar objeto com dados do case
 
   //coleção de eventos pra reuso
   const bubbleEventClick = new Event('click', { bubbles: true });
@@ -700,6 +701,191 @@ const casesNotes = () => {
     }
   };
 
+  // Função que retorna uma Promise com a data do caso
+  const getDateCase = () => {
+    return new Promise((resolve, reject) => {
+      const dateTimeZone = Array.from(document.querySelectorAll('.contactUsFormRows')).find(element => {
+        return element.textContent.includes('Appointment Time') || element.textContent.includes('Hora do compromisso');
+      });
+
+      if (!dateTimeZone) {
+        reject('DATA E HORARIO DA REUNIAO');
+        return;
+      }
+
+      const hourDate = dateTimeZone.innerText.split('\n')[1];
+      const timeZone = dateTimeZone.innerText.split('\n')[1];
+      const date = new Date(hourDate);
+      const formatDate = date
+        .toLocaleString('pt-BR', {
+          dateStyle: 'short',
+          timeStyle: 'short',
+        })
+        .split(', ');
+
+      resolve(`${formatDate[0]} às ${formatDate[1]}hs`);
+    });
+  };
+
+  // Função que retorna uma Promise com o nome do agente
+  const getNameAgent = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        const signed = document.querySelector('[aria-label*="Signed"]');
+        signed.click();
+
+        setTimeout(() => {
+          const nameAgent = document.querySelector('profile-details > div > div.name').textContent;
+          signed.click();
+          resolve(nameAgent);
+        }, 300);
+      } catch (error) {
+        reject('NOME DO AGENTE');
+      }
+    });
+  };
+
+  // Função que retorna uma Promise com as tarefas
+  const getTasks = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        const tasksElement = Array.from(document.querySelectorAll('cuf-form-field')).find(element => {
+          return element.innerText.includes('Tasks') || element.textContent.includes('Tarefas');
+        });
+
+        if (!tasksElement) {
+          reject('Insira as tasks');
+          return;
+        }
+
+        const allTasks = Array.from(tasksElement.querySelectorAll('[debug-id="html-value"]')).map(task => task.innerText);
+        const formatArray = allTasks.join(', ');
+        resolve(formatArray);
+      } catch (error) {
+        reject('Insira as tasks');
+      }
+    });
+  };
+
+  // Função que retorna uma Promise com o website
+  const getWebSite = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        const webSiteElement = document.querySelector(
+          'ng-template > [href*="https://www.google.com"], ng-template > [href*="http://www.google.com"]'
+        ).textContent;
+        const website = webSiteElement.length > 0 ? webSiteElement : 'SITE DO CLIENTE';
+        resolve(website);
+      } catch (error) {
+        reject('SITE DO CLIENTE');
+      }
+    });
+  };
+
+  // Função que retorna uma Promise com os dados do cliente
+  const getDataCustomer = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        const dataContact = Array.from(document.querySelectorAll('.contactUsFormRows')).find(element => {
+          return element.textContent.includes('Email') || element.textContent.includes('E-mail');
+        });
+
+        if (!dataContact) {
+          reject(['EMAIL DO CLIENTE', 'NOME DO CLIENTE', 'TELEFONE DO CLIENTE']);
+          return;
+        }
+
+        dataContact.querySelector('pii-value > span').click();
+        setTimeout(() => {
+          const nameElement = dataContact.innerText.split('\n')[2].trim().split(' ')[0];
+          const formatName = name => {
+            name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+            return name;
+          };
+          const name = formatName(nameElement);
+          const email = dataContact.innerText.split('\n')[1];
+          const phone =
+            '+' +
+            dataContact.textContent
+              .slice(dataContact.textContent.search('\n'))
+              .replace(email, '')
+              .replace(/[^\d]+/g, '');
+          resolve([email, phone, name]);
+        }, 5000);
+      } catch (error) {
+        reject(['EMAIL DO CLIENTE', 'NOME DO CLIENTE', 'TELEFONE DO CLIENTE']);
+      }
+    });
+  };
+
+  // Função para criar o objeto dataCases com todas as informações
+  const getDataCases = async () => {
+    try {
+      const dateCases = await getDateCase();
+      const nameAgent = await getNameAgent();
+      const tasks = await getTasks();
+      const webSite = await getWebSite();
+      const dataCostumer = await getDataCustomer();
+
+      return {
+        dateCases: dateCases,
+        nameAgent: nameAgent,
+        tasks: tasks,
+        webSite: webSite,
+        dataCostumer: dataCostumer,
+      };
+    } catch (error) {
+      console.error(error);
+      return {};
+    }
+  };
+
+  // Função para obter o ID do Speakeasy
+  const getSpeakeasyId = () => {
+    const inputSpeakeasyValue = document.querySelector('#sepekeasy-agendamento');
+    try {
+      const caseLogElement = document.querySelector('[debug-id="dock-item-case-log"]');
+      caseLogElement.click();
+
+      setTimeout(() => {
+        document.querySelector('[debug-id="case-log-filter"] > dropdown-button [role="img"]').click();
+        setTimeout(() => {
+          document.querySelector('[debug-id="check-all-box"] [role="img"]').click();
+          document.querySelector('[debug-id="apply-filter"]').click();
+
+          setTimeout(() => {
+            try {
+              const elementsCall = Array.from(document.querySelectorAll('.preview-header')).filter(element => {
+                return element.textContent.includes('Agent left phone call') || element.textContent.includes('Agente deixou chamada telefônica');
+              });
+
+              const lastSpeakeasyID = elementsCall[elementsCall.length - 1];
+              lastSpeakeasyID.click();
+
+              setTimeout(() => {
+                const speakeasyIdElement = document.querySelector('.outbound-call.plain-text');
+                const formatterSpeakeasyId = speakeasyIdElement.innerText
+                  .split(' ')
+                  [speakeasyIdElement.innerText.split(' ').length - 1].replace('\n', '');
+                lastSpeakeasyID.click();
+                inputSpeakeasyValue.value = formatterSpeakeasyId;
+                homeCasesElement.click();
+              }, 500);
+            } catch (error) {
+              inputSpeakeasyValue.value = 'Speakeasy Id não encontrado';
+              homeCasesElement.click();
+              console.error(error);
+            }
+          }, 500);
+        }, 500);
+      }, 500);
+    } catch (error) {
+      inputSpeakeasyValue.value = 'Speakeasy Id não encontrado';
+      homeCasesElement.click();
+      console.error(error);
+    }
+  };
+
   //Requisiçoes
   // Carrega e popula dados de QA a partir de um arquivo JSON
   const dadosQa = fetch('https://filipesanches.github.io/teste/assets/js/dadosqa.json').then(e => e.json());
@@ -764,6 +950,17 @@ const casesNotes = () => {
   // Aplica função resizeWindow
   resizeWindow();
 
+  // Chame a função getDataCases para obter o objeto com todos os dados
+  getDataCases()
+    .then(data => {
+      // Agora você pode usar o objeto data conforme necessário
+      dataCase = data;
+      console.log(data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
   // Chamada de Ouvintes
   // Obtém todos os botões das abas e adiciona o ouvinte de evento a cada um deles
   const tabsButtons = document.querySelectorAll('[data-abas]');
@@ -791,6 +988,9 @@ const casesNotes = () => {
       }
     });
   });
+
+  // Adiciona um ouvinte de evento de clique para cada botão que possui um ID "get-speakeasy-id"
+  document.querySelector('#get-speakeasy-id').addEventListener('click', getSpeakeasyId);
 
   // Adiciona um ouvinte de evento de clique para cada botão que possui um ID começando com "reset-note"
   document.querySelectorAll('[id^="reset-note"]').forEach(button => {
