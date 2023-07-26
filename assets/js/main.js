@@ -221,8 +221,8 @@ const casesNotes = () => {
   // Função para lidar com a mudança no elemento com o ID "substatus-agendamento"
   const handleSubstatusChange = e => {
     const selectedValue = e.target.value;
-      setHotkeyValue(selectedValue);
-      console.log(`Substatus alterado: ${selectedValue}`);
+    setHotkeyValue(selectedValue);
+    console.log(`Substatus alterado: ${selectedValue}`);
   };
 
   // Função que observa mudanças no DOM e chama o callback quando um novo elemento é adicionado
@@ -813,6 +813,7 @@ const casesNotes = () => {
       const tasks = await getTasks();
       const webSite = await getWebSite();
       const dataCostumer = await getDataCustomer();
+      const idCase = await location.href.split('/')[location.href.split('/').length - 1];
 
       return {
         dateCases: dateCases,
