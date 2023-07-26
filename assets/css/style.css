@@ -375,7 +375,7 @@
 
 /*Hotkey e idioma*/
 #notes hotkey > h3{
-  padding: 0 10px;
+  padding: 10px 0 !important;
 }
 
 /*Cursor poiter*/
