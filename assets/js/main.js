@@ -212,13 +212,6 @@ const casesNotes = () => {
     });
   };
 
-  // Função para definir o conteúdo do elemento com o ID "hotkey-content-agendamento" com uma mensagem em vermelho
-  const showHotkeyContent = () => {
-    const hotkeyContentElement = document.querySelector('#hotkey-content-agendamento');
-    hotkeyContentElement.innerHTML =
-      '<span style="color: #ff0000;">Atenção envie o email para o anunciante (ts in oosu) e AM (ts in oos seller)</span>';
-  };
-
   // Função para definir o conteúdo do elemento com o ID "hotkey-agendamento" com o valor selecionado
   const setHotkeyValue = value => {
     const hotkeyValueElement = document.querySelector('#hotkey-agendamento');
@@ -228,17 +221,8 @@ const casesNotes = () => {
   // Função para lidar com a mudança no elemento com o ID "substatus-agendamento"
   const handleSubstatusChange = e => {
     const selectedValue = e.target.value;
-    // Verifica se é uma hotkey especifica que precisa de detalhes como eviar email pro AM e Anunciante
-    if (selectedValue === 'ts in oosu' || selectedValue === 'ts in oos seller') {
-      document.querySelector('#hotkey-agendamento').textContent = '';
-      showHotkeyContent();
-      console.log('Email para anunciante e AM!');
-    } else {
       setHotkeyValue(selectedValue);
-      const hotkeyContentElement = document.querySelector('#hotkey-content-agendamento');
-      hotkeyContentElement.innerHTML = '';
       console.log(`Substatus alterado: ${selectedValue}`);
-    }
   };
 
   // Função que observa mudanças no DOM e chama o callback quando um novo elemento é adicionado
