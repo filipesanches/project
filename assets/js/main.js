@@ -486,7 +486,8 @@ const casesNotes = () => {
   const getFormValues = () => {
     const sepekeasyValue = document.querySelector('#sepekeasy-agendamento').value;
     const oncallValue = document.querySelector('#oncal-agendamento').value;
-    const substatusValue = document.querySelector('#substatus-agendamento').value;
+    const substatusSelect = document.querySelector('#substatus-agendamento');
+    const substatusValue = substatusSelect.options[substatusSelect.selectedIndex].innerText.trim();
     const reasonValue = document.querySelector('#reason-agendamento').value;
     const gravacao_qaValue = document.querySelector('#gravacao_qa-agendamento').value;
     const gtmValue = document.querySelector('#gtm-agendamento').value;
