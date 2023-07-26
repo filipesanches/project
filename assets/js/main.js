@@ -798,7 +798,7 @@ const casesNotes = () => {
               .slice(dataContact.textContent.search('\n'))
               .replace(email, '')
               .replace(/[^\d]+/g, '');
-          resolve([email, phone, name]);
+          resolve([{ email: email, phone: phone, name: name }]);
         }, 5000);
       } catch (error) {
         reject(['EMAIL DO CLIENTE', 'NOME DO CLIENTE', 'TELEFONE DO CLIENTE']);
