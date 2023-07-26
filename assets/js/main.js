@@ -790,7 +790,7 @@ const casesNotes = () => {
     return new Promise((resolve, reject) => {
       try {
         const dataContact = Array.from(document.querySelectorAll('.contactUsFormRows')).find(element => {
-          return element.textContent.includes('Email') || element.textContent.includes('E-mail');
+          return element.textContent.includes('Email');
         });
 
         if (!dataContact) {
