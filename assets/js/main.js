@@ -813,7 +813,6 @@ const casesNotes = () => {
       const tasks = await getTasks();
       const webSite = await getWebSite();
       const dataCostumer = await getDataCustomer();
-      const idCase = await location.href.split('/')[location.href.split('/').length - 1];
 
       return {
         dateCases: dateCases,
@@ -821,6 +820,7 @@ const casesNotes = () => {
         tasks: tasks,
         webSite: webSite,
         dataCostumer: dataCostumer,
+        idCase: location.href.split('/')[location.href.split('/').length - 1],
       };
     } catch (error) {
       console.error(error);
