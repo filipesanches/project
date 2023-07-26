@@ -92,8 +92,7 @@
 }
 #notes .button-success:hover,
 #notes .button-reset:hover {
-  background-color: var(--color-bar-button-hover);
-  filter: brightness(90%); /* Adição de um leve efeito de brilho ao passar o mouse */
+  filter: brightness(125%); /* Adição de um leve efeito de brilho ao passar o mouse */
 }
 
 #notes > #notesmoove,
@@ -147,7 +146,7 @@
 #notes > .all-content {
   max-height: calc(100% - 77px);
   height: 100%;
-  padding: 10px !important;
+  padding: 10px 10px 30px 10px !important;
 }
 
 #notes > .all-content > [id^='content-'] {
@@ -373,6 +372,12 @@
 #speakeasy-id-container > p .speakeasy-id:hover {
   color: var(--color-bar-button-hover);
 }
+
+/*Hotkey e idioma*/
+#notes hotkey > h3{
+  padding: 0 10px;
+}
+
 /*Cursor poiter*/
 #notes.notes-minimize::before,
 #notes .button-success,
