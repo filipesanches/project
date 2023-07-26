@@ -891,7 +891,10 @@ const casesNotes = () => {
         setTimeout(() => {
           document.querySelector('[debug-id="case-log-filter"] > dropdown-button [role="img"]').click();
           setTimeout(() => {
-            document.querySelector('[debug-id="check-all-box"] [role="img"]').click();
+            const eventLog = Array.from(document.querySelectorAll('div')).filter(element => {
+              return element.textContent.includes('Event log');
+            });
+            eventLog[eventLog.length - 1].click();
             document.querySelector('[debug-id="apply-filter"]').click();
 
             setTimeout(() => {
@@ -934,8 +937,6 @@ const casesNotes = () => {
       }
     });
   };
-
-  // Chama a função getSpeakeasyId
 
   //Requisiçoes
   // Carrega e popula dados de QA a partir de um arquivo JSON
@@ -1042,6 +1043,7 @@ const casesNotes = () => {
 
   // Adiciona um ouvinte de evento de clique para cada botão que possui um ID "get-speakeasy-id"
   document.querySelector('#get-speakeasy-id').addEventListener('click', () => {
+    //Chama a função getSpeakeasyId
     getSpeakeasyId()
       .then(resultado => {
         // A função getSpeakeasyId foi concluída e o array dataCase está completo
@@ -1051,7 +1053,15 @@ const casesNotes = () => {
         createSpeakeasyElements(speakeasyIDCase);
         setTimeout(() => {
           copyTextElement('#speakeasy-id-container > p > span.speakeasy-id');
-          homeCasesElement.click();
+          document.querySelector('[debug-id="case-log-filter"] > dropdown-button [role="img"]').click();
+          setTimeout(() => {
+            const eventLogs = Array.from(document.querySelectorAll('div')).filter(element => {
+              return element.textContent.includes('Event log');
+            });
+            eventLogs[eventLogs.length - 1].click();
+            document.querySelector('[debug-id="apply-filter"]').click();
+            homeCasesElement.click();
+          }, 500);
         });
       })
       .catch(error => {
