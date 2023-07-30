@@ -2,11 +2,11 @@
 
 
 ### Elementos de Reuso
-
-- `homeCasesElement`: Elemento da página correspondente à *home* do *cases*.
-- `buttonCreateWriteCard`: Botão de adicionar nota e e-mail no *cases*.
-- `dataCase`: Variável que contém os dados do caso.
-- `speakeasyIDCase`: Array que armazena os IDs do *speakeasy*.
+  
+  - `homeCasesElement`: Elemento da página correspondente à *home* do *cases*.
+  - `buttonCreateWriteCard`: Botão de adicionar nota e e-mail no *cases*.
+  - `dataCase`: Variável que contém os dados do caso.
+  - `speakeasyIDCase`: Array que armazena os IDs do *speakeasy*.
 
 ### Coleção de Eventos para Reuso
 
