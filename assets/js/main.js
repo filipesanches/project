@@ -163,7 +163,7 @@ const casesNotes = () => {
   // Função para exibir o popup
   const showPopup = data => {
     // Faz uma requisição assíncrona para obter o conteúdo do popup a partir de um arquivo HTML
-    fetch(`https://github.com/filipesanches/teste/assets/html/template_popup/${data}.html`)
+    fetch(`https://filipesanches.github.io/teste/assets/html/template_popup/${data}.html`)
       .then(response => {
         // Verifica se a requisição foi bem sucedida
         if (!response.ok) {
@@ -611,7 +611,7 @@ const casesNotes = () => {
     // Obtém o valor do atributo 'data-email' do botão clicado
     const dataEmail = e.target.getAttribute('data-email');
     // Busca o template HTML do email usando fetch
-    const templateHTML = fetch(`https://github.com/filipesanches/teste/assets/html/template_email/${dataEmail}.html`).then(e => e.text());
+    const templateHTML = fetch(`https://filipesanches.github.io/teste/assets/html/template_email/${dataEmail}.html`).then(e => e.text());
     // Processa o template HTML e cria um novo email usando a função createEmailTemplate
     templateHTML.then(template => {
       createEmailTemplate(template);
@@ -925,7 +925,7 @@ const casesNotes = () => {
 
   //Requisiçoes
   // Carrega e popula dados de QA a partir de um arquivo JSON
-  const dadosQa = fetch('https://github.com/filipesanches/teste/assets/js/dadosqa.json').then(e => e.json());
+  const dadosQa = fetch('https://filipesanches.github.io/teste/assets/js/dadosqa.json').then(e => e.json());
   dadosQa
     .then(data => {
       // Popula o elemento select com opções baseadas nos emails da propriedade 'emailList'
@@ -978,7 +978,7 @@ const casesNotes = () => {
 
   // Chamadas de Funções
   // Aplicação de estilos
-  createStyle('https://github.com/filipesanches/teste/assets/css/style.css');
+  createStyle('https://filipesanches.github.io/teste/assets/css/style.css');
   createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   // Aplica dragElement no elemeto notes
@@ -1113,7 +1113,7 @@ const casesNotes = () => {
     }
   });
 };
-const structureHTML = fetch('https://github.com/filipesanches/teste/assets/html/estrutura.html').then(e => e.text());
+const structureHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
 structureHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();
