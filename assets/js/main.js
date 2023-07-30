@@ -10,7 +10,6 @@ const casesNotes = () => {
   const bubbleEventFocus = new Event('focus', { bubbles: true });
   const bubbleEventBlur = new Event('blur', { bubbles: true });
   const bubbleEventInput = new Event('input', { bubbles: true });
-  
 
   //mensagens no console colorida e com texto grande e colorido para testes
   const consoleText = text => console.log(`%c${text}`, 'background:#fff; color:#000; font-size:15px');
@@ -19,13 +18,14 @@ const casesNotes = () => {
   const consoleError = text => console.log(`%c${text}`, 'background:red; color:yellow; font-size:15px');
 
   //Função para formatar data dd/mm/aaaa
-  const formatData = () => {
+  const formatDate = () => {
     const date = new Date();
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
+  const dateDDMMAAAA = formatDate();
 
   //Função para criar folha de estilo css a aplicar no head
   const createStyle = atribute => {
@@ -224,263 +224,6 @@ const casesNotes = () => {
     console.log(`Substatus alterado: ${selectedValue}`);
   };
 
-  // Função que observa mudanças no DOM e chama o callback quando um novo elemento é adicionado
-  const observeChanges = callback => {
-    return new Promise(resolve => {
-      // Criação do MutationObserver
-      const observer = new MutationObserver(mutationsList => {
-        mutationsList.forEach(mutation => {
-          if (mutation.type === 'childList') {
-            Array.from(mutation.addedNodes).forEach(addedNode => {
-              // Verifica se o nó adicionado é um HTMLElement não processado
-              if (addedNode instanceof HTMLElement && !addedNode.processed) {
-                addedNode.processed = true; // Marca o nó como processado para evitar processamento duplicado
-                if (typeof callback === 'function') {
-                  // Chama o callback com o nó adicionado e o próprio MutationObserver
-                  callback(addedNode, observer);
-                }
-              }
-            });
-          }
-        });
-      });
-      // Inicia a observação do DOM
-      observer.observe(document, { childList: true, subtree: true });
-      resolve(observer); // Resolve a Promise com o MutationObserver para futura manipulação
-    });
-  };
-
-  // Função recursiva que verifica se um elemento ou um de seus descendentes contém um texto específico ou um elemento com o seletor fornecido
-  const checkElements = (element, targetTextOrSelector) => {
-    try {
-      // Verifica se o texto específico está contido no conteúdo do elemento ou se o seletor corresponde a algum de seus descendentes
-      if (element.textContent.includes(targetTextOrSelector) || element.querySelector(targetTextOrSelector)) {
-        return true; // Elemento ou descendente encontrado
-      }
-      // Percorre recursivamente os elementos filhos do elemento atual
-      for (const childElement of element.children) {
-        if (checkElements(childElement, targetTextOrSelector)) {
-          return true; // Elemento encontrado em algum dos descendentes
-        }
-      }
-      return false; // Nenhum elemento com o texto ou seletor encontrado
-    } catch (error) {
-      console.error(error); // Trata e registra qualquer erro ocorrido
-    }
-  };
-
-  // Função que realiza a ação quando um elemento com o texto específico ou seletor fornecido é adicionado ao DOM
-  const actionChanges = (targetTextOrSelector, callback) => {
-    return new Promise((resolve, reject) => {
-      let foundElement = false;
-      // Chama a função observeChanges para observar mudanças no DOM
-      const observer = observeChanges((modifiedElement, observer) => {
-        if (!foundElement && modifiedElement instanceof HTMLElement) {
-          console.log('Elemento localizado:');
-          console.log(modifiedElement);
-          console.log(`Texto: '${modifiedElement.textContent}'`);
-          // Verifica se o elemento atual ou seus descendentes contêm o texto ou seletor específico
-          if (checkElements(modifiedElement, targetTextOrSelector)) {
-            foundElement = true; // Elemento encontrado
-            console.log('Encontrou o elemento:');
-            console.log(modifiedElement);
-            if (typeof callback === 'function') {
-              callback(modifiedElement); // Chama o callback passando o elemento encontrado
-            }
-            observer.disconnect(); // Encerra a observação do DOM
-            resolve(modifiedElement); // Resolve a Promise com o elemento encontrado
-          }
-        }
-      });
-    });
-  };
-
-  // Função que adiciona um espaço em branco ao conteúdo após um atraso de 500 milissegundos
-  const draftSaved = () => {
-    setTimeout(() => {
-      document.execCommand('insertText', false, ' ');
-    }, 500);
-  };
-
-  // Função que seleciona a opção "Customer" em um elemento após ações e observações no DOM
-  const setCustumer = () => {
-    return new Promise((resolve, reject) => {
-      // Clica no elemento "homeCasesElement"
-      homeCasesElement.click();
-      // Encontra o elemento que contém o texto "Customer"
-      const customerElement = document.querySelector('span[class*="button-text"]');
-      // Verifica se o elemento não contém o texto "Customer"
-      if (customerElement.textContent !== 'Customer') {
-        // Clica no elemento "customerElement" para exibir as opções relacionadas a "Customer"
-        customerElement.click();
-        // Chama a função "actionChanges" para aguardar a adição do elemento contendo "Customer" no DOM
-        actionChanges('Customer', element => {
-          // Encontra a primeira opção de "Customer" dentro do elemento e clica nela
-          const customerOption = element.querySelectorAll('material-select-dropdown-item')[0];
-          if (customerOption) {
-            customerOption.click();
-            consoleSucess('Customer selecionado');
-            resolve();
-          } else {
-            consoleAlert('Option Customer não encontrada');
-            resolve();
-          }
-        });
-      } else {
-        consoleAlert('Customer já está selecionado');
-        resolve();
-      }
-    });
-  };
-
-  // Função que define o idioma do documento para o idioma especificado
-  const setLanguage = language => {
-    // Clica no elemento "homeCasesElement"
-    homeCasesElement.click();
-    // Encontra o elemento de input para o idioma com o atributo "aria-label" igual a "Locale"
-    const inputLocale = document.querySelector('[aria-label="Locale"]');
-    // Verifica se o idioma atual é diferente do idioma especificado
-    if (inputLocale.value !== language) {
-      // Dispara o evento de foco (bubbleEventFocus) para o inputLocale
-      inputLocale.dispatchEvent(bubbleEventFocus);
-      // Chama a função "actionChanges" para aguardar a adição do elemento contendo o idioma especificado no DOM
-      return actionChanges(language).then(() => {
-        // Encontra o item de idioma específico dentro do elemento "material-select-dropdown-item"
-        const languageItems = Array.from(document.querySelectorAll('material-select-dropdown-item')).find(e => e.innerHTML.includes(language));
-        if (languageItems) {
-          // Clica no item de idioma específico para selecioná-lo
-          languageItems.click();
-          // Dispara o evento de blur (bubbleEventBlur) para o inputLocale
-          inputLocale.dispatchEvent(bubbleEventBlur);
-          consoleSucess(`Idioma alterado: ${language}`);
-          // Chama a função "actionChanges" para aguardar a adição do elemento contendo a mensagem de sucesso
-          return actionChanges(`Successfully changed language to ${language}`);
-        } else {
-          // Caso o idioma não seja encontrado, exibe um erro no console e rejeita a Promise
-          consoleError(`Idioma (${language}) não encontrado!`);
-          throw new Error(`Idioma (${language}) não encontrado!`);
-        }
-      });
-    } else {
-      // Caso o idioma já esteja selecionado, exibe um alerta no console e resolve a Promise
-      consoleAlert(`Idioma ${language} já está selecionado!`);
-      return Promise.resolve();
-    }
-  };
-
-  // Função que cria um e-mail com a hotKey especificada
-  const createEmail = hotKey => {
-    return new Promise((resolve, reject) => {
-      // Dispara o evento de foco (bubbleEventFocus) para o botão "buttonCreateWriteCard"
-      buttonCreateWriteCard.dispatchEvent(bubbleEventFocus);
-      setTimeout(() => {
-        // Clica no botão "Create new email" para criar um novo e-mail
-        document.querySelector('[aria-label="Create new email"]').click();
-        // Dispara o evento de blur (bubbleEventBlur) para o botão "buttonCreateWriteCard"
-        buttonCreateWriteCard.dispatchEvent(bubbleEventBlur);
-        setTimeout(() => {
-          // Chama a função "actionChanges" para aguardar a adição do elemento contendo o conteúdo do e-mail
-          actionChanges('#email-body-content')
-            .then(element => {
-              // Encontra os elementos de corpo do e-mail
-              const bodyEmail = element.querySelectorAll('#email-body-content');
-              // Lista com os emails de serviços
-              const emailList = document.querySelectorAll('[buttoncontent][class*="address"]');
-              emailList[emailList.length - 1].click();
-              setTimeout(() => {
-                // Clica no endereço de e-mail específico para selecioná-lo
-                document.querySelector('[id="email-address-id--technical-solutions@google.com"]').click();
-                // Encontra os elementos de "canned-response-dialog" para inserir a hotKey
-                const elementCr = document.querySelectorAll('[debug-id="canned_response_button"]');
-                elementCr[elementCr.length - 1].click();
-                consoleSucess('Corpo do e-mail criado!');
-                // Chama a função "actionChanges" para aguardar a adição do elemento contendo "canned-response-dialog"
-                return actionChanges('canned-response-dialog')
-                  .then(element => {
-                    // Encontra o input para a hotKey e insere o valor de hotKey
-                    const inputCR = element.querySelector('input');
-                    inputCR.value = hotKey;
-                    inputCR.dispatchEvent(bubbleEventInput);
-                    consoleSucess('hotKey inserida');
-                    // Limpa o conteúdo do corpo do e-mail
-                    bodyEmail[bodyEmail.length - 1].innerText = '';
-                    // Chama a função "actionChanges" para aguardar a adição do elemento contendo "highlight-value"
-                    return actionChanges('highlight-value');
-                  })
-                  .then(element => {
-                    // Clica no elemento "highlight-value" para salvar o e-mail como rascunho
-                    element.querySelector('highlight-value').click();
-                    // Chama a função draftSaved para adicionar um espaço em branco no conteúdo após um atraso de 500 milissegundos
-                    draftSaved();
-                    resolve(); // Resolve a Promise após a criação bem-sucedida do e-mail
-                  });
-              }, 800);
-            })
-            .catch(error => {
-              reject(error); // Rejeita a Promise caso ocorra algum erro
-            });
-        }, 500);
-      }, 500);
-    });
-  };
-
-  // Função que cria um novo e-mail com o conteúdo fornecido como templateHTML
-  const createEmailTemplate = templateHTML => {
-    // Dispara o evento de foco (bubbleEventFocus) para o botão "buttonCreateWriteCard"
-    buttonCreateWriteCard.dispatchEvent(bubbleEventFocus);
-    setTimeout(() => {
-      // Clica no botão "Create new email" para criar um novo e-mail
-      document.querySelector('[aria-label="Create new email"]').click();
-      // Dispara o evento de blur (bubbleEventBlur) para o botão "buttonCreateWriteCard"
-      buttonCreateWriteCard.dispatchEvent(bubbleEventBlur);
-      // Chama a função "actionChanges" para aguardar a adição do elemento contendo o conteúdo do e-mail
-      actionChanges('#email-body-content', element => {
-        // Encontra os elementos de corpo do e-mail
-        const bodyEmail = element.querySelectorAll('#email-body-content');
-        // Lista com os emails de serviços
-        const emailList = document.querySelectorAll('[buttoncontent][class*="address"]');
-        emailList[emailList.length - 1].click();
-        setTimeout(() => {
-          // Clica no endereço de e-mail específico para selecioná-lo
-          document.querySelector('[id="email-address-id--technical-solutions@google.com"]').click();
-          // Encontra os elementos de corpo do e-mail
-          // Define o conteúdo do corpo do e-mail como o templateHTML fornecido
-          bodyEmail[bodyEmail.length - 1].innerHTML = templateHTML;
-          // Chama a função draftSaved para adicionar um espaço em branco no conteúdo após um atraso de 500 milissegundos
-          draftSaved();
-        }, 500);
-      });
-    }, 500);
-  };
-
-  // Função que cria uma nova nota no caso (card) e insere o conteúdo HTML fornecido no corpo da nota
-  const createNote = textHTML => {
-    // Clica no elemento que leva à lista de casos (homeCasesElement)
-    homeCasesElement.click();
-    // Dispara o evento de foco (bubbleEventFocus) para o botão "buttonCreateWriteCard"
-    buttonCreateWriteCard.dispatchEvent(bubbleEventFocus);
-    // Adiciona um atraso de 500 milissegundos antes de continuar
-    setTimeout(() => {
-      // Clica no botão "Create new case note" para criar uma nova nota
-      document.querySelector('[aria-label="Create new case note"]').click();
-      // Dispara o evento de blur (bubbleEventBlur) para o botão "buttonCreateWriteCard"
-      buttonCreateWriteCard.dispatchEvent(bubbleEventBlur);
-      // Registra a criação da nota no console
-      consoleSucess('Nota Criada!');
-    }, 500);
-    // Chama a função actionChanges para aguardar a adição do elemento contendo o corpo da nota
-    actionChanges('case-note-card-content-wrapper', element => {
-      // Encontra o elemento onde será inserido o conteúdo da nota
-      const noteBody = element.querySelector('[aria-label="Case Note"]');
-      // Insere o conteúdo HTML fornecido no corpo da nota
-      noteBody.innerHTML = textHTML;
-      // Registra a inserção do texto no corpo da nota no console
-      consoleSucess('Texto inserido na nota!');
-      // Chama a função draftSaved para adicionar um espaço em branco no conteúdo após um atraso de 500 milissegundos
-      draftSaved();
-    });
-  };
-
   // Função para coletar os valores do formulário
   const getFormValues = () => {
     const sepekeasyValue = document.querySelector('#sepekeasy-agendamento').value;
@@ -536,7 +279,7 @@ const casesNotes = () => {
     // Formato da nota
     const noteHTML = `
    <br>
-   <p><b>Date:</b> ${formatData()}</p>
+   <p><b>Date:</b> ${dateDDMMAAAA}</p>
    <p><b>Speakeasy ID:</b> ${sepekeasyValue}</p>
    <p><b>On Call( Call Started) signaled on time?:</b> ${oncallValue}</p>
    <p><b>Substatus:</b> ${substatusValue}</p>
