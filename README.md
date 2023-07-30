@@ -1,6 +1,4 @@
 # Cases Notes 3.0
- ## Cases Notes 3.0
-
 
 
 ### Elementos de Reuso
