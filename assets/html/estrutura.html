@@ -19,9 +19,8 @@
 <section class="all-content">
   <div id="content-1" class="hide show">
     <p class="card">
-      <label class="label-card" for="sepekeasy-agendamento"
-        >Speakeasy ID: <span id="get-speakeasy-id" class="buttons-blue">Get Speakeasy ID</span></label
-      >
+      <label class="label-card" for="sepekeasy-agendamento">Speakeasy ID: <span id="get-speakeasy-id"
+          class="buttons-blue">Get Speakeasy ID</span></label>
       <input type="text" name="sepekeasy-agendamento" id="sepekeasy-agendamento" />
     </p>
     <p class="card">
@@ -37,9 +36,8 @@
       <input type="text" name="reason-agendamento" id="reason-agendamento" />
     </p>
     <p class="card">
-      <label class="label-card" for="gravacao_qa-agendamento"
-        >O anunciante estava de acordo com a gravação da chamada para fins de treinamento e qualidade?:</label
-      >
+      <label class="label-card" for="gravacao_qa-agendamento">O anunciante estava de acordo com a gravação da chamada
+        para fins de treinamento e qualidade?:</label>
       <input type="text" name="gravacao_qa-agendamento" id="gravacao_qa-agendamento" />
     </p>
     <p class="card">
@@ -64,7 +62,8 @@
         <p>
           <input type="checkbox" id="tag-other-agendamento" name="tag-other-agendamento" />
           <label for="tag-other-agendamento">
-            <input type="text" name="tag-other-input-agendamento" id="tag-other-input-agendamento" placeholder="Other Tag" />
+            <input type="text" name="tag-other-input-agendamento" id="tag-other-input-agendamento"
+              placeholder="Other Tag" />
           </label>
         </p>
       </div>
@@ -83,7 +82,8 @@
         <p>
           <input type="checkbox" id="bad-value-other-agendamento" name="bad-value-other-agendamento" />
           <label for="bad-value-other-agendamento">
-            <input type="text" name="bad-value-other-input-agendamento" id="bad-value-other-input-agendamento" placeholder="Other Bad-Lead" />
+            <input type="text" name="bad-value-other-input-agendamento" id="bad-value-other-input-agendamento"
+              placeholder="Other Bad-Lead" />
           </label>
         </p>
       </div>
@@ -103,8 +103,8 @@
         <label for="portuguese-br">Portuguese (Brazil)</label><br />
       </hotkey>
       <p>
-        <button id="reset-note-agendamento" class="button-reset" title="Apagar todos os campos!">RESET</button>
-        <button id="gerar-note-agendamento" class="button-success" title="Gerar nota!">GERAR</button>
+        <button id="reset-note-agendamento" class="button-reset" title="Apagar todos os campos!">Reset</button>
+        <button id="gerar-note-agendamento" class="button-success" title="Gerar nota!">Gerar</button>
       </p>
     </div>
   </div>
@@ -143,9 +143,9 @@
     </p>
     <div id="buttons-live-transfer">
       <p>
-        <button id="reset-note-live-transfer" class="button-reset" title="Apagar todos os campos!">RESET</button>
+        <button id="reset-note-live-transfer" class="button-reset" title="Apagar todos os campos!">Reset</button>
         <!--<button id="reload-note" onclick='preencherCampos()' title="Recuperar última nota preenchida!">RECOVER</button>-->
-        <button id="gerar-note-live-transfer" class="button-success" title="Gerar nota!">GERAR</button>
+        <button id="gerar-note-live-transfer" class="button-success" title="Gerar nota!">Gerar</button>
       </p>
     </div>
   </div>
@@ -153,24 +153,22 @@
     <div class="card">
       <span class="label-card"><span class="material-icons icons">timer</span>E-mail Automatizado 10 min</span>
       <div class="email-automtizado">
-        <p>E-mail 10 min PT: <span class="material-icons" data-email="emailpt10">outgoing_mail</span></p>
-        <p>E-mail 10 min ES: <span class="material-icons" data-email="teste">outgoing_mail</span></p>
+        <p class="buttons-blue" data-email="emailpt10">Portugues</p>
+        <p class="buttons-blue" data-email="emailes10">Espanhol</p>
       </div>
     </div>
     <div class="card">
-      <span class="label-card"><span class="material-icons icons">arrow_upward</span>E-mail Automatizado Take</span>
+      <span class="label-card"><span class="material-icons icons">arrow_upward</span>E-mail Automatizado 3/9</span>
       <div class="email-automtizado">
-        <p>E-mail take PT: <span class="material-icons" data-email="emailpt10">outgoing_mail</span></p>
-        <p>E-mail take ES: <span class="material-icons" data-email="emailes10">outgoing_mail</span></p>
+        <p class="buttons-blue" data-email="email3_9pt">Portugues</p>
+        <p class="buttons-blue" data-email="email3_9es">Espanhol</p>
       </div>
     </div>
   </div>
   <div id="content-4" class="hide">
     <div class="card">
-      <span class="label-card"
-        ><span class="material-icons icons">timer</span>Horarios disponiveis na semana
-        <span id="refreshCalendar" class="material-icons">refresh</span></span
-      >
+      <span class="label-card"><span class="material-icons icons">timer</span>Horarios disponiveis na semana
+        <span id="refreshCalendar" class="material-icons">refresh</span></span>
       <div id="horarios-disponiveis"></div>
     </div>
   </div>
@@ -180,19 +178,29 @@
       <div class="alert-content">
         <h2>Mudança no procedimento QA</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras auctor a purus eu viverra. Duis ex
-          augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut diam vel urna ultricies placerat nec elementum orci. Etiam
-          lacinia ante vel purus porttitor, faucibus blandit tortor rutrum. Phasellus varius erat vitae eros consectetur suscipit. Donec nec auctor
-          tellus, quis pulvinar erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum cursus, metus sed vestibulum
-          tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales eros, vitae faucibus dolor ullamcorper
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras
+          auctor a purus eu viverra. Duis ex
+          augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut diam vel urna ultricies placerat
+          nec elementum orci. Etiam
+          lacinia ante vel purus porttitor, faucibus blandit tortor rutrum. Phasellus varius erat vitae eros consectetur
+          suscipit. Donec nec auctor
+          tellus, quis pulvinar erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum
+          cursus, metus sed vestibulum
+          tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales eros, vitae
+          faucibus dolor ullamcorper
           eu. Quisque ac finibus orci. Sed mattis odio sit amet lacinia facilisis. Nam non vestibulum justo.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras auctor a purus eu viverra. Duis ex
-          augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut diam vel urna ultricies placerat nec elementum orci. Etiam
-          lacinia ante vel purus porttitor, faucibus blandit tortor rutrum. Phasellus varius erat vitae eros consectetur suscipit. Donec nec auctor
-          tellus, quis pulvinar erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum cursus, metus sed vestibulum
-          tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales eros, vitae faucibus dolor ullamcorper
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras
+          auctor a purus eu viverra. Duis ex
+          augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut diam vel urna ultricies placerat
+          nec elementum orci. Etiam
+          lacinia ante vel purus porttitor, faucibus blandit tortor rutrum. Phasellus varius erat vitae eros consectetur
+          suscipit. Donec nec auctor
+          tellus, quis pulvinar erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum
+          cursus, metus sed vestibulum
+          tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales eros, vitae
+          faucibus dolor ullamcorper
           eu. Quisque ac finibus orci. Sed mattis odio sit amet lacinia facilisis. Nam non vestibulum justo.
         </p>
       </div>
@@ -200,19 +208,29 @@
       <div class="alert-content">
         <h2>Mudança no procedimento SME</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras auctor a purus eu viverra. Duis ex
-          augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut diam vel urna ultricies placerat nec elementum orci. Etiam
-          lacinia ante vel purus porttitor, faucibus blandit tortor rutrum. Phasellus varius erat vitae eros consectetur suscipit. Donec nec auctor
-          tellus, quis pulvinar erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum cursus, metus sed vestibulum
-          tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales eros, vitae faucibus dolor ullamcorper
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras
+          auctor a purus eu viverra. Duis ex
+          augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut diam vel urna ultricies placerat
+          nec elementum orci. Etiam
+          lacinia ante vel purus porttitor, faucibus blandit tortor rutrum. Phasellus varius erat vitae eros consectetur
+          suscipit. Donec nec auctor
+          tellus, quis pulvinar erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum
+          cursus, metus sed vestibulum
+          tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales eros, vitae
+          faucibus dolor ullamcorper
           eu. Quisque ac finibus orci. Sed mattis odio sit amet lacinia facilisis. Nam non vestibulum justo.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras auctor a purus eu viverra. Duis ex
-          augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut diam vel urna ultricies placerat nec elementum orci. Etiam
-          lacinia ante vel purus porttitor, faucibus blandit tortor rutrum. Phasellus varius erat vitae eros consectetur suscipit. Donec nec auctor
-          tellus, quis pulvinar erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum cursus, metus sed vestibulum
-          tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales eros, vitae faucibus dolor ullamcorper
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tempor ante laoreet porta. Cras
+          auctor a purus eu viverra. Duis ex
+          augue, dignissim ut tincidunt sit amet, pulvinar sit amet felis. Nullam ut diam vel urna ultricies placerat
+          nec elementum orci. Etiam
+          lacinia ante vel purus porttitor, faucibus blandit tortor rutrum. Phasellus varius erat vitae eros consectetur
+          suscipit. Donec nec auctor
+          tellus, quis pulvinar erat. Praesent tortor lacus, gravida a odio nec, lobortis condimentum lacus. Vestibulum
+          cursus, metus sed vestibulum
+          tristique, ex arcu commodo est, non eleifend mauris orci sit amet justo. Maecenas pharetra sodales eros, vitae
+          faucibus dolor ullamcorper
           eu. Quisque ac finibus orci. Sed mattis odio sit amet lacinia facilisis. Nam non vestibulum justo.
         </p>
       </div>
@@ -224,13 +242,13 @@
       <div class="link-content">
         <ul>
           <li>
-            <a href="#">Link 1</a>
+            <a href="#">Tech Helper</a>
           </li>
           <li>
-            <a href="#">Link 2</a>
+            <a href="#">Treinamento</a>
           </li>
           <li>
-            <a href="#">Link 3</a>
+            <a href="#">Classroom</a>
           </li>
         </ul>
       </div>

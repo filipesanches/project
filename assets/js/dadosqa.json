@@ -1,55 +1,101 @@
 {
   "emailList": [
-    "-",
-    "NRP - SO - IN Not Reachable ",
-    "New - Confirmation Email",
-    "AS - Work in Progress",
-    "AS - Reschedule 1",
-    "AS - Acceptable Reschedule",
-    "AS - Agent Reschedule",
-    "NI - Awaiting Inputs",
-    "NI - In Consult",
-    "NI - Awaiting Validation",
-    "NI - Attempted Contact",
-    "NI - Other",
-    "IN - Infeasible",
-    "IN - Not Reachable",
-    "IN - Not Interested",
-    "IN - Not Ready",
-    "IN - Out of Scope - Rerouted to Internal Team",
-    "IN - Out of Scope - Unable to Transfer",
-    "IN - Out of Scope - Email to Seller",
-    "IN - Other",
-    "SO - Verified",
-    "SO - Verified No Recent Conversion",
-    "SO - Unverified",
-    "SO - Verification Not Needed"
-  ],
-  "hotkeystr": [
-    "-",
-    "ts no res",
-    "ts as new",
-    "-",
-    "ts as resched1",
-    "ts as reschedok",
-    "ts as reschedok",
-    "ts ni ai",
-    "ts ni ic",
-    "ts ni av",
-    "ts ni ac",
-    "ts ni oth",
-    "ts in inf",
-    "ts in nrch",
-    "ts in ni",
-    "ts in nrdy",
-    "ts in oost",
-    "ts in oosu",
-    "ts in oos seller",
-    "ts in oth",
-    "ts so verif",
-    "ts so verif nrc",
-    "ts so unv",
-    "ts so vnn"
+    {
+      "description": "-",
+      "value": "-"
+    },
+    {
+      "description": "NRP - SO - IN Not Reachable ",
+      "value": "ts no res"
+    },
+    {
+      "description": "New - Confirmation Email",
+      "value": "ts as new"
+    },
+    {
+      "description": "AS - Work in Progress",
+      "value": "-"
+    },
+    {
+      "description": "AS - Reschedule 1",
+      "value": "ts as resched1"
+    },
+    {
+      "description": "AS - Acceptable Reschedule",
+      "value": "ts as reschedok"
+    },
+    {
+      "description": "AS - Agent Reschedule",
+      "value": "ts as reschedok"
+    },
+    {
+      "description": "NI - Awaiting Inputs",
+      "value": "ts ni ai"
+    },
+    {
+      "description": "NI - In Consult",
+      "value": "ts ni ic"
+    },
+    {
+      "description": "NI - Awaiting Validation",
+      "value": "ts ni av"
+    },
+    {
+      "description": "NI - Attempted Contact",
+      "value": "ts ni ac"
+    },
+    {
+      "description": "NI - Other",
+      "value": "ts ni oth"
+    },
+    {
+      "description": "IN - Infeasible",
+      "value": "ts in inf"
+    },
+    {
+      "description": "IN - Not Reachable",
+      "value": "ts in nrch"
+    },
+    {
+      "description": "IN - Not Interested",
+      "value": "ts in ni"
+    },
+    {
+      "description": "IN - Not Ready",
+      "value": "ts in nrdy"
+    },
+    {
+      "description": "IN - Out of Scope - Rerouted to Internal Team",
+      "value": "ts in oost"
+    },
+    {
+      "description": "IN - Out of Scope - Unable to Transfer",
+      "value": "ts in oosu"
+    },
+    {
+      "description": "IN - Out of Scope - Email to Seller",
+      "value": "ts in oos seller"
+    },
+    {
+      "description": "IN - Other",
+      "value": "ts in oth"
+    },
+    {
+      "description": "SO - Verified",
+      "value": "ts so verif"
+    },
+    {
+      "description": "SO - Verified No Recent Conversion",
+      "value": "ts so verif nrc"
+    },
+    {
+      "description": "SO - Unverified",
+      "value": "ts so unv"
+    },
+    {
+      "description": "SO - Verification Not Needed",
+      "value": "ts so vnn"
+    }
   ],
   "tagsImplement": [
     "Ads Conversion Tracking",
@@ -74,39 +120,69 @@
     "Google Tag Manager Installation"
   ],
   "badList": [
-    "Informações de contato erradas | BAD LEAD - Wrong contact information",
-    "Informações de contato ausentes | BAD LEAD - Missing contact information",
-    "Task incorreta | BAD LEAD - Wrong task",
-    "Cliente não estava ciente da consultoria | BAD LEAD - Client wasn\"t aware of the appointment",
-    "URL incorreta | BAD LEAD - Wrong URL",
-    "URL ausente | BAD LEAD - URL not provided",
-    "Nome do cliente errado | BAD LEAD - Wrong client\"s name",
-    "Cliente não está interessado na consultoria | BAD LEAD - Client is not interested",
-    "Cliente não possui acessos administrativos | BAD LEAD - No admin access",
-    "Task sem detalhes necessários para a implementação | BAD LEAD - Task without details/instructions",
-    "Conta suspensa por política | BAD LEAD - Account suspended",
-    "CID Errado | BAD LEAD - Wrong CID",
-    "Pedido fora de escopo | BAD LEAD - Solicitation Out of Scope",
-    "Idioma Errado | BAD LEAD - Wrong Language",
-    "AM não explicou a importância da nossa consultoria | BAD LEAD - Account manager didn\"t explain the importance of the service",
-    "Quando o email sobre a consultoria vai para a caixa de Spam | SPAM - <Email Client></Email>"
-  ],
-  "badvalue": [
-    "BAD LEAD - Wrong contact information",
-    "BAD LEAD - Missing contact information",
-    "BAD LEAD - Wrong task",
-    "BAD LEAD - Client wasn\"t aware of the appointment",
-    "BAD LEAD - Wrong URL",
-    "BAD LEAD - URL not provided",
-    "BAD LEAD - Wrong client\"s name",
-    "BAD LEAD - Client is not interested",
-    "BAD LEAD - No admin access",
-    "BAD LEAD - Task without details/instructions",
-    "BAD LEAD - Account suspended",
-    "BAD LEAD - Wrong CID",
-    "BAD LEAD - Solicitation Out of Scope",
-    "BAD LEAD - Wrong Language",
-    "BAD LEAD - Account manager didn\"t explain the importance of the service",
-    "SPAM - &#60;Email Client&#62;&#60;/Email&#62;"
+    {
+      "description": "Informações de contato erradas | BAD LEAD - Wrong contact information",
+      "value": "BAD LEAD - Wrong contact information"
+    },
+    {
+      "description": "Informações de contato ausentes | BAD LEAD - Missing contact information",
+      "value": "BAD LEAD - Missing contact information"
+    },
+    {
+      "description": "Task incorreta | BAD LEAD - Wrong task",
+      "value": "BAD LEAD - Wrong task"
+    },
+    {
+      "description": "Cliente não estava ciente da consultoria | BAD LEAD - Client wasn\"t aware of the appointment",
+      "value": "BAD LEAD - Client wasn\"t aware of the appointment"
+    },
+    {
+      "description": "URL incorreta | BAD LEAD - Wrong URL",
+      "value": "BAD LEAD - Wrong URL"
+    },
+    {
+      "description": "URL ausente | BAD LEAD - URL not provided",
+      "value": "BAD LEAD - URL not provided"
+    },
+    {
+      "description": "Nome do cliente errado | BAD LEAD - Wrong client\"s name",
+      "value": "BAD LEAD - Wrong client\"s name"
+    },
+    {
+      "description": "Cliente não está interessado na consultoria | BAD LEAD - Client is not interested",
+      "value": "BAD LEAD - Client is not interested"
+    },
+    {
+      "description": "Cliente não possui acessos administrativos | BAD LEAD - No admin access",
+      "value": "BAD LEAD - No admin access"
+    },
+    {
+      "description": "Task sem detalhes necessários para a implementação | BAD LEAD - Task without details/instructions",
+      "value": "BAD LEAD - Task without details/instructions"
+    },
+    {
+      "description": "Conta suspensa por política | BAD LEAD - Account suspended",
+      "value": "BAD LEAD - Account suspended"
+    },
+    {
+      "description": "CID Errado | BAD LEAD - Wrong CID",
+      "value": "BAD LEAD - Wrong CID"
+    },
+    {
+      "description": "Pedido fora de escopo | BAD LEAD - Solicitation Out of Scope",
+      "value": "BAD LEAD - Solicitation Out of Scope"
+    },
+    {
+      "description": "Idioma Errado | BAD LEAD - Wrong Language",
+      "value": "BAD LEAD - Wrong Language"
+    },
+    {
+      "description": "AM não explicou a importância da nossa consultoria | BAD LEAD - Account manager didn\"t explain the importance of the service",
+      "value": "BAD LEAD - Account manager didn\"t explain the importance of the service"
+    },
+    {
+      "description": "Quando o email sobre a consultoria vai para a caixa de Spam | SPAM - <Email Client></Email>",
+      "value": "SPAM - &#60;Email Client&#62;&#60;/Email&#62;"
+    }
   ]
 }

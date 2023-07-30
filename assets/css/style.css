@@ -33,7 +33,14 @@
 #notes.dark-theme:not(#notes.notes-minimize) {
   filter: invert(1);
 }
-
+#notes.dark-theme #notesmoove,
+#notes.dark-theme #abas,
+#notes.dark-theme .button-success,
+#notes.dark-theme .button-reset,
+#notes.dark-theme .buttons-blue,
+#notes.dark-theme .icons {
+  filter: invert(1) !important;
+}
 /* Estilos para a caixa de notas minimizada */
 #notes.notes-minimize {
   position: fixed !important;
@@ -312,17 +319,17 @@
   font-size: 50px;
 }
 
-#notes .buttons-blue{
+#notes .buttons-blue {
   color: var(--color-bar-button);
   font-weight: 700;
-  font-size: 9pt;
+  font-size: 10pt;
   padding: 8px;
   margin: 0 0 0 auto;
   border-radius: 5px;
-  transition: background .3s ease;
+  transition: background 0.3s ease;
 }
 
-#notes .buttons-blue:hover{
+#notes .buttons-blue:hover {
   background-color: #e2eefd;
 }
 
@@ -336,7 +343,7 @@
   overflow: hidden;
   overflow-y: auto;
   border-radius: 10px;
-  box-shadow: 2px 0px 5px var(--color-black);
+  box-shadow: -1px -1px 4px 1px #a1a1a1;
   font-size: 15px;
   z-index: 10000;
   background-color: var(--color-white);
@@ -374,7 +381,7 @@
 }
 
 /*Hotkey e idioma*/
-#notes hotkey > h3{
+#notes hotkey > h3 {
   padding: 10px 0 !important;
 }
 
