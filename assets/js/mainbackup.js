@@ -10,6 +10,7 @@ const casesNotes = () => {
   const bubbleEventFocus = new Event('focus', { bubbles: true });
   const bubbleEventBlur = new Event('blur', { bubbles: true });
   const bubbleEventInput = new Event('input', { bubbles: true });
+  
 
   //mensagens no console colorida e com texto grande e colorido para testes
   const consoleText = text => console.log(`%c${text}`, 'background:#fff; color:#000; font-size:15px');
@@ -82,9 +83,7 @@ const casesNotes = () => {
   };
 
   //Função para alterar o tamanho do elemento
-  const resizeWindow = () => {
-    // Obtém o elemento alvo pelo ID
-    const element = document.getElementById('notes');
+  const resizeWindow = element => {
     // Cria um elemento 'div' para ser o redimensionador
     const resizer = document.createElement('div');
     resizer.className = 'resizer'; // Define uma classe para o redimensionador (pode ser estilizado usando CSS)
@@ -164,7 +163,7 @@ const casesNotes = () => {
   // Função para exibir o popup
   const showPopup = data => {
     // Faz uma requisição assíncrona para obter o conteúdo do popup a partir de um arquivo HTML
-    fetch(`https://filipesanches.github.io/teste/assets/html/${data}.html`)
+    fetch(`https://filipesanches.github.io/teste/assets/html/template_popup/${data}.html`)
       .then(response => {
         // Verifica se a requisição foi bem sucedida
         if (!response.ok) {
@@ -612,7 +611,7 @@ const casesNotes = () => {
     // Obtém o valor do atributo 'data-email' do botão clicado
     const dataEmail = e.target.getAttribute('data-email');
     // Busca o template HTML do email usando fetch
-    const templateHTML = fetch(`https://filipesanches.github.io/teste/assets/html/${dataEmail}.html`).then(e => e.text());
+    const templateHTML = fetch(`https://filipesanches.github.io/teste/assets/html/template_email/${dataEmail}.html`).then(e => e.text());
     // Processa o template HTML e cria um novo email usando a função createEmailTemplate
     templateHTML.then(template => {
       createEmailTemplate(template);
@@ -932,8 +931,8 @@ const casesNotes = () => {
       // Popula o elemento select com opções baseadas nos emails da propriedade 'emailList'
       data.emailList.forEach((email, i) => {
         const option = document.createElement('option');
-        option.value = data.hotkeystr[i]; // O valor da opção é definido a partir da propriedade 'hotkeystr' com base no índice atual
-        option.innerText = email; // O texto da opção é definido com base no email atual
+        option.value = email.value; // O valor da opção é definido a partir da chave 'valor'
+        option.innerText = email.description; // O texto da opção é definido com base na chave 'description'
         document.querySelector('#substatus-agendamento').appendChild(option); // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
       });
 
@@ -962,10 +961,10 @@ const casesNotes = () => {
         checkbox.type = 'checkbox';
         checkbox.id = `bad-value-agendamento-${i}`;
         checkbox.name = `bad-value-agendamento-${i}`;
-        checkbox.value = data.badvalue[i]; // O valor do checkbox é definido a partir da propriedade 'badvalue' com base no índice atual
+        checkbox.value = bad.value; // O valor do checkbox é definido a partir da propriedade 'badvalue' com base no índice atual
         const label = document.createElement('label');
         label.setAttribute('for', `bad-value-agendamento-${i}`);
-        label.innerText = bad; // O texto do label é definido com base na BAD Lead atual
+        label.innerText = bad.description; // O texto do label é definido com base na BAD Lead atual
         p.appendChild(checkbox);
         p.appendChild(label);
         badLeadsElement.appendChild(p); // Adiciona o checkbox e label ao elemento com o ID '#bad-leads-agendamento'
@@ -986,7 +985,7 @@ const casesNotes = () => {
   dragElement(notes);
 
   // Aplica função resizeWindow
-  resizeWindow();
+  resizeWindow(notes);
 
   // Chame a função getDataCases para obter o objeto com todos os dados
   getDataCases()
@@ -1036,7 +1035,7 @@ const casesNotes = () => {
         console.log('Array speakeasyIDCase completo:', resultado);
 
         // Chama a função que deseja executar quando o array estiver completo
-        createSpeakeasyElements(speakeasyIDCase);
+        createSpeakeasyElements(speakeasyIDCase.reverse());
         setTimeout(() => {
           copyTextElement('#speakeasy-id-container > p > span.speakeasy-id');
           document.querySelector('[debug-id="case-log-filter"] > dropdown-button [role="img"]').click();

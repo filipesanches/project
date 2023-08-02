@@ -10,7 +10,6 @@ const casesNotes = () => {
   const bubbleEventFocus = new Event('focus', { bubbles: true });
   const bubbleEventBlur = new Event('blur', { bubbles: true });
   const bubbleEventInput = new Event('input', { bubbles: true });
-  
 
   //mensagens no console colorida e com texto grande e colorido para testes
   const consoleText = text => console.log(`%c${text}`, 'background:#fff; color:#000; font-size:15px');
@@ -495,7 +494,14 @@ const casesNotes = () => {
     const commentsValue = document.querySelector('#comments-agendamento').value;
     const screenshotsValue = document.querySelector('#screenshots-agendamento').value;
     const mcidsValue = document.querySelector('#mcids-agendamento').value;
+
+    const otherTagValuesInput = document.querySelector('#tag-other-input-agendamento');
+    const otherTagValuesCheck = document.querySelector('#tag-other-agendamento');
+    otherTagValuesCheck.value = otherTagValuesInput.value;
     const tagsImplement = Array.from(document.querySelectorAll('input[name^="tag"]:checked')).map(checkbox => checkbox.value);
+    const otherBadValuesInput = document.querySelector('#bad-value-other-input-agendamento');
+    const otherBadValuesCheck = document.querySelector('#bad-value-other-agendamento');
+    otherBadValuesCheck.value = otherBadValuesInput.value;
     const badValues = Array.from(document.querySelectorAll('input[name^="bad-value"]:checked')).map(checkbox => checkbox.value);
 
     return {
