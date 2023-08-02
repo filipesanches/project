@@ -988,7 +988,7 @@ const casesNotes = () => {
       });
       document.querySelector('#link-content').appendChild(ul); //Seleciona a div com id link-content e aplica os links
 
-      console.log('Dados aplicados!');
+      console.log('Dados QA aplicados!');
     })
     .catch(error => {
       console.log('Ocorreu um erro:', error);
@@ -999,11 +999,11 @@ const casesNotes = () => {
   alertsContent
     .then(data => {
       document.querySelector('#alert-content').innerHTML = data;
+      console.log('Conteudo aba Alerts Aplicado!');
     })
     .catch(error => {
       console.log('Ocorreu um erro ao importar template Alerts:', error);
     });
-
 
   // Chamadas de Funções
   // Aplicação de estilos
