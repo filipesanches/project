@@ -981,7 +981,7 @@ const casesNotes = () => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.textContent = link.description;
-        a.href = 'http://'+link.value;
+        a.href = 'http://' + link.value;
         a.target = '_blank';
         li.appendChild(a);
         ul.appendChild(li);
@@ -993,6 +993,17 @@ const casesNotes = () => {
     .catch(error => {
       console.log('Ocorreu um erro:', error);
     });
+
+  // Carrega e popula dados da aba alerts a partir de um arquivo HTML
+  const alertsContent = fetch('assets/html/template_alert_content/tmplate_alert.html').then(e => e.text());
+  alertsContent
+    .then(data => {
+      document.querySelector('#alert-content').innerHTML = data;
+    })
+    .catch(error => {
+      console.log('Ocorreu um erro ao importar template Alerts:', error);
+    });
+
 
   // Chamadas de Funções
   // Aplicação de estilos

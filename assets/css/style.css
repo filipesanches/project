@@ -265,7 +265,7 @@
 #notes > .all-content > [id^='content-'] > div > #link-content > ul > li:hover {
   background-color: #d8d8d8;
 }
-#notes > .all-content > [id^='content-'] > div > .alert-content > h2 {
+#notes > .all-content > [id^='content-'] > div > #alert-content > div > h2 {
   padding: 10px;
 }
 #notes > .all-content > [id^='content-'] > div > #link-content > ul {
