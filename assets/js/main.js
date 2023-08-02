@@ -492,6 +492,7 @@ const casesNotes = () => {
     const backupValue = document.querySelector('#backup-agendamento').value;
     const assistantValue = document.querySelector('#assistant-agendamento').value;
     const commentsValue = document.querySelector('#comments-agendamento').value;
+    const commentsValueFormateed = commentsValue.split('\n').join('<br/>');
     const screenshotsValue = document.querySelector('#screenshots-agendamento').value;
     const mcidsValue = document.querySelector('#mcids-agendamento').value;
     const otherTagValuesInput = document.querySelector('#tag-other-input-agendamento');
