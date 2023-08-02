@@ -189,6 +189,14 @@
     {
       "description": "Tech Helper",
       "value": "go/ajudasme"
+    },
+    {
+      "description": "Treinamento",
+      "value": "go/connecttrainingpt"
+    },
+    {
+      "description": "Treinamento",
+      "value": "go/connecttrainingpt"
     }
   ]
 }
