@@ -995,7 +995,7 @@ const casesNotes = () => {
     });
 
   // Carrega e popula dados da aba alerts a partir de um arquivo HTML
-  const alertsContent = fetch('assets/html/template_alert_content/tmplate_alert.html').then(e => e.text());
+  const alertsContent = fetch('https://filipesanches.github.io/teste/assets/html/template_alert_content/tmplate_alert.html').then(e => e.text());
   alertsContent
     .then(data => {
       document.querySelector('#alert-content').innerHTML = data;
