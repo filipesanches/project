@@ -482,7 +482,7 @@ const casesNotes = () => {
 
   // Função para coletar os valores do formulário
   const getFormValues = () => {
-    const sepekeasyValue = document.querySelector('#sepekeasy-agendamento').value;
+    const sepekeasyValue = document.querySelector('#speakeasy-agendamento').value;
     const oncallValue = document.querySelector('#oncal-agendamento').value;
     const substatusSelect = document.querySelector('#substatus-agendamento');
     const substatusValue = substatusSelect.options[substatusSelect.selectedIndex].innerText.trim();
@@ -1066,7 +1066,16 @@ const casesNotes = () => {
         // Chama a função que deseja executar quando o array estiver completo
         createSpeakeasyElements(speakeasyIDCase.reverse());
         setTimeout(() => {
-          copyTextElement('#speakeasy-id-container > p > span.speakeasy-id');
+          const inputSpeakeasy = document.querySelector('#speakeasy-agendamento');
+          document.querySelectorAll('.speakeasy-id').forEach(e => {
+            e.addEventListener('click', el => {
+              if (inputSpeakeasy.value === '') {
+                inputSpeakeasy.value = el.target.textContent;
+              } else {
+                inputSpeakeasy.value += ', ' + el.target.textContent;
+              }
+            });
+          });
           document.querySelector('[debug-id="case-log-filter"] > dropdown-button [role="img"]').click();
           setTimeout(() => {
             const eventLogs = Array.from(document.querySelectorAll('div')).filter(element => {
