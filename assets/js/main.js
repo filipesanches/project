@@ -513,7 +513,7 @@ const casesNotes = () => {
       gtmValue,
       backupValue,
       assistantValue,
-      commentsValue,
+      commentsValueFormateed,
       screenshotsValue,
       mcidsValue,
       tagsImplement,
