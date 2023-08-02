@@ -197,6 +197,10 @@
     {
       "description": "Webão Help",
       "value": "go/webao-help"
+    },
+    {
+      "description": "Classromm",
+      "value": "go/treinamentosme"
     }
   ]
 }
