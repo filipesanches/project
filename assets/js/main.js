@@ -975,7 +975,20 @@ const casesNotes = () => {
         badLeadsElement.appendChild(p); // Adiciona o checkbox e label ao elemento com o ID '#bad-leads-agendamento'
       });
 
-      console.log('Dados QA aplicados!');
+      //Popula os links da aba link uteis
+      const ul = document.createElement('ul');
+      data.links.forEach(link => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.textContent = link.description;
+        a.href = 'http://'+link.value;
+        a.target = '_blank';
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      document.querySelector('#link-content').appendChild(ul); //Seleciona a div com id link-content e aplica os links
+
+      console.log('Dados aplicados!');
     })
     .catch(error => {
       console.log('Ocorreu um erro:', error);

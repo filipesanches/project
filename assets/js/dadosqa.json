@@ -184,5 +184,11 @@
       "description": "Quando o email sobre a consultoria vai para a caixa de Spam | SPAM - <Email Client></Email>",
       "value": "SPAM - &#60;Email Client&#62;&#60;/Email&#62;"
     }
+  ],
+  "links": [
+    {
+      "description": "Tech Helper",
+      "value": "go/ajudasme"
+    }
   ]
 }
