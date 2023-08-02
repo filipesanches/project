@@ -943,7 +943,7 @@ const casesNotes = () => {
       });
 
       //Aplica valor no campo screenshots para colar os prints
-      document.querySelector("#screenshots-agendamento").value = `Google ADS Screenshots:\nGoogle Analytics Screenshots:\nGoogle Tag Manager Screenshots:\nGoogle Tag Assistant Screenshots:\n`
+      document.querySelector("#screenshots-agendamento").value = `Google ADS Screenshots:\n\nGoogle Analytics Screenshots:\n\nGoogle Tag Manager Screenshots:\n\nGoogle Tag Assistant Screenshots:\n`
 
       // Popula o elemento com o ID '#tags-implement-agendamento' com checkboxes e labels baseados nas tags da propriedade 'tagsImplement'
       const tagsElement = document.querySelector('#tags-implement-agendamento');
