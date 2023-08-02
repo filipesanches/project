@@ -494,7 +494,6 @@ const casesNotes = () => {
     const commentsValue = document.querySelector('#comments-agendamento').value;
     const screenshotsValue = document.querySelector('#screenshots-agendamento').value;
     const mcidsValue = document.querySelector('#mcids-agendamento').value;
-
     const otherTagValuesInput = document.querySelector('#tag-other-input-agendamento');
     const otherTagValuesCheck = document.querySelector('#tag-other-agendamento');
     otherTagValuesCheck.value = otherTagValuesInput.value;
@@ -553,9 +552,9 @@ const casesNotes = () => {
    <p><b>Conversão testada no Tag Assistant?:</b> ${assistantValue}</p>
    <p><b>On Call Comments:</b> ${commentsValue}</p>
    <p><b>Tags Implemented:</b><br> ${tagsImplement.join('<br/>')}</p>
-   <p><b>Screenshots:</b><br> ${screenshotsValue.split('\n').join(',<br/>')}</p>
+   <p><b>Screenshots:</b><br> ${screenshotsValue.split('\n').join('<br/>')}</p>
    <p><b>Multiple CIDs:</b> ${mcidsValue}</p>
-   <p><b>*Bad Lead: </b><br> ${badValues.join(',<br/>')}</p>
+   <p><b>*Bad Lead: </b><br> ${badValues.join('<br/>')}</p>
   `;
     //Chama a função para abrir e criar e colar a template
     createNote(noteHTML);
