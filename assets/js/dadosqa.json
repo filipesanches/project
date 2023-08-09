@@ -201,6 +201,22 @@
     {
       "description": "Classromm",
       "value": "go/treinamentosme"
+    },
+    {
+      "description": "ga4 setup",
+      "value": "go/ga4setup"
+    },
+    {
+      "description": "ga4 Migration Checklist + eccomerce",
+      "value": "go/migrationandeccomerce"
+    },
+    {
+      "description": "UA + ga4 Setup + implementation Request by Client",
+      "value": "go/ua_ga4setup_implementationrequestbyclient"
+    },
+    {
+      "description": "Checklist for Enhanced Conversion",
+      "value": "go/checklist_for_enhancedconversion"
     }
   ]
 }
