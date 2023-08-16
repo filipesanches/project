@@ -625,7 +625,7 @@ const casesNotes = () => {
     });
   };
 
-  // Função que obtém os horários disponíveis para agendamento no calendário
+  // Array com meses ingles portugues espanhol
   const AllMonths = [
     ['January', 'Janeiro', 'Enero'],
     ['February', 'Fevereiro', 'Febrero'],
@@ -641,8 +641,10 @@ const casesNotes = () => {
     ['December', 'Dezembro', 'Diciembre'],
   ];
 
+  // Função que transorma a primeira letra em maiuscula
   const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
-
+  
+  // Função retorna o mês em ingles
   const getMonthEnglish = month => {
     month = capitalize(month);
 
@@ -652,7 +654,7 @@ const casesNotes = () => {
       }
     }
   };
-
+  // Função que obtém os horários disponíveis para agendamento no calendário
   const getAvailableTime = () => {
     let g_availableTime = [];
     // Percorre todos os elementos com atributo 'data-keyboardactiontype="0;1"' e 'data-focusable'
