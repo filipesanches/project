@@ -627,33 +627,33 @@ const casesNotes = () => {
 
   // Função que obtém os horários disponíveis para agendamento no calendário
   const AllMonths = [
-    ["January", "Janeiro", "Enero"],
-    ["February", "Fevereiro", "Febrero"],
-    ["March", "Março", "Marzo"],
-    ["April", "Abril", "Abril"],
-    ["May", "Maio", "Mayo"],
-    ["June", "Junho", "Junio"],
-    ["July", "Julho", "Julio"],
-    ["August", "Agosto", "Agosto"],
-    ["September", "Setembro", "Septiembre"],
-    ["October", "Outubro", "Octubre"],
-    ["November", "Novembro", "Noviembre"],
-    ["December", "Dezembro", "Diciembre"]
-]
+    ['January', 'Janeiro', 'Enero'],
+    ['February', 'Fevereiro', 'Febrero'],
+    ['March', 'Março', 'Marzo'],
+    ['April', 'Abril', 'Abril'],
+    ['May', 'Maio', 'Mayo'],
+    ['June', 'Junho', 'Junio'],
+    ['July', 'Julho', 'Julio'],
+    ['August', 'Agosto', 'Agosto'],
+    ['September', 'Setembro', 'Septiembre'],
+    ['October', 'Outubro', 'Octubre'],
+    ['November', 'Novembro', 'Noviembre'],
+    ['December', 'Dezembro', 'Diciembre'],
+  ];
 
-const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+  const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
 
-const getMonthEnglish = (month) => {
-    month = capitalize(month)
+  const getMonthEnglish = month => {
+    month = capitalize(month);
 
     for (item of AllMonths) {
-        if (item.includes(month)) {
-            return item[0]
-        }
+      if (item.includes(month)) {
+        return item[0];
+      }
     }
-}
+  };
 
-const getAvailableTime = () => {
+  const getAvailableTime = () => {
     let g_availableTime = [];
     // Percorre todos os elementos com atributo 'data-keyboardactiontype="0;1"' e 'data-focusable'
     document.querySelectorAll('[data-keyboardactiontype="0;1"][data-focusable] ').forEach(element => {
@@ -666,10 +666,8 @@ const getAvailableTime = () => {
         let g_hour = element.innerText.split('\n').pop();
         let g_date = g_day + ' - ' + g_hour;
 
-
-        let g_day_date = g_day.replaceAll(' de', '').replace(g_month, getMonthEnglish(g_month))
-        g_day_date = new Date(Date.parse(g_day_date))
-
+        let g_day_date = g_day.replaceAll(' de', '').replace(g_month, getMonthEnglish(g_month));
+        g_day_date = new Date(Date.parse(g_day_date));
 
         // Verifica se o dia é maior que o dia atual e adiciona o horário disponível à lista
         if (g_day_date > new Date()) {
