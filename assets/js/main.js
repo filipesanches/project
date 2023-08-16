@@ -643,7 +643,7 @@ const casesNotes = () => {
 
   // Função que transorma a primeira letra em maiuscula
   const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
-  
+
   // Função retorna o mês em ingles
   const getMonthEnglish = month => {
     month = capitalize(month);
