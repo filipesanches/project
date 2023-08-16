@@ -626,7 +626,34 @@ const casesNotes = () => {
   };
 
   // Função que obtém os horários disponíveis para agendamento no calendário
-  const getAvailableTime = () => {
+  const AllMonths = [
+    ["January", "Janeiro", "Enero"],
+    ["February", "Fevereiro", "Febrero"],
+    ["March", "Março", "Marzo"],
+    ["April", "Abril", "Abril"],
+    ["May", "Maio", "Mayo"],
+    ["June", "Junho", "Junio"],
+    ["July", "Julho", "Julio"],
+    ["August", "Agosto", "Agosto"],
+    ["September", "Setembro", "Septiembre"],
+    ["October", "Outubro", "Octubre"],
+    ["November", "Novembro", "Noviembre"],
+    ["December", "Dezembro", "Diciembre"]
+]
+
+const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+
+const getMonthEnglish = (month) => {
+    month = capitalize(month)
+
+    for (item of AllMonths) {
+        if (item.includes(month)) {
+            return item[0]
+        }
+    }
+}
+
+const getAvailableTime = () => {
     let g_availableTime = [];
     // Percorre todos os elementos com atributo 'data-keyboardactiontype="0;1"' e 'data-focusable'
     document.querySelectorAll('[data-keyboardactiontype="0;1"][data-focusable] ').forEach(element => {
@@ -635,10 +662,17 @@ const casesNotes = () => {
       if (elementText.includes('Availability Slot') || elementText.includes('Tag Implementation')) {
         // Extrai o dia e a hora disponível do elemento
         let g_day = element.parentElement.innerText.split('\n')[0].split(', ').pop();
+        let g_month = g_day.split(' ')[2];
         let g_hour = element.innerText.split('\n').pop();
         let g_date = g_day + ' - ' + g_hour;
+
+
+        let g_day_date = g_day.replaceAll(' de', '').replace(g_month, getMonthEnglish(g_month))
+        g_day_date = new Date(Date.parse(g_day_date))
+
+
         // Verifica se o dia é maior que o dia atual e adiciona o horário disponível à lista
-        if (+g_day.split(' ')[0] > new Date().getDate()) {
+        if (g_day_date > new Date()) {
           if (!g_availableTime.includes(g_date)) {
             g_availableTime.push(g_date);
           } else {
@@ -943,7 +977,9 @@ const casesNotes = () => {
       });
 
       //Aplica valor no campo screenshots para colar os prints
-      document.querySelector("#screenshots-agendamento").value = `Google ADS Screenshots:\n\nGoogle Analytics Screenshots:\n\nGoogle Tag Manager Screenshots:\n\nGoogle Tag Assistant Screenshots:\n`
+      document.querySelector(
+        '#screenshots-agendamento'
+      ).value = `Google ADS Screenshots:\n\nGoogle Analytics Screenshots:\n\nGoogle Tag Manager Screenshots:\n\nGoogle Tag Assistant Screenshots:\n`;
 
       // Popula o elemento com o ID '#tags-implement-agendamento' com checkboxes e labels baseados nas tags da propriedade 'tagsImplement'
       const tagsElement = document.querySelector('#tags-implement-agendamento');
