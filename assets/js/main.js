@@ -548,17 +548,20 @@ const casesNotes = () => {
    <p><b>Substatus:</b> ${substatusValue}</p>
    <p><b>Reason/Comments:</b> ${reasonValue}</p>
    <p><b>O anunciante estava de acordo com a gravação da chamada para fins de treinamento e qualidade?:</b> ${gravacao_qaValue}</p>
-   <!--
-   <p><b>Implementação feita via GTM ?:</b> ${/*gtmValue*/}</p>
-   <p><b>Anunciante tinha Backup ?:</b> ${/*backupValue*/}</p>
-   <p><b>Conversão testada no Tag Assistant?:</b> ${/*assistantValue*/}</p>
-   -->
+   <!--Partes Removidas-->
    <p><b>On Call Comments:</b> ${commentsValueFormateed}</p>
    <p><b>Tags Implemented:</b><br> ${tagsImplement.join('<br/>')}</p>
    <p><b>Screenshots:</b><br> ${screenshotsValue.split('\n').join('<br/>')}</p>
    <p><b>Multiple CIDs:</b> ${mcidsValue}</p>
    <p><b>*Bad Lead: </b><br> ${badValues.join('<br/>')}</p>
   `;
+    /**
+     * Partes Removidas
+     * <p><b>Implementação feita via GTM ?:</b> ${ gtmValue}</p>
+     * <p><b>Anunciante tinha Backup ?:</b> $ {backupValue}</p>
+     * <p><b>Conversão testada no Tag Assistant?:</b> $ {assistantValue}</p>
+     */
+
     //Chama a função para abrir e criar e colar a template
     createNote(noteHTML);
   };
