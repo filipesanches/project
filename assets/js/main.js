@@ -549,9 +549,9 @@ const casesNotes = () => {
    <p><b>Reason/Comments:</b> ${reasonValue}</p>
    <p><b>O anunciante estava de acordo com a gravação da chamada para fins de treinamento e qualidade?:</b> ${gravacao_qaValue}</p>
    <!--
-   <p><b>Implementação feita via GTM ?:</b> ${gtmValue}</p>
-   <p><b>Anunciante tinha Backup ?:</b> ${backupValue}</p>
-   <p><b>Conversão testada no Tag Assistant?:</b> ${assistantValue}</p>
+   <p><b>Implementação feita via GTM ?:</b> ${/*gtmValue*/}</p>
+   <p><b>Anunciante tinha Backup ?:</b> ${/*backupValue*/}</p>
+   <p><b>Conversão testada no Tag Assistant?:</b> ${/*assistantValue*/}</p>
    -->
    <p><b>On Call Comments:</b> ${commentsValueFormateed}</p>
    <p><b>Tags Implemented:</b><br> ${tagsImplement.join('<br/>')}</p>
