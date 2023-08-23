@@ -403,3 +403,10 @@
 #speakeasy-id-container > button {
   cursor: pointer;
 }
+
+/*
+correção qa gravação
+*/
+.container-qa-gravacao {
+  display: flex;
+}
