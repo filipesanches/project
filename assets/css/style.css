@@ -409,4 +409,5 @@ correção qa gravação
 */
 .container-qa-gravacao {
   display: flex;
+  flex-direction: column;
 }
