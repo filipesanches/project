@@ -487,7 +487,8 @@ const casesNotes = () => {
     const substatusSelect = document.querySelector('#substatus-agendamento');
     const substatusValue = substatusSelect.options[substatusSelect.selectedIndex].innerText.trim();
     const reasonValue = document.querySelector('#reason-agendamento').value;
-    const gravacao_qaValue = document.querySelector('input[name="gravacao_qa-agendamento"]:checked').value ? document.querySelector('input[name="gravacao_qa-agendamento"]:checked').value : '';
+    const gravacao_qaElement = document.querySelector('input[name="gravacao_qa-agendamento"]:checked')
+    const gravacao_qaValue = gravacao_qaElement ? gravacao_qaElement.value : '';
     // const gtmValue = document.querySelector('#gtm-agendamento').value;
     // const backupValue = document.querySelector('#backup-agendamento').value;
     // const assistantValue = document.querySelector('#assistant-agendamento').value;
