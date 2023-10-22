@@ -1169,7 +1169,7 @@ const casesNotes = () => {
         const option = document.createElement('option');
         option.value = email.value; // O valor da opção é definido a partir da chave 'valor'
         option.innerText = email.description; // O texto da opção é definido com base na chave 'description'
-        document.querySelector('#substatus-agendamento').appendChild(option); // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
+        document.querySelectorAll('[id*="substatus-"]').forEach(e=>{e.appendChild(option)}); // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
       });
 
       //Aplica valor no campo screenshots para colar os prints
