@@ -1326,14 +1326,31 @@ const casesNotes = () => {
             const inputSpeakeasy = document.querySelector(
               '#speakeasy-agendamento',
             );
+            const inputSpeakeasyLs = document.querySelector(
+              '#speakeasy-live-transfer',
+            );
             document.querySelectorAll('.speakeasy-id').forEach((e) => {
-              e.addEventListener('click', (el) => {
-                if (inputSpeakeasy.value === '') {
-                  inputSpeakeasy.value = el.target.textContent;
-                } else {
-                  inputSpeakeasy.value += ', ' + el.target.textContent;
-                }
-              });
+              if (
+                document
+                  .querySelector('#live-transfer')
+                  .classList.contains('highlight')
+              ) {
+                e.addEventListener('click', (el) => {
+                  if (inputSpeakeasyLs.value === '') {
+                    inputSpeakeasyLs.value = el.target.textContent;
+                  } else {
+                    inputSpeakeasyLs.value += ', ' + el.target.textContent;
+                  }
+                });
+              } else {
+                e.addEventListener('click', (el) => {
+                  if (inputSpeakeasy.value === '') {
+                    inputSpeakeasy.value = el.target.textContent;
+                  } else {
+                    inputSpeakeasy.value += ', ' + el.target.textContent;
+                  }
+                });
+              }
             });
             document
               .querySelector(
