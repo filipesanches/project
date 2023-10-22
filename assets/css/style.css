@@ -394,7 +394,7 @@
 #notes > #abas > [data-abas],
 #notes > .all-content > [id^='content-'] > div > div > p > input,
 #notes > .all-content > [id^='content-'] > div > div > p > label,
-#notes #hotkey-agendamento,
+#notes .hotkey-agendamento-ls,
 #notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email],
 #notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p,
 #notes > .all-content > [id^='content-'] > div > span > #refreshCalendar,
