@@ -1170,7 +1170,6 @@ const casesNotes = () => {
         option.value = email.value; // O valor da opção é definido a partir da chave 'valor'
         option.innerText = email.description; // O texto da opção é definido com base na chave 'description'
         document.querySelector('#substatus-agendamento').appendChild(option);
-        document.querySelector('#substatus-live-transfer').appendChild(option);
         // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
       });
 
