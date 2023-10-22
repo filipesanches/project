@@ -1164,7 +1164,7 @@ const casesNotes = () => {
   ).then((e) => e.json());
   dadosQa
     .then((data) => {
-      // Popula o elemento select com opções baseadas nos emails da propriedade 'emailList'
+      // Popula o elemento select com opções baseadas nos emails da propriedade 'emailList' cases
       data.emailList.forEach((email, i) => {
         const option = document.createElement('option');
         option.value = email.value; // O valor da opção é definido a partir da chave 'valor'
@@ -1172,6 +1172,16 @@ const casesNotes = () => {
         document.querySelector('#substatus-agendamento').appendChild(option);
         // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
       });
+
+      // Popula o elemento select com opções baseadas nos emails da propriedade 'emailList' live tranfer
+      data.emailList.forEach((email, i) => {
+        const option = document.createElement('option');
+        option.value = email.value; // O valor da opção é definido a partir da chave 'valor'
+        option.innerText = email.description; // O texto da opção é definido com base na chave 'description'
+        document.querySelector('#substatus-live-transfer').appendChild(option);
+        // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
+      });
+
 
       //Aplica valor no campo screenshots para colar os prints
       document.querySelectorAll('[id*="screenshots-"]').forEach((e) => {
