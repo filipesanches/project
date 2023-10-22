@@ -37,7 +37,7 @@
     </p>
     <p class="card">
       <label class="label-card" for="gravacao_qa-agendamento">O anunciante estava de acordo com a gravação da chamada para fins de treinamento e qualidade?:</label>
-      <span class="container-qa-gravacao">
+      <span class="container-radios">
         <span>
           <input type="radio" name="gravacao_qa-agendamento" id="gravacao_qa-agendamento-sim" value="Sim" />
           <label for="gravacao_qa-agendamento-sim">Yes</label>
@@ -126,7 +126,104 @@
       </p>
     </div>
   </div>
+
   <div id="content-2" class="hide">
+    <p class="card">
+      <label class="label-card" for="speakeasy-live-transfer">Speakeasy ID:</label>
+      <input type="text" name="speakeasy-live-transfer" id="speakeasy-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="substatus-live-transfer">Substatus:</label>
+      <select name="substatus-live-transfer" id="substatus-live-transfer"></select>
+    </p>
+    <p class="card">
+      <label class="label-card" for="reason-live-transfer">Reason/Comments:</label>
+      <input type="text" name="reason-live-transfer" id="reason-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="gtm-live-transfer">Implementação feita via GTM ?:</label>
+      <span class="container-radios">
+        <span>
+          <input type="radio" name="gtm-live-transfer" id="gtm-live-transfer-sim" value="Sim" />
+          <label for="gtm-live-transfer-sim">Yes</label>
+        </span>
+        <span>
+          <input type="radio" name="gtm-live-transfer" id="gtm-live-transfer-nao" value="Não" />
+          <label for="gtm-live-transfer-nao">No</label>
+        </span>
+      </span>
+    </p>
+    <p class="card">
+      <label class="label-card" for="backup-live-transfer">Anunciante tinha Backup ?:</label>
+      <span class="container-radios">
+        <span>
+          <input type="radio" name="backup-live-transfer" id="backup-live-transfer-sim" value="Sim" />
+          <label for="backup-live-transfer-sim">Yes</label>
+        </span>
+        <span>
+          <input type="radio" name="backup-live-transfer" id="backup-live-transfer-nao" value="Não" />
+          <label for="backup-live-transfer-nao">No</label>
+        </span>
+        <span>
+          <input type="radio" name="backup-live-transfer" id="backup-live-transfer-gtm" value="GTM" />
+          <label for="backup-live-transfer-gtm">No</label>
+        </span>
+      </span>
+    </p>
+    <p class="card">
+      <label class="label-card" for="convtest-live-transfer">Conversão testada no Tag Assistant?:</label>
+      <span class="container-radios">
+        <span>
+          <input type="radio" name="convtest-live-transfer" id="convtest-live-transfer-sim" value="Sim" />
+          <label for="convtest-live-transfer-sim">Yes</label>
+        </span>
+        <span>
+          <input type="radio" name="convtest-live-transfer" id="convtest-live-transfer-nao" value="Não" />
+          <label for="convtest-live-transfer-nao">No</label>
+        </span>
+      </span>
+    </p>
+    <p class="card">
+      <label class="label-card" for="oncall-live-transfer">On Call Comments:</label>
+      <input type="text" name="oncall-live-transfer" id="oncall-live-transfer" />
+    </p>
+    <div class="card">
+      <span class="label-card" for="">Tags Implemented:</span>
+      <div id="tags-implement-live-transfer">
+        <p>
+          <input type="checkbox" id="tag-other-live-transfer" name="tag-other-live-transfer" />
+          <label for="tag-other-live-transfer">
+            <input type="text" name="tag-other-input-live-transfer" id="tag-other-input-live-transfer"
+              placeholder="Other Tag" />
+          </label>
+        </p>
+      </div>
+    </div>
+    <p class="card">
+      <label class="label-card" for="screenshots-live-transfer">Screenshots:</label>
+      <input type="text" name="screenshots-live-transfer" id="screenshots-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="cids-live-transfer">Multiple CIDs:</label>
+      <input type="text" name="cids-live-transfer" id="cids-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="site-live-transfer">Site do anunciante:</label>
+      <input type="text" name="site-live-transfer" id="site-live-transfer" />
+    </p>
+    
+
+     
+    
+     
+    
+    
+
+     
+
+
+
+<!--
     <p class="card">
       <label class="label-card" for="cid-live-transfer">CID:</label>
       <input type="text" name="cid-live-transfer" id="cid-live-transfer" />
@@ -159,6 +256,7 @@
       <label class="label-card" for="tel-live-transfer">Numero de Telefone do Anunciante:</label>
       <input type="text" name="tel-live-transfer" id="tel-live-transfer" />
     </p>
+-->
     <div id="buttons-live-transfer">
       <p>
         <button id="reset-note-live-transfer" class="button-reset" title="Apagar todos os campos!">Reset</button>

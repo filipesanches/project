@@ -407,7 +407,7 @@
 /*
 correção qa gravação
 */
-.container-qa-gravacao {
+.container-radios {
   display: flex;
   flex-direction: column;
 }
