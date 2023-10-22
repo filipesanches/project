@@ -36,9 +36,7 @@
       <input type="text" name="reason-agendamento" id="reason-agendamento" />
     </p>
     <p class="card">
-      <label class="label-card" for="gravacao_qa-agendamento">O anunciante estava de acordo com a gravação da chamada
-        para fins de
-        treinamento e qualidade?:</label>
+      <label class="label-card" for="gravacao_qa-agendamento">O anunciante estava de acordo com a gravação da chamada para fins de treinamento e qualidade?:</label>
       <span class="container-radios">
         <span>
           <input type="radio" name="gravacao_qa-agendamento" id="gravacao_qa-agendamento-sim" value="Sim" />
@@ -54,24 +52,7 @@
           <label for="gravacao_qa-agendamento-caso-pt-br">Case pt-BR</label>
         </span>
       </span>
-      <!--
-      <input type="text" name="gravacao_qa-agendamento" id="gravacao_qa-agendamento" />
-        -->
     </p>
-    <!--
-    <p class="card">
-      <label class="label-card" for="gtm-agendamento">Implementação feita via GTM ?:</label>
-      <input type="text" name="gtm-agendamento" id="gtm-agendamento" />
-    </p>
-    <p class="card">
-      <label class="label-card" for="backup-agendamento">Anunciante tinha Backup ?:</label>
-      <input type="text" name="backup-agendamento" id="backup-agendamento" />
-    </p>
-    <p class="card">
-      <label class="label-card" for="assistant-agendamento">Conversão testada no Tag Assistant?:</label>
-      <input type="text" name="assistant-agendamento" id="assistant-agendamento" />
-    </p>
-  -->
     <p class="card">
       <label class="label-card" for="comments-agendamento">On Call Comments:</label>
       <textarea name="comments-agendamento" id="comments-agendamento" cols="30" rows="10"></textarea>
@@ -112,7 +93,7 @@
       <span class="label-card">Hotkey and Language</span>
       <hotkey>
         <h3>
-          Hotkey: <span id="hotkey-agendamento" class="buttons-blue">-</span>
+          Hotkey: <span class="hotkey-agendamento-ls" class="buttons-blue">-</span>
         </h3>
         <h4>Select a language:</h4>
         <input type="radio" id="spanish" name="language-agendamento" value="Spanish" />
@@ -256,11 +237,26 @@
     </p>
 -->
     <div id="buttons-live-transfer">
+
+      <span class="label-card">Hotkey and Language</span>
+      <hotkey>
+        <h3>
+          Hotkey: <span class="hotkey-agendamento-ls" class="buttons-blue">-</span>
+        </h3>
+        <h4>Select a language:</h4>
+        <input type="radio" id="spanish" name="language-agendamento" value="Spanish" />
+        <label for="spanish">Spanish</label><br />
+        <input type="radio" id="spanish-latam" name="language-agendamento" value="Spanish (Latin America)" />
+        <label for="spanish-latam">Spanish (Latin America)</label><br />
+        <input type="radio" id="portuguese" name="language-agendamento" value="Portuguese" />
+        <label for="portuguese">Portuguese</label><br />
+        <input type="radio" id="portuguese-br" name="language-agendamento" value="Portuguese (Brazil)" />
+        <label for="portuguese-br">Portuguese (Brazil)</label><br />
+      </hotkey>
       <p>
         <button id="reset-note-live-transfer" class="button-reset" title="Apagar todos os campos!">
           Reset
         </button>
-        <!--<button id="reload-note" onclick='preencherCampos()' title="Recuperar última nota preenchida!">RECOVER</button>-->
         <button id="gerar-note-live-transfer" class="button-success" title="Gerar nota!">
           Gerar
         </button>

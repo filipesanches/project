@@ -222,10 +222,14 @@ const casesNotes = () => {
     });
   };
 
-  // Função para definir o conteúdo do elemento com o ID "hotkey-agendamento" com o valor selecionado
+  // Função para definir o conteúdo do elemento com o classe "hotkey-agendamento-ls" com o valor selecionado
   const setHotkeyValue = (value) => {
-    const hotkeyValueElement = document.querySelector('#hotkey-agendamento');
-    hotkeyValueElement.textContent = value;
+    const hotkeyValueElement = document.querySelectorAll(
+      '.hotkey-agendamento-ls',
+    );
+    hotkeyValueElement.forEach((e) => {
+      e.textContent = value;
+    });
   };
 
   // Função para lidar com a mudança no elemento com o ID "substatus-agendamento"
@@ -1182,7 +1186,6 @@ const casesNotes = () => {
         // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
       });
 
-
       //Aplica valor no campo screenshots para colar os prints
       document.querySelectorAll('[id*="screenshots-"]').forEach((e) => {
         e.value = `Google ADS Screenshots:\n\nGoogle Analytics Screenshots:\n\nGoogle Tag Manager Screenshots:\n\nGoogle Tag Assistant Screenshots:\n`;
@@ -1363,17 +1366,22 @@ const casesNotes = () => {
   document
     .querySelector('#substatus-agendamento')
     .addEventListener('change', handleSubstatusChange);
+  document
+    .querySelector('#substatus-live-transfer')
+    .addEventListener('change', handleSubstatusChange);
 
-  // Obtém o elemento do botão com a classe '#hotkey-agendamento'
-  const hotkey = document.querySelector('#hotkey-agendamento');
+  // Obtém o elemento do botão com a classe 'hotkey-agendamento-ls'
+  const hotkey = document.querySelectorAll('.hotkey-agendamento-ls');
   // Adiciona um ouvinte de clique no botão
-  hotkey.addEventListener('click', (e) => {
-    // Obtém o valor da hotkey clicada
-    const hotkeyValue = e.target.textContent;
-    // Registra a hotkey clicada no console
-    consoleSucess(`Hotkey clicada: ${e.target.textContent}`);
-    // Chama a função que trata o clique na hotkey
-    handleHotkeyClick(hotkeyValue);
+  hotkey.forEach((e) => {
+    e.addEventListener('click', (e) => {
+      // Obtém o valor da hotkey clicada
+      const hotkeyValue = e.target.textContent;
+      // Registra a hotkey clicada no console
+      consoleSucess(`Hotkey clicada: ${e.target.textContent}`);
+      // Chama a função que trata o clique na hotkey
+      handleHotkeyClick(hotkeyValue);
+    });
   });
 
   // Obtém o elemento do botão com o id '#gerar-note-agendamento'
