@@ -1312,50 +1312,52 @@ const casesNotes = () => {
   });
 
   // Adiciona um ouvinte de evento de clique para cada botão que possui um ID "get-speakeasy-id"
-  document.querySelector('#get-speakeasy-id').addEventListener('click', () => {
-    //Chama a função getSpeakeasyId
-    getSpeakeasyId()
-      .then((resultado) => {
-        // A função getSpeakeasyId foi concluída e o array dataCase está completo
-        console.log('Array speakeasyIDCase completo:', resultado);
+  document.querySelectorAll('.get-speakeasy-id').forEach((e) =>
+    e.addEventListener('click', () => {
+      //Chama a função getSpeakeasyId
+      getSpeakeasyId()
+        .then((resultado) => {
+          // A função getSpeakeasyId foi concluída e o array dataCase está completo
+          console.log('Array speakeasyIDCase completo:', resultado);
 
-        // Chama a função que deseja executar quando o array estiver completo
-        createSpeakeasyElements(speakeasyIDCase.reverse());
-        setTimeout(() => {
-          const inputSpeakeasy = document.querySelector(
-            '#speakeasy-agendamento',
-          );
-          document.querySelectorAll('.speakeasy-id').forEach((e) => {
-            e.addEventListener('click', (el) => {
-              if (inputSpeakeasy.value === '') {
-                inputSpeakeasy.value = el.target.textContent;
-              } else {
-                inputSpeakeasy.value += ', ' + el.target.textContent;
-              }
-            });
-          });
-          document
-            .querySelector(
-              '[debug-id="case-log-filter"] > dropdown-button [role="img"]',
-            )
-            .click();
+          // Chama a função que deseja executar quando o array estiver completo
+          createSpeakeasyElements(speakeasyIDCase.reverse());
           setTimeout(() => {
-            const eventLogs = Array.from(
-              document.querySelectorAll('div'),
-            ).filter((element) => {
-              return element.textContent.includes('Event log');
+            const inputSpeakeasy = document.querySelector(
+              '#speakeasy-agendamento',
+            );
+            document.querySelectorAll('.speakeasy-id').forEach((e) => {
+              e.addEventListener('click', (el) => {
+                if (inputSpeakeasy.value === '') {
+                  inputSpeakeasy.value = el.target.textContent;
+                } else {
+                  inputSpeakeasy.value += ', ' + el.target.textContent;
+                }
+              });
             });
-            eventLogs[eventLogs.length - 1].click();
-            document.querySelector('[debug-id="apply-filter"]').click();
-            homeCasesElement.click();
-          }, 500);
+            document
+              .querySelector(
+                '[debug-id="case-log-filter"] > dropdown-button [role="img"]',
+              )
+              .click();
+            setTimeout(() => {
+              const eventLogs = Array.from(
+                document.querySelectorAll('div'),
+              ).filter((element) => {
+                return element.textContent.includes('Event log');
+              });
+              eventLogs[eventLogs.length - 1].click();
+              document.querySelector('[debug-id="apply-filter"]').click();
+              homeCasesElement.click();
+            }, 500);
+          });
+        })
+        .catch((error) => {
+          // Trata qualquer erro que ocorra durante o processo
+          console.error('Ocorreu um erro:', error);
         });
-      })
-      .catch((error) => {
-        // Trata qualquer erro que ocorra durante o processo
-        console.error('Ocorreu um erro:', error);
-      });
-  });
+    }),
+  );
 
   // Adiciona um ouvinte de evento de clique para cada botão que possui um ID começando com "reset-note"
   document.querySelectorAll('[id^="reset-note"]').forEach((button) => {
