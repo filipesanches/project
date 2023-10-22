@@ -735,7 +735,7 @@ const casesNotes = () => {
     <p><b>Conversão testada no Tag Assistant?:</b> ${convtestValue}</p>
     <p><b>On Call Comments:</b> ${commentsValueFormateed}</p>
     <p><b>Tags Implemented:</b></br>${tagsImplement.join('<br/>')}</p>
-    <p><b>Screenshots:</b> ${screenshotsValue}</p>
+    <p><b>Screenshots:</b><br>${screenshotsValue.split('\n').join('<br/>')}</p>
     <p><b>Multiple CIDs:</b> ${mcidsValue}</p>
     <p><b>Site do anunciante:</b> ${siteValue}</p>
   `;
@@ -1165,23 +1165,15 @@ const casesNotes = () => {
   dadosQa
     .then((data) => {
       // Popula o elemento select com opções baseadas nos emails da propriedade 'emailList' cases
+
+      const option = document.createElement('option');
       data.emailList.forEach((email, i) => {
-        const option = document.createElement('option');
         option.value = email.value; // O valor da opção é definido a partir da chave 'valor'
         option.innerText = email.description; // O texto da opção é definido com base na chave 'description'
-        document.querySelector('#substatus-agendamento').appendChild(option);
-        // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
       });
-
-      // Popula o elemento select com opções baseadas nos emails da propriedade 'emailList' live tranfer
-      data.emailList.forEach((email, i) => {
-        const option = document.createElement('option');
-        option.value = email.value; // O valor da opção é definido a partir da chave 'valor'
-        option.innerText = email.description; // O texto da opção é definido com base na chave 'description'
-        document.querySelector('#substatus-live-transfer').appendChild(option);
-        // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
-      });
-
+      document.querySelectorAll('[id*="substatus-"]').forEach((e) => {
+        e.appendChild(option);
+      }); // Adiciona a opção ao elemento select com o ID '#substatus-agendamento'
 
       //Aplica valor no campo screenshots para colar os prints
       document.querySelectorAll('[id*="screenshots-"]').forEach((e) => {
