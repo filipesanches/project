@@ -228,7 +228,7 @@
   padding: 5px;
 }
 
-#notes > .all-content > [id^='content-'] > div > .email-automatizado > p {
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p {
   display: flex;
   align-items: center;
   padding: 5px 20px;
@@ -242,18 +242,18 @@
   margin-right: 5px;
 }
 
-#notes > .all-content > [id^='content-'] > div > .email-automatizado > p > [data-email] {
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email] {
   color: var(--color-bar-button);
   padding: 0 5px;
 
   transition: color 0.5s ease-out;
 }
 
-#notes > .all-content > [id^='content-'] > div > .email-automatizado > p > [data-email]:hover {
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email]:hover {
   color: #e8776e;
 }
 
-#notes > .all-content > [id^='content-'] > div > .email-automatizado > p > [data-email]:active {
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email]:active {
   color: #34a853;
 }
 
@@ -394,8 +394,8 @@
 #notes > #abas > [data-abas],
 #notes > .all-content > [id^='content-'] > div > div > p > input,
 #notes > .all-content > [id^='content-'] > div > div > p > label,
-#notes .hotkey-agendamento-ls,
-#notes > .all-content > [id^='content-'] > div > .email-automatizado > p > [data-email],
+#notes #hotkey-agendamento,
+#notes > .all-content > [id^='content-'] > div > .email-automtizado > p > [data-email],
 #notes > .all-content > [id^='content-'] > div > #horarios-disponiveis > p,
 #notes > .all-content > [id^='content-'] > div > span > #refreshCalendar,
 #notes .buttons-blue,
@@ -407,7 +407,7 @@
 /*
 correção qa gravação
 */
-.container-radios {
+.container-qa-gravacao {
   display: flex;
   flex-direction: column;
 }
