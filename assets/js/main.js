@@ -1197,7 +1197,7 @@ const casesNotes = () => {
     }
   });
 };
-const structureHTML = fetch('https://filipesanches.github.io/teste/assets/html/estrutura.html').then(e => e.text());
+const structureHTML = fetch('https://filipesanches.github.io/project/assets/html/estrutura.html').then(e => e.text());
 structureHTML.then(e => {
   notes.innerHTML = e;
   casesNotes();
