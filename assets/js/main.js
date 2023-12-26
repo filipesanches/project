@@ -460,7 +460,8 @@ const casesNotes = () => {
   //   });
   // };
 
-  const createEmail = (hotkeyStr) => {
+  const createEmail = (hotkeyString) => {
+    const hotkeyStr = hotkeyString;
     consoleError(hotkeyStr);
     // Configura as opções para observar mudanças no documento inteiro
     const opcoes = {
@@ -472,20 +473,11 @@ const casesNotes = () => {
 
     const elements = [];
     const creteEmail = new MutationObserver((mutations) => {
+      console.log(mutations.target);
       mutations.forEach((mutation) => {
-        if (mutation.target.matches('[aria-label="Email body"]')) {
+        if (mutation.target.closest('[aria-label="Email body"]')) {
           elements.push(mutation.target);
           creteEmail.disconnect();
-          return;
-        }
-      });
-    });
-
-    const buttonInsertHotkey = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.target.matches('[aria-label="Insert canned response"]')) {
-          mutation.target.dispatchEvent(bubbleEventClick);
-          buttonInsertHotkey.disconnect();
           return;
         }
       });
@@ -503,7 +495,6 @@ const casesNotes = () => {
         buttonCreateEmail.dispatchEvent(bubbleEventClick);
         buttonCreateCard.dispatchEvent(bubbleEventBlur);
         creteEmail.observe(document, opcoes);
-        buttonInsertHotkey.observe(document, opcoes);
         (function procElementArray() {
           setTimeout(() => {
             if (elements.length > 0) {
@@ -511,15 +502,17 @@ const casesNotes = () => {
               const contentTop = elements[0].querySelector(
                 '#email-body-content-top',
               );
-
+              document
+                .querySelector('[aria-label="Insert canned response"]')
+                .click();
               setTimeout(() => {
                 const inputCR = document.querySelector(
                   'canned-response-dialog input',
                 );
                 console.log(elements);
+                contentTop.innerText = '';
                 inputCR.value = hotkeyStr;
                 inputCR.dispatchEvent(bubbleEventInput);
-                contentTop.innerText = '';
                 elements.length = 0;
                 const clickHotKey = new MutationObserver((mutations) => {
                   mutations.forEach((mutation) => {
@@ -535,7 +528,8 @@ const casesNotes = () => {
 
                 clickHotKey.observe(document, opcoes);
                 return;
-              }, 1000);
+              }, 1500);
+
               return;
             } else {
               procElementArray();
@@ -1287,9 +1281,7 @@ const casesNotes = () => {
 
   // Chamadas de Funções
   // Aplicação de estilos
-  createStyle(
-    'https://filipesanches.github.io/project/assets/css/style.css',
-  );
+  createStyle('https://filipesanches.github.io/project/assets/css/style.css');
   createStyle('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   // Aplica dragElement no elemeto notes
