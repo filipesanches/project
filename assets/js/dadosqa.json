@@ -65,6 +65,10 @@
       "value": "ts in oos seller"
     },
     {
+      "description": "IN - Troubleshooting [Transferred]",
+      "value": "ts in oost"
+    },
+    {
       "description": "IN - Other",
       "value": "ts in oth"
     },
@@ -79,10 +83,6 @@
     {
       "description": "SO - Troubleshooting Only",
       "value": "lg so oth"
-    },
-    {
-      "description": "IN - Troubleshooting [Transferred]",
-      "value": "ts in oost"
     },
     {
       "description": "SO - Verified No Recent Conversion",
