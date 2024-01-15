@@ -13,19 +13,11 @@
       "value": "ts as new"
     },
     {
-      "description": "AS - Work in Progress",
-      "value": "-"
-    },
-    {
       "description": "AS - Reschedule 1",
       "value": "ts as resched1"
     },
     {
       "description": "AS - Acceptable Reschedule",
-      "value": "ts as reschedok"
-    },
-    {
-      "description": "AS - Agent Reschedule",
       "value": "ts as reschedok"
     },
     {
@@ -43,10 +35,6 @@
     {
       "description": "NI - Attempted Contact",
       "value": "ts ni ac"
-    },
-    {
-      "description": "NI - Other",
-      "value": "ts ni oth"
     },
     {
       "description": "IN - Infeasible",
@@ -81,8 +69,20 @@
       "value": "ts in oth"
     },
     {
-      "description": "SO - Verified",
+      "description": "SO - Implementation Only",
       "value": "ts so verif"
+    },
+    {
+      "description": "SO - Education Only",
+      "value": "lg so oth"
+    },
+    {
+      "description": "SO - Troubleshooting Only",
+      "value": "lg so oth"
+    },
+    {
+      "description": "IN - Troubleshooting [Transferred]",
+      "value": "ts in oost"
     },
     {
       "description": "SO - Verified No Recent Conversion",
@@ -91,10 +91,6 @@
     {
       "description": "SO - Unverified",
       "value": "ts so unv"
-    },
-    {
-      "description": "SO - Verification Not Needed",
-      "value": "ts so vnn"
     }
   ],
   "tagsImplement": [
