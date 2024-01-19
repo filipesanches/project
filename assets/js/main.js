@@ -1092,6 +1092,12 @@ const casesNotes = () => {
       contentSpanID.classList.add('speakeasy-id');
       const contentSpanDate = document.createElement('span');
       contentSpanDate.id = 'speakeasy-id-date';
+      const contentSpanAudio = document.createElement('span')
+      const contentLinkAudio = document.createElement('a')
+      contentLinkAudio.href = `https://contactcenter.corp.google.com/quality/player/?recording_id=${item.id}`
+      contentLinkAudio.textContent = 'Ouvir Ligação'
+      contentLinkAudio.target = '_blank'
+      contentSpanAudio.appendChild(contentLinkAudio)
 
       // Definir atributos e conteúdo dos elementos com base nos dados do objeto
       contentSpanID.textContent = item.id;
@@ -1100,6 +1106,7 @@ const casesNotes = () => {
       // Montar a estrutura do documento para cada item
       contentP.appendChild(contentSpanID);
       contentP.appendChild(contentSpanDate);
+      contentP.appendChild(contentSpanAudio)
       containerDiv.appendChild(contentP);
     }
 
