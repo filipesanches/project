@@ -5,88 +5,96 @@
       "value": "-"
     },
     {
+      "description": "NRP - SO - IN Not Reachable ",
+      "value": "ts no res"
+    },
+    {
       "description": "New - Confirmation Email",
       "value": "ts as new"
     },
     {
-      "description": "AS - Reschedule 1 (ts as resched1)",
+      "description": "AS - Reschedule 1",
       "value": "ts as resched1"
     },
     {
-      "description": "AS - Acceptable Reschedule (ts as reschedok)",
+      "description": "AS - Acceptable Reschedule",
       "value": "ts as reschedok"
     },
     {
-      "description": "AS - Agent Reschedule",
-      "value": "ts as reschedok"
-    },
-    {
-      "description": "NI - Awaiting Inputs (ts ni ai)",
+      "description": "NI - Awaiting Inputs",
       "value": "ts ni ai"
     },
     {
-      "description": "NI - In Consult (ts ni ic)",
+      "description": "NI - In Consult",
       "value": "ts ni ic"
     },
     {
-      "description": "NI - Awaiting Validation (ts ni av)",
+      "description": "NI - Awaiting Validation",
       "value": "ts ni av"
     },
     {
-      "description": "NI - Attempted Contact (ts ni ac)",
-      "value": "ts ni ac"
+      "description": "NI - Awaiting Validation",
+      "value": "ts ni av"
     },
     {
       "description": "NI - Other (ts ni oth)",
       "value": "ts ni oth"
     },
     {
-      "description": "IN - Infeasible (ts in inf)",
+      "description": "IN - Infeasible",
       "value": "ts in inf"
     },
     {
-      "description": "IN - Not Reachable (ts in nrch)",
+      "description": "IN - Not Reachable",
       "value": "ts in nrch"
     },
     {
-      "description": "IN - Not Interested (ts in ni)",
+      "description": "IN - Not Interested",
       "value": "ts in ni"
     },
     {
-      "description": "IN - Not Ready (ts in nrdy)",
+      "description": "IN - Not Ready",
       "value": "ts in nrdy"
     },
     {
-      "description": "IN - Out of Scope - Rerouted to Internal Team (ts in oost)",
+      "description": "IN - Out of Scope - Rerouted to Internal Team",
       "value": "ts in oost"
     },
     {
-      "description": "IN - Out of Scope - Unable to Transfer (ts in oosu)",
+      "description": "IN - Out of Scope - Unable to Transfer",
       "value": "ts in oosu"
     },
     {
-      "description": "IN - Out of Scope - Email to Seller (ts in oos seller)",
+      "description": "IN - Out of Scope - Email to Seller",
       "value": "ts in oos seller"
     },
     {
-      "description": "IN - Other (ts in oth)",
+      "description": "IN - Troubleshooting [Transferred]",
+      "value": "ts in oost"
+    },
+    {
+      "description": "IN - Other",
       "value": "ts in oth"
     },
     {
-      "description": "SO - Verified (ts so verif)",
+      "description": "SO - Implementation Only",
       "value": "ts so verif"
     },
     {
-      "description": "SO - Verified No Recent Conversion (ts so verif nrc)",
+      "description": "SO - Education Only",
+      "value": "lg so oth"
+    },
+    {
+      "description": "SO - Troubleshooting Only",
+      "value": "lg so oth"
+    },
+    {
+      "description": "SO - Verified No Recent Conversion",
       "value": "ts so verif nrc"
     },
     {
-      "description": "SO - Unverified (ts so unv)",
+      "description": "SO - Unverified",
       "value": "ts so unv"
-    },
-    {
-      "description": "SO - Verification Not Needed (ts so vnn)",
-      "value": "ts so vnn"
     }
   ],
   "tagsImplement": [
