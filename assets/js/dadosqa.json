@@ -17,6 +17,14 @@
       "value": "ts as resched1"
     },
     {
+      "description": "AS - Agent Reschedule",
+      "value": "ts as reschedok"
+    },
+    {
+      "description": "AS - Acceptable Reschedule (ts as reschedok)",
+      "value": "ts as reschedok"
+    },
+    {
       "description": "AS - Acceptable Reschedule",
       "value": "ts as reschedok"
     },
