@@ -1,0 +1,213 @@
+<barra id="notesmoove">
+  <span class="material-icons">edit_note</span>
+  <span>Cases Notes 3.0</span>
+  <span>
+    <span class="material-icons" id="dark-mode">dark_mode</span>
+    <span class="material-icons minimize">minimize</span>
+  </span>
+</barra>
+
+<div id="abas">
+  <span id="agendamento" class="highlight" data-abas="content-1">Scheduling</span>
+  <span id="live-transfer" data-abas="content-2">Live Transfer</span>
+  <span id="automated-email" data-abas="content-3">Automated Email</span>
+  <span id="calendar" data-abas="content-4">Calendar</span>
+  <span id="alert-tab" data-abas="content-5">Alerts</span>
+  <span id="link-tab" data-abas="content-6">Links</span>
+</div>
+
+<section class="all-content">
+  <div id="content-1" class="hide show">
+    <p class="card">
+      <label class="label-card" for="speakeasy-agendamento">Speakeasy ID: <span id="get-speakeasy-id"
+          class="buttons-blue">Get Speakeasy ID</span></label>
+      <input type="text" name="speakeasy-agendamento" id="speakeasy-agendamento" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="oncal-agendamento">On Call( Call Started) signaled on time?:</label>
+      <input type="text" name="oncal-agendamento" id="oncal-agendamento" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="substatus-agendamento">Substatus:</label>
+      <select name="substatus-agendamento" id="substatus-agendamento"></select>
+    </p>
+    <p class="card">
+      <label class="label-card" for="reason-agendamento">Reason/Comments:</label>
+      <input type="text" name="reason-agendamento" id="reason-agendamento" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="gravacao_qa-agendamento">O anunciante estava de acordo com a gravação da chamada para fins de treinamento e qualidade?:</label>
+      <span class="container-qa-gravacao">
+        <span>
+          <input type="radio" name="gravacao_qa-agendamento" id="gravacao_qa-agendamento-sim" value="Sim" />
+          <label for="gravacao_qa-agendamento-sim">Yes</label>
+        </span>
+        <span>
+          <input type="radio" name="gravacao_qa-agendamento" id="gravacao_qa-agendamento-nao" value="Não" />
+          <label for="gravacao_qa-agendamento-nao">No</label>
+        </span>
+        <span>
+          <input type="radio" name="gravacao_qa-agendamento" id="gravacao_qa-agendamento-caso-pt-br"
+            value="Caso pt-BR" />
+          <label for="gravacao_qa-agendamento-caso-pt-br">Case pt-BR</label>
+        </span>
+      </span>
+      <!--
+      <input type="text" name="gravacao_qa-agendamento" id="gravacao_qa-agendamento" />
+        -->
+    </p>
+    <!--
+    <p class="card">
+      <label class="label-card" for="gtm-agendamento">Implementação feita via GTM ?:</label>
+      <input type="text" name="gtm-agendamento" id="gtm-agendamento" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="backup-agendamento">Anunciante tinha Backup ?:</label>
+      <input type="text" name="backup-agendamento" id="backup-agendamento" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="assistant-agendamento">Conversão testada no Tag Assistant?:</label>
+      <input type="text" name="assistant-agendamento" id="assistant-agendamento" />
+    </p>
+  -->
+    <p class="card">
+      <label class="label-card" for="comments-agendamento">On Call Comments:</label>
+      <textarea name="comments-agendamento" id="comments-agendamento" cols="30" rows="10"></textarea>
+    </p>
+    <div class="card">
+      <span class="label-card" for="">Tags Implemented:</span>
+      <div id="tags-implement-agendamento">
+        <p>
+          <input type="checkbox" id="tag-other-agendamento" name="tag-other-agendamento" />
+          <label for="tag-other-agendamento">
+            <input type="text" name="tag-other-input-agendamento" id="tag-other-input-agendamento"
+              placeholder="Other Tag" />
+          </label>
+        </p>
+      </div>
+    </div>
+    <p class="card">
+      <label class="label-card" for="screenshots-agendamento">Screenshots:</label>
+      <textarea name="screenshots-agendamento" id="screenshots-agendamento" cols="30" rows="10"></textarea>
+    </p>
+    <p class="card">
+      <label class="label-card" for="mcids-agendamento">Multiple CIDs:</label>
+      <input type="text" name="mcids-agendamento" id="mcids-agendamento" />
+    </p>
+    <div class="card">
+      <span class="label-card" for="">*Bad Lead:</span>
+      <div id="bad-leads-agendamento">
+        <p>
+          <input type="checkbox" id="bad-value-other-agendamento" name="bad-value-other-agendamento" />
+          <label for="bad-value-other-agendamento">
+            <input type="text" name="bad-value-other-input-agendamento" id="bad-value-other-input-agendamento"
+              placeholder="Other Bad-Lead" />
+          </label>
+        </p>
+      </div>
+    </div>
+    <div id="buttons-agendamento" class="card">
+      <span class="label-card">Hotkey and Language</span>
+      <hotkey>
+        <h3>Hotkey: <span id="hotkey-agendamento" class="buttons-blue">-</span></h3>
+        <h4>Select a language:</h4>
+        <input type="radio" id="spanish" name="language-agendamento" value="Spanish" />
+        <label for="spanish">Spanish</label><br />
+        <input type="radio" id="spanish-latam" name="language-agendamento" value="Spanish (Latin America)" />
+        <label for="spanish-latam">Spanish (Latin America)</label><br />
+        <input type="radio" id="portuguese" name="language-agendamento" value="Portuguese" />
+        <label for="portuguese">Portuguese</label><br />
+        <input type="radio" id="portuguese-br" name="language-agendamento" value="Portuguese (Brazil)" />
+        <label for="portuguese-br">Portuguese (Brazil)</label><br />
+      </hotkey>
+      <p>
+        <button id="reset-note-agendamento" class="button-reset" title="Apagar todos os campos!">Reset</button>
+        <button id="gerar-note-agendamento" class="button-success" title="Gerar nota!">Gerar</button>
+      </p>
+    </div>
+  </div>
+  <div id="content-2" class="hide">
+    <p class="card">
+      <label class="label-card" for="cid-live-transfer">CID:</label>
+      <input type="text" name="cid-live-transfer" id="cid-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="conversao-live-transfer">Conversão a ser feita:</label>
+      <input type="text" name="conversao-live-transfer" id="conversao-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="site-live-transfer">Site e onde devera ser feita a conversão:</label>
+      <input type="text" name="site-live-transfer" id="site-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="modelo-live-transfer">Modelo de Atribuição:</label>
+      <input type="text" name="modelo-live-transfer" id="modelo-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="nome-live-transfer">Nome do Anunciante:</label>
+      <input type="text" name="nome-live-transfer" id="nome-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="email-live-transfer">Email do Anunciante:</label>
+      <input type="text" name="email-live-transfer" id="email-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="ldap-live-transfer">Ldap do AM:</label>
+      <input type="text" name="ldap-live-transfer" id="ldap-live-transfer" />
+    </p>
+    <p class="card">
+      <label class="label-card" for="tel-live-transfer">Numero de Telefone do Anunciante:</label>
+      <input type="text" name="tel-live-transfer" id="tel-live-transfer" />
+    </p>
+    <div id="buttons-live-transfer">
+      <p>
+        <button id="reset-note-live-transfer" class="button-reset" title="Apagar todos os campos!">Reset</button>
+        <!--<button id="reload-note" onclick='preencherCampos()' title="Recuperar última nota preenchida!">RECOVER</button>-->
+        <button id="gerar-note-live-transfer" class="button-success" title="Gerar nota!">Gerar</button>
+      </p>
+    </div>
+  </div>
+  <div id="content-3" class="hide">
+    <div class="card">
+      <span class="label-card"><span class="material-icons icons">timer</span>Automated Email 10 minutes</span>
+      <div class="email-automtizado">
+        <p class="buttons-blue" data-email="emailpt10">Portugues</p>
+        <p class="buttons-blue" data-email="emailes10">Espanhol</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="label-card"><span class="material-icons icons">arrow_upward</span>Automated Email 3/9</span>
+      <div class="email-automtizado">
+        <p class="buttons-blue" data-email="email3_9_dia3pt">Portugues dia 3</p>
+        <p class="buttons-blue" data-email="email3_9_dia3es">Espanhol dia 3</p>
+        <p class="buttons-blue" data-email="email3_9_dia6pt">Portugues dia 6</p>
+        <p class="buttons-blue" data-email="email3_9_dia6es">Espanhol dia 6</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="label-card"><span class="material-icons icons">link</span>Link da reunião LT</span>
+      <div class="email-automtizado">
+        <p class="buttons-blue" data-email="link_reuniao_lt_pt">Link da reunião PT</p>
+      </div>
+    </div>
+  </div>
+  <div id="content-4" class="hide">
+    <div class="card">
+      <span class="label-card"><span class="material-icons icons">timer</span>Hours available in the week<span
+          id="refreshCalendar" class="material-icons">refresh</span></span>
+      <div id="horarios-disponiveis"></div>
+    </div>
+  </div>
+  <div id="content-5" class="hide">
+    <div class="card">
+      <span class="label-card"><span class="material-icons icons">warning</span> Fique Atento nas mudanças!</span>
+      <div id="alert-content"></div>
+    </div>
+  </div>
+  <div id="content-6" class="hide">
+    <div class="card">
+      <span class="label-card"><span class="material-icons icons">link</span> Links uteis!</span>
+      <div id="link-content"></div>
+    </div>
+  </div>
+</section>
