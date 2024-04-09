@@ -1,0 +1,232 @@
+{
+  "emailList": [
+    {
+      "description": "-",
+      "value": "-"
+    },
+    {
+      "description": "NRP - SO - IN Not Reachable ",
+      "value": "ts no res"
+    },
+    {
+      "description": "New - Confirmation Email",
+      "value": "ts as new"
+    },
+    {
+      "description": "AS - Reschedule 1",
+      "value": "ts as resched1"
+    },
+    {
+      "description": "AS - Agent Reschedule",
+      "value": "ts as reschedok"
+    },
+    {
+      "description": "AS - Acceptable Reschedule (ts as reschedok)",
+      "value": "ts as reschedok"
+    },
+    {
+      "description": "AS - Acceptable Reschedule",
+      "value": "ts as reschedok"
+    },
+    {
+      "description": "NI - Awaiting Inputs",
+      "value": "ts ni ai"
+    },
+    {
+      "description": "NI - In Consult",
+      "value": "ts ni ic"
+    },
+    {
+      "description": "NI - Awaiting Validation",
+      "value": "ts ni av"
+    },
+    {
+      "description": "NI - Attempted Contact (ts ni ac)",
+      "value": "ts ni ac"
+    },
+    {
+      "description": "NI - Other (ts ni oth)",
+      "value": "ts ni oth"
+    },
+    {
+      "description": "IN - Infeasible",
+      "value": "ts in inf"
+    },
+    {
+      "description": "IN - Not Reachable",
+      "value": "ts in nrch"
+    },
+    {
+      "description": "IN - Not Interested",
+      "value": "ts in ni"
+    },
+    {
+      "description": "IN - Not Ready",
+      "value": "ts in nrdy"
+    },
+    {
+      "description": "IN - Out of Scope - Rerouted to Internal Team",
+      "value": "ts in oost"
+    },
+    {
+      "description": "IN - Out of Scope - Unable to Transfer",
+      "value": "ts in oosu"
+    },
+    {
+      "description": "IN - Out of Scope - Email to Seller",
+      "value": "ts in oos seller"
+    },
+    {
+      "description": "IN - Troubleshooting [Transferred]",
+      "value": "ts in oost"
+    },
+    {
+      "description": "IN - Other",
+      "value": "ts in oth"
+    },
+    {
+      "description": "SO - Implementation Only",
+      "value": "ts so verif"
+    },
+    {
+      "description": "SO - Education Only",
+      "value": "lg so oth"
+    },
+    {
+      "description": "SO - Troubleshooting Only",
+      "value": "lg so oth"
+    },
+    {
+      "description": "SO - Verified No Recent Conversion",
+      "value": "ts so verif nrc"
+    },
+    {
+      "description": "SO - Unverified",
+      "value": "ts so unv"
+    }
+  ],
+  "tagsImplement": [
+    "Ads Conversion Tracking",
+    "Ads Conversion Tracking Troubleshooting",
+    "Ads Dynamic Remarketing",
+    "Ads Enhanced Conversions",
+    "Ads Remarketing",
+    "Ads Website Call Conversion",
+    "Analytics Cross Domain Tracking",
+    "Analytics Dynamic Remarketing",
+    "Analytics E-Commerce Tracking",
+    "Analytics Enhanced E-Commerce Tracking",
+    "Analytics Event Tracking",
+    "Analytics Health Check",
+    "Analytics Remarketing",
+    "Analytics Setup",
+    "Analytics Troubleshooting",
+    "Consent Mode",
+    "Fix Sitewide Tagging (OGT & CT)",
+    "Google Analytics 4 - Migration",
+    "Google Analytics 4 E-Commerce Migration",
+    "Google Tag Manager Installation",
+    "Shopping Onboarding",
+    "Shopping Feed Optimization"
+  ],
+  "badList": [
+    {
+      "description": "Informações de contato erradas | BAD LEAD - Wrong contact information",
+      "value": "BAD LEAD - Wrong contact information"
+    },
+    {
+      "description": "Informações de contato ausentes | BAD LEAD - Missing contact information",
+      "value": "BAD LEAD - Missing contact information"
+    },
+    {
+      "description": "Task incorreta | BAD LEAD - Wrong task",
+      "value": "BAD LEAD - Wrong task"
+    },
+    {
+      "description": "Cliente não estava ciente da consultoria | BAD LEAD - Client wasn\"t aware of the appointment",
+      "value": "BAD LEAD - Client wasn\"t aware of the appointment"
+    },
+    {
+      "description": "URL incorreta | BAD LEAD - Wrong URL",
+      "value": "BAD LEAD - Wrong URL"
+    },
+    {
+      "description": "URL ausente | BAD LEAD - URL not provided",
+      "value": "BAD LEAD - URL not provided"
+    },
+    {
+      "description": "Nome do cliente errado | BAD LEAD - Wrong client\"s name",
+      "value": "BAD LEAD - Wrong client\"s name"
+    },
+    {
+      "description": "Cliente não está interessado na consultoria | BAD LEAD - Client is not interested",
+      "value": "BAD LEAD - Client is not interested"
+    },
+    {
+      "description": "Cliente não possui acessos administrativos | BAD LEAD - No admin access",
+      "value": "BAD LEAD - No admin access"
+    },
+    {
+      "description": "Task sem detalhes necessários para a implementação | BAD LEAD - Task without details/instructions",
+      "value": "BAD LEAD - Task without details/instructions"
+    },
+    {
+      "description": "Conta suspensa por política | BAD LEAD - Account suspended",
+      "value": "BAD LEAD - Account suspended"
+    },
+    {
+      "description": "CID Errado | BAD LEAD - Wrong CID",
+      "value": "BAD LEAD - Wrong CID"
+    },
+    {
+      "description": "Pedido fora de escopo | BAD LEAD - Solicitation Out of Scope",
+      "value": "BAD LEAD - Solicitation Out of Scope"
+    },
+    {
+      "description": "Idioma Errado | BAD LEAD - Wrong Language",
+      "value": "BAD LEAD - Wrong Language"
+    },
+    {
+      "description": "AM não explicou a importância da nossa consultoria | BAD LEAD - Account manager didn\"t explain the importance of the service",
+      "value": "BAD LEAD - Account manager didn\"t explain the importance of the service"
+    },
+    {
+      "description": "Quando o email sobre a consultoria vai para a caixa de Spam | SPAM - <Email Client></Email>",
+      "value": "SPAM - &#60;Email Client&#62;&#60;/Email&#62;"
+    }
+  ],
+  "links": [
+    {
+      "description": "Tech Helper",
+      "value": "go/ajudasme"
+    },
+    {
+      "description": "Treinamento",
+      "value": "go/connecttrainingpt"
+    },
+    {
+      "description": "Webão Help",
+      "value": "go/webao-help"
+    },
+    {
+      "description": "Classromm",
+      "value": "go/treinamentosme"
+    },
+    {
+      "description": "ga4 setup",
+      "value": "go/ga4setup"
+    },
+    {
+      "description": "ga4 Migration Checklist + eccomerce",
+      "value": "go/migrationandeccomerce"
+    },
+    {
+      "description": "UA + ga4 Setup + implementation Request by Client",
+      "value": "go/ua_ga4setup_implementationrequestbyclient"
+    },
+    {
+      "description": "Checklist for Enhanced Conversion",
+      "value": "go/checklist_for_enhancedconversion"
+    }
+  ]
+}
