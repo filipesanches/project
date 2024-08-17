@@ -1,28 +1,12 @@
 {
   "emailList": [
     {
-      "description": "-",
-      "value": "-"
-    },
-    {
-      "description": "NRP - SO - IN Not Reachable ",
-      "value": "ts no res"
-    },
-    {
       "description": "New - Confirmation Email",
       "value": "ts as new"
     },
     {
       "description": "AS - Reschedule 1",
       "value": "ts as resched1"
-    },
-    {
-      "description": "AS - Agent Reschedule",
-      "value": "ts as reschedok"
-    },
-    {
-      "description": "AS - Acceptable Reschedule (ts as reschedok)",
-      "value": "ts as reschedok"
     },
     {
       "description": "AS - Acceptable Reschedule",
@@ -41,12 +25,8 @@
       "value": "ts ni av"
     },
     {
-      "description": "NI - Attempted Contact (ts ni ac)",
+      "description": "NI - Attempted Contact",
       "value": "ts ni ac"
-    },
-    {
-      "description": "NI - Other (ts ni oth)",
-      "value": "ts ni oth"
     },
     {
       "description": "IN - Infeasible",
@@ -78,23 +58,15 @@
     },
     {
       "description": "IN - Troubleshooting [Transferred]",
-      "value": "ts in oost"
+      "value": "ts in tf"
     },
     {
-      "description": "IN - Other",
-      "value": "ts in oth"
+      "description": "IN - Reschedule Limit Exceeded",
+      "value": "ts in limit"
     },
     {
       "description": "SO - Implementation Only",
       "value": "ts so verif"
-    },
-    {
-      "description": "SO - Education Only",
-      "value": "lg so oth"
-    },
-    {
-      "description": "SO - Troubleshooting Only",
-      "value": "lg so oth"
     },
     {
       "description": "SO - Verified No Recent Conversion",
@@ -103,6 +75,14 @@
     {
       "description": "SO - Unverified",
       "value": "ts so unv"
+    },
+    {
+      "description": "SO - Education Only",
+      "value": "ts so Edu"
+    },
+    {
+      "description": "SO - Troubleshooting Only",
+      "value": "ts so trbl"
     }
   ],
   "tagsImplement": [
