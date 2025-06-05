@@ -538,7 +538,7 @@ const casesNotes = () => {
             } else {
               procElementArray();
             }
-          }, 500);
+          }, 2500);
         })();
       }, 800);
     };
