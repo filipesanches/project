@@ -483,7 +483,7 @@ const casesNotes = () => {
         }
       });
     });
-
+    
     const functionCreateEmail = () => {
       const buttonCreateCard = document.querySelector(
         '[aria-label="Create a write card"]',
@@ -526,11 +526,11 @@ const casesNotes = () => {
                     }
                   });
                 });
-
+    
                 clickHotKey.observe(document, opcoes);
                 return;
               }, 1500);
-
+    
               return;
             } else {
               procElementArray();
