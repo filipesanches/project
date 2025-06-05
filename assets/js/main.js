@@ -743,7 +743,7 @@ const casesNotes = () => {
           ? 'E-mail criado com sucesso.'
           : 'Todas as etapas foram concluídas.',
       );
-      showPopup('popupalert');
+      // showPopup('popupalert');
     } catch (error) {
       // Trata o erro de forma mais específica
       consoleError('Erro:', error);
