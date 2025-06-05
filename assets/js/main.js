@@ -532,7 +532,7 @@ const casesNotes = () => {
     
                 clickHotKey.observe(document, opcoes);
                 return;
-              }, 1500);
+              }, 2500);
     
               return;
             } else {
