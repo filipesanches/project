@@ -501,7 +501,7 @@ const casesNotes = () => {
             if (elements.length > 0) {
               console.log('Elementos', elements[0]);
               const contentTop = elements[0].querySelector(
-                '#email-body-content-top',
+                '#email-body-content',
               );
               document
                 .querySelector('[aria-label="Insert canned response"]')
