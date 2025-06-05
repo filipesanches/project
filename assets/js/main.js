@@ -473,9 +473,10 @@ const casesNotes = () => {
 
     const elements = [];
     const creteEmail = new MutationObserver((mutations) => {
-      console.log(mutations.target);
+      console.log(mutations);
       mutations.forEach((mutation) => {
-        if (mutation.target.closest('[aria-label="Email body"]')) {
+        // Check if mutation.target is an instance of Element
+        if (mutation.target instanceof Element && mutation.target.closest('[aria-label="Email body"]')) {
           elements.push(mutation.target);
           creteEmail.disconnect();
           return;
