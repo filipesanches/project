@@ -500,12 +500,12 @@ const casesNotes = () => {
           setTimeout(() => {
             if (elements.length > 0) {
               console.log('Elementos', elements[0]);
-              // const contentTop = elements[0].querySelector(
-              //   '#email-body-content',
-              // );
-              const contentTop = document.querySelector(
+              const contentTop = elements[0].querySelector(
                 '#email-body-content-top',
               );
+              // const contentTop = document.querySelector(
+              //   '#email-body-content-top',
+              // );
               document
                 .querySelector('[aria-label="Insert canned response"]')
                 .click();
@@ -532,7 +532,7 @@ const casesNotes = () => {
     
                 clickHotKey.observe(document, opcoes);
                 return;
-              }, 2500);
+              }, 1500);
     
               return;
             } else {
